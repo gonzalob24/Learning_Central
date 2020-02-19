@@ -1,0 +1,22 @@
+This BootCamp was taken for fun.
+
+
+
+
+I will attempt to complete a Python BootCamp course in one weekend. I will work on the smaller assignments and upload them
+either together or separate python files. 
+
+I will also attempt and complete the capstone project that is required to complete the Bootcamp.
+
+
+-------
+The capstone project for being 35% done with the bootcamp is to build a simple
+Tic Tac Toe game.
+My approach:
+    1) Build the game in incremental steps.
+    2) I first made sure that the display_borad function would dispaly the board when
+        passed a list of inputs.
+    3) Then I asked users to input some imformation and returned player1 and player2 markers
+    4) Then I asked users to update the marker position to add markers to the list passed to the
+        display board.
+    5) I then created a function that checked for any winners if there are no winners it is a cats game
