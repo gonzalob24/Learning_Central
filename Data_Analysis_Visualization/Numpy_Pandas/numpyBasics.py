@@ -8,7 +8,13 @@ import os
 # arrays and matrix based
 my_list1 = [1,2,3,4]
 
-my_array1 = np.array(my_list1)
+my_array1 = np.array(my_list1, dtype = np.int32)
+ones = np.ones((3,2), dtype = np.int32)
+m1 = np.empty((3,2))
+
+np.set_printoptions(threshold=np.nan)
+
+eye = np.eye(4) # creates an identity matrix
 
 my_list2 = [11, 22, 33, 44]
 
