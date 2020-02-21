@@ -4,20 +4,25 @@
 - Can't make conclusions beyond the data anlyzed
 
 ### Inferential Statistics
+<hr>
+
 - Seek to exaplin why the data is that way 
 
 ### Probability Sampling
 <hr>
+
 - Chance of inclusion are greater than zero
 - Object 
 
 ### Non-Probability Sampling
 <hr>
+
 - No chance of probability
 - subjective jusdgement of the researcher in selecting data
 
 ### Measures of Central Tendency
 <hr>
+
 - Median: Central measure in frequency distribution. 
 	- Half of the values are above and half are below the median
 	- 50% are above and 50% are below the media
@@ -34,6 +39,7 @@
 
 ### IQR -- Measures od Dispersion
 <hr>
+
 - Dispersion: 
 	- Nonegatie real numebr
 - Range: Largest - smallest
@@ -49,6 +55,7 @@
 
 ### Variance and Standard Deviation -- Measures of Dispersion
 <hr>
+
 - Variance
 	- Second most important number 
 	- nonegative
