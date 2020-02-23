@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
+import pandas as pd
+from scipy import misc
+import sklearn.datasets
+import scipy
 import matplotlib.pyplot as plt
 from numpy.random import randn
 import os
@@ -81,7 +85,9 @@ arr_2d[1]  # first row
 arr_2d[1][0]
 
 arr_2d[:2, 1:]
-
+arr_2d[0:-1, :]
+arr_2d[0, ...] ## used to denote the rest of the array
+arr_2d[0, :]
 # Fancy indexing
 arr2d = np.zeros((10, 10))
 arr_length = arr2d.shape[1]
@@ -133,6 +139,33 @@ webbrowser.open(website)
 """
 Array Processing
 """
+# iterations
+arr_iter = np.arange(16).reshape(4,4)
+arr_reshape = arr_iter.reshape(-2,8)
+
+test = np.arange(1,201, 1).reshape(25,8)
+test_ones = np.ones_like(test)
+test[-20:, 2:6]
+
+arr_flatt = arr_iter.flatten()
+arr_flatt2 = arr_iter.ravel()
+
+for i in np.nditer(arr_iter):
+    print(i)
+
+for i in np.nditer(arr_iter, order='F', flags=['external_loop']):
+    print(i)
+
+arr_square = arr_iter ** 2
+
+for arr in np.nditer(arr_iter, op_flags=['readwrite']):
+    arr[...] = arr * arr
+    
+# name.ravel() # applied to any object
+# name.flatten() # belongs to any array object by numpy arrays
+arr_iter.T  # transpose
+
+# can also reshape the arra with .reshaope(r,c)
 # creating a grid
 points = np.arange(-5, 5, 0.01)
 dx, dy = np.meshgrid(points, points)
@@ -205,6 +238,261 @@ arr4 = np.loadtxt('mytextarray.txt', delimiter=',')
 
 
 
+"""
+Advanced Operationa with Numpy Array
+---------------------------------------------------------------------
+"""
+# Splitting numpy array
+p = np.arange(12)
+
+p_split = np.split(p, 4)
+p_split2 = np.split(p, [3, 8]) # spltis at these indices
+
+names = np.array([('IBM', 'apple', 'intel', 'sony', 'dell', 'akamai'),
+                  ('NY', 'CA', 'CA', 'TX', 'WA', 'MASS')])
+
+x1, x2 = np.hsplit(names, 2) # column wise
+y1, y2 = np.vsplit(names, 2) # row wise
+
+# Images are multidimensional arrays. Every pixel in an imgae cab be
+# represented by a number. Each pizel is represented by RGB, 3 colors
+# Each RGB is represented by a number 0-255
+
+# grayscale: every pixel only represents the intensity information
+# 0.0 -- > black 
+# 1.0 --> white
+
+# pixel --> 1 byte o data
+
+# single chanel are grayscale (#, #, 1)
+# multi-channel are colored images (#,#,3)
+from skimage import io
+import matplotlib.pyplot as plt
+pic = io.imread('D.tacos2.jpg')
+pic.shape
+type(pic)
+
+
+plt.imshow(pic)
+plt.show()
+
+pic_slice = pic[300: , 250:, :]
+plt.imshow(pic_slice)
+plt.show()
+
+x1, x2 = np.split(pic, 2)
+plt.imshow(x1)
+plt.show()
+
+plt.imshow(x2)
+plt.show()
+
+y1, y2 = np.split(pic, 2,axis = 1)
+
+plt.imshow(y1)
+plt.show()
+
+plt.imshow(y2)
+plt.show()
+
+# concatenate 
+plt.imshow(np.concatenate((x1,x2)))
+plt.show()
+
+test = np.array([[ 52,  56,  67],
+                   [ 50,  54,  65],
+                   [ 50,  52,  64]])
+plt.imshow(test)
+plt.show()
+
+# shallow copies
+places = np.array(['Mexico','China','Janpa','Spain','Europe','Australia'])
+loc_1 = places.view()
+loc_2 = places.view()
+
+# get false because they all have different id's
+loc_1 is places
+loc_2 is places
+# all three print the same thing.
+# point to the same location in memory as they are objects
+loc_1.base is places
+loc_1[3] = 'Ghana'
+# all 3 are affected via views. Reasign the variable or reshpae does not 
+# affect the others
+print(places)
+print(loc_1)
+print(loc_2)
+
+# deep copies, no link between original and the copy
+loc = places.copy()
+loc is places
+loc.base is places  # because of the deep copy
+
+loc[0] = 'Turkey'
+print(loc)
+print(places)
+
+loc.shape = (2,3)
+
+"""
+Index masks
+---------------------------------------------------------------------
+"""
+
+x = np.arange(14) ** 2
+print(x)
+# print individually
+print(x[3], x[7], x[13]) 
+
+# or use a mask and array
+mask1 = [1, 3, 7, 13]
+print(x[mask1])
+
+mask2 = np.array([[3,5], [2,5]])
+print(x[mask2])
+
+cities = np.array([['Sydney','Auckland','Vancouver',],
+                   ['Lima', 'Bogota', 'Lisbon'],
+                   ['IStanbul', 'Tehran', 'Colombo']])
+
+# 2 masks
+row = np.array([[0,0],[2,2]])
+col= np.array([[0,2],[0,0]])
+
+cities[row, col]
+
+# can also modify 1d arrays with a mask
+cities[row, col] = 'aaaa'
+print(cities)
+
+countries = pd.read_csv('countries_of_the_world.csv', decimal=',')
+countries.head()
+birthrates = countries['Birthrate'].values # values to access individual values
+type(birthrates)
+birthrates.shape
+
+plt.plot(birthrates)
+plt.show()
+
+# nan values
+np.median(birthrates)
+print(birthrates)
+
+# how to handle nan values
+# 1. eliminate the row where nan exists
+birthrates2 = birthrates[~np.isnan(birthrates)]
+print(birthrates2)
+
+# 2. substitute values as well
+
+"""
+Boolean Masks
+---------------------------------------------------------------------
+"""
+x = np.arange(12).reshape(3,4)
+index_bool = x > 6
+x[index_bool]
+
+np.count_nonzero(x < 7)
+
+np.sum(x<7, axis=1) # axis = 1 is rows
+np.sum(x < 7 , axis = 0)
+
+np.any(x > 8) # checks if at least one number is > 8
+np.all(x < 11) # checks if all are < 11
+    
+
+"""
+Structrued arrays
+---------------------------------------------------------------------
+"""
+
+names = ['Danielle','Lorena','Manuel','Ryan','Teresa','Wes']
+ids = [1,2,3,4,5,6]
+scores = [78.2 ,57.5, 90, 77, 96.20, 87.37] 
+
+
+data = np.zeros(6, dtype = {'names': ('Name', 'ID', 'Score'),
+                            'formats':('U16', 'i4', 'f8')})
+
+# U16 is for string characters
+# i4 is 4-byte int int32
+# fu is 8-byte float64
+
+data['Name'] = names
+data['ID'] = ids
+data['Score'] = scores
+# is a list of tuples
+print(data)
+
+data[data['Score'] > 85 ]['Name']
+data[data['Score'] < 75]['Name']
+
+
+"""
+---------------------------------------------------------------------
+Array Broadcasting
+Allows arrays of diff. shapoes to be combined.
+Memory efficient as needles copies avoided
+Shapes should be compatible, compare from last dimension to first.
+Dimensions are comaptible if:
+    -They are identical
+    -one of the dimensions is 1
+"""
+# Arrays that don't share the same dimensions
+# The smaller array is broadcast across the larger array so that they have
+# Compatible shapes
+
+# Broadcasting Scalars
+# Operations b/w scalara and arrays are always possible - the scalar is broadcast
+# over the array
+
+# Broadcasting arrays
+# Operations b/t two arrays are possible only incer certain conditions
+
+
+x = np.array([2,4,6,8,10])
+y = np.array([5,5,5,5,5])
+
+x * y
+
+z = 10
+x * z
+
+ones = np.ones(shape = (3,4))
+
+ones * z
+
+speed = [184,243,192,309,257,218]
+weight = [1178,1243,1403,1047,1673,1475]
+
+car_info = np.array([speed, weight])
+print(car_info)
+
+convertion = np.array([0.621371, 2.20462])
+
+car_info * convertion
+
+# reshape convertion
+new_convert = convertion.reshape(2,1)
+car_info * new_convert
+    
+
+### Excercise ###
+
+arr20 = np.arange(90, 300, 2)
+
+x2 = np.arange(0,21,1)
+
+x = arr20[arr20 > 100]
+
+# sub_ar_3 = np.array([[x2 <= 6], [x2 >= 7 & x2 <= 16], [x2 >= 17 & x2 <= 19]])
+a,c,b = np.split(x2, [7,17])
+
+
+cubes = np.array([1,2,3,4,5,6,7,8,9,10]) ** 3
+mask4 = np.array([[4,5],[1,2]])
+cubes[mask4]
 
 """
 ---------------------------------------------------------------------
