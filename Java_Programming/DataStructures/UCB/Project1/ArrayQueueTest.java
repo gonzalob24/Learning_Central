@@ -1,4 +1,4 @@
-package UCB.Project1;
+package Project1;
 
 public class ArrayQueueTest
 {

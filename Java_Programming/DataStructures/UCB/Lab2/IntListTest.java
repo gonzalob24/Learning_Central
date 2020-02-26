@@ -1,4 +1,4 @@
-package UCB.Lab2;
+package DataStructures.UCB.Lab2;
 
 import static org.junit.Assert.*;
 
