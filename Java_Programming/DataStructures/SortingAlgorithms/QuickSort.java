@@ -1,9 +1,9 @@
-package SortingAlgorithms;/*
+/*
  * PROGRAMMER: Gonzalo Betancourt
  *
  * COURSE: CSCI 3352-02 Adv. Data Structures
  *
- * DATE: October 2, 2019
+ * DATE: February 26, 2020
  *
  * ASSIGNMENT: Programing Assignment: Heapsort and Quicksort
  *
@@ -33,18 +33,19 @@ package SortingAlgorithms;/*
  *                      swap(i, j)
  *                  j++
  *
- * ERRORS: What happens in case of unexpected input (optional)
- *
- * EXAMPLE: A sample execution in terms of input and corresponding output (if
- * appropriate)
- *
- *
- * HISTORY: Useful if a sequence of assignments is based on the same project
- * (optional)
+ * Sample Output:
+ *      This is random array set 1:
+ *      Values of array before sort:
+ *      [9, 0, 17, 29, 17, 6, 24, 18...
+ *      Values of array after sort:
+ *      [0, 0, 1, 4, 5, 6, 6, 7, 8...
  *
  *
  *
  */
+
+package SortingAlgorithms;
+
 
 public class QuickSort
 {

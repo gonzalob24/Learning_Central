@@ -1,5 +1,49 @@
-package SortingAlgorithms;
+/*
+ * PROGRAMMER: Gonzalo Betancourt
+ *
+ * COURSE: CSCI 3352-02 Adv. Data Structures
+ *
+ * DATE: February 26, 2020
+ *
+ * ASSIGNMENT: Programing Assignment: Heapsort and Quicksort
+ *
+ * ENVIRONMENT: Mac OS, Windows or Linux
+ *
+ * FILES INCLUDED: java source file
+ *
+ * PURPOSE: Implement Heapsort and Quicksort. Run your programs on some sample data. Choose arrays with at least 30
+ *          elements not all of them distinct.
+ *
+ * PRECONDITIONS:
+ *            Store the integers in an integer array
+ *            Quicksort:
+ *              i = j - 1
+ *              j = typically the first element
+ *              p = pivot, typically the last element
+ *
+ *            HeapSort: sort and heapify
+ *
+ * OUTPUT: Sorted array
+ *
+ * POSTCONDITIONS: The program will return a sorted array
+ *
+ * ALGORITHMS:
+ *           HeapSort:
+ *             Build-heap(A)
+ *              ​ for i = n to 1 do
+ *                  swap(A[1],A[i])
+ *                  ​n=n-1
+ *              Heapify(A,1)
+ *
+ * Sample Output:
+ *      This is random array set 1:
+ *      Values of array before sort:
+ *      [9, 0, 17, 29, 17, 6, 24, 18...
+ *      Values of array after sort:
+ *      [0, 0, 1, 4, 5, 6, 6, 7, 8...
+ */
 
+package SortingAlgorithms;
 
 public class HeapSort
 {
@@ -12,14 +56,15 @@ public class HeapSort
 
     public int[] sort(int[] array)
     {
+        // Length of the array
         int n = array.length;
 
-        //Building the heap
+        // Building the heap
         for (int i = n / 2 - 1; i >= 0; i--)
         {
             heapify(array, n, i);
         }
-
+        //
         for (int i = n -1; i >= 0; i--)
         {
             int temp = array[0];
@@ -31,7 +76,7 @@ public class HeapSort
 
         return array;
     }
-
+    // Heapify
     public void heapify(int[] array, int n, int i)
     {
         int largest = i;
@@ -56,7 +101,7 @@ public class HeapSort
             heapify(array, n, largest);
         }
     }
-
+    //Print the array
     public void printArray(int[] array)
     {
         System.out.print("[" + array[0]);
@@ -68,7 +113,4 @@ public class HeapSort
         System.out.println("]\n\n");
 
     }
-
-
-
 }
