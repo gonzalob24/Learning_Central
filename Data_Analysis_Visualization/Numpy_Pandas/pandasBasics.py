@@ -66,6 +66,43 @@ obj2.index.name = "Countries"
 DataFrames
 """
 
+# .loc and .iloc --> loc is used for column lables and iloc is used for indexing
+# .iloc uses python standard slicing .loc is all inclusive.
+
+# change label names name.set_index('new name')
+
+# isin() allows to select values that are in a list
+
+# isnull() and notnull()
+
+# Assigning data to DF is like adding items to a dictionary name[""] = ""
+
+# Mapping values to another set of values
+# review_points_mean = reviews.points.mean()
+# reviews.points.map(lambda p: p - review_points_mean)
+
+# apply() is the equivalent method if we want to transform a whole DataFrame 
+# by calling a custom method on each row.
+
+# def remean_points(row):
+#     row.points = row.points - review_points_mean
+#     return row
+
+# reviews.apply(remean_points, axis='columns')
+
+# map() and apply() are faster due to the built in speed up in pandas
+
+# bargain_idx = (reviews.points / reviews.price).idxmax()
+# bargain_wine = reviews.loc[bargain_idx, 'title']
+
+# Create a Series descriptor_counts counting how many times each of these two 
+# words appears in the description column in the dataset.
+
+# n_trop = reviews.description.map(lambda desc: "tropical" in desc).sum()
+# n_fruity = reviews.description.map(lambda desc: "fruity" in desc).sum()
+# descriptor_counts = pd.Series([n_trop, n_fruity], index=['tropical', 'fruity'])
+
+
 websites = 'http://en.wikipedia.org/wiki/NFL_win-loss_records'
 webbrowser.open(websites)
 
