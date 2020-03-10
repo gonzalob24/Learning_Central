@@ -25,7 +25,8 @@ dataset2 = randn(80)
 
 plt.hist(dataset2, color='indianred')
 
-# alphs is the transparensy level
+# alpha is the transparensy level
+# normalize the data when there are different number of 
 plt.hist(dataset1, normed=True, color='indianred', alpha=0.5, bins=20)
 plt.hist(dataset2, normed=True, alpha=0.5, bins=20)
 

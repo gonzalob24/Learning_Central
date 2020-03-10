@@ -127,7 +127,7 @@ print ('The probability that 10 or less customers show up is %2.1f %%.' %(100*pr
 prob_more_than_ten = 1 - prob_up_to_ten
 
 print ('The probability that more than ten customers show up during lunch rush is %2.1f %%.' %(100*prob_more_than_ten))
-
+s
 
 
 

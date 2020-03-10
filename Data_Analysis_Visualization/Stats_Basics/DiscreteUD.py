@@ -14,6 +14,7 @@ Created on Sat Mar  7 09:13:03 2020
 # f(x) = 1/n
 # Import all the usual imports from the Python for Data Analysis and Visualization Course.
 
+from __future__ import division
 import numpy as np
 from numpy.random import randn
 import pandas as pd
@@ -21,7 +22,6 @@ from scipy import stats
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import seaborn as sns
-from __future__ import division
 
 
 # Now let's set up a dice roll and plot the distribution using seaborn before 
@@ -66,6 +66,7 @@ low,high = 1,7
 mean,var = randint.stats(low,high)
 
 print("The mean is {}".format(mean))
+print("The Variance is {}".format(var))
 
 plt.bar(roll_options,randint.pmf(roll_options,low,high))
 
