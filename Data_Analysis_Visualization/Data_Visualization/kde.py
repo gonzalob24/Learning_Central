@@ -30,11 +30,10 @@ sns.rugplot(dataset)
 sns.rugplot(dataset)
 x_min = dataset.min() - 2
 x_max = dataset.max() + 2
-
 # 100 equally spaced points fom min to max
 x_axis = np.linspace(x_min, x_max, 100)
 
-# bandwidth estimation
+# bandwidth estimation, is a standard equation
 bandwidth = ((4 * dataset.std()**5) / (3*len(dataset))) ** 0.2 
 
 kernel_list = []
@@ -59,21 +58,20 @@ sns.rugplot(dataset)
 plt.yticks([])
 plt.suptitle("Sum of the basis functions")
 
-
+# This is the easy way using seaborn
 sns.kdeplot(dataset)
+
 sns.rugplot(dataset, color="black")
 for bw in np.arange(0.5,2,0.25):
     sns.kdeplot(dataset, bw=bw, lw=1.8, label=bw)
     
-    
-
 
 kernel_options = ['biw', 'cos', 'epa', 'gau', 'tri', 'triw']
 
 for kern in kernel_options:
-    sns.kdeplot(dataset, kernel=kern, shade=True)
+    sns.kdeplot(dataset, kernel=kern, label=kern, shade=True)
     
-
+# CDF
 sns.kdeplot(dataset, cumulative=True)
 
 # multivariate density
