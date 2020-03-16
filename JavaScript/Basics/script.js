@@ -287,7 +287,8 @@ var whatDoYouDo = function(job, firstName)
 
 console.log(whatDoYouDo('rich', 'John'));
 
-// 03-15-2020
+// 03-15-2020 Functions
+
 
 
 
