@@ -58,6 +58,7 @@ console.log(lastName + ' ' + firstName);
 /*************
 * Basic Operators
 */
+
 /*
 var year, yearJohn, yearMark;
 now = 2018;
@@ -235,11 +236,13 @@ if (height)
 {
     console.log('variable has NOT been defined');
 }
- */
+
 
 var teamJohnAvg = (89 + 120 + 103) / 3;
 var teamMikeAvg = (116 + 94 + 123) / 3;
 var teamMaryAvg = (97 + 134 + 105) / 3;
+
+*/
 //var winner = max(teamJohnAvg, teamMaryAvg, teamMikeAvg);
 
 /*
@@ -261,6 +264,7 @@ if (teamJohnAvg > teamMikeAvg && teamJohnAvg > teamMaryAvg)
 
 // Functions. Function stmts and expression
 
+/*
 function calcAge(birthYear)
 {
     return 2020 - birthYear;
@@ -287,30 +291,249 @@ var whatDoYouDo = function(job, firstName)
 
 console.log(whatDoYouDo('rich', 'John'));
 
-// 03-15-2020 Functions
+*/
+
+// Arrays
+/*
+var names = ['John', 'Mark', 'Jane'];
+var years = [1990, 1969, 1948];
+
+var john = ['John', 'Smith', 1990, 'Teacher']
+john.push('blue') // adds at the end
+john.unshift('Mr') //adds to the front
+names[names.length] = 'Mary';
+console.log(names);
+console.log(john);
+
+john.pop() //pop last item
+
+console.log(john);
+john.shift();  //removed from the front
+console.log(john);
+
+console.log(john.indexOf(1990)); // looks for the element 
+
+*/
+
+// coding challeng tip calculator
+
+/*
+var restaurant = [124, 48, 268];
+
+function calcTip(bill)
+{
+    if (bill < 50)
+    {
+        return bill * 0.2; 
+    }
+    else if (bill <= 200)
+        {
+            return bill * 0.15;
+        }
+    else 
+        {
+            return bill * 0.10;
+        }
+}
+
+
+var tipAmount = [];
+var paidAmount = [];
+for (i = 0; i < restaurant.length; i++)
+{
+    tipAmount.push(calcTip(restaurant[i]));
+    paidAmount[i] = tipAmount[i] + restaurant[i];
+    
+}
+
+console.log(tipAmount);
+console.log(paidAmount);
+
+
+*/
+
+// Objects and methods
+
+
+/*
+
+// oject literal key value pairs
+var john = 
+{
+    firstName: 'John',
+    lastName: 'Smith',
+    birthYear: 1990,
+    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    job: 'Teacher',
+    isMarried: false,
+    calcAge: function()
+    {
+        //return 2018 - this.birthYear;
+        this.age = 2018 - this.birthYear;
+    }
+};
+
+
+console.log(john);
+console.log(john.firstName);  // same dot notation to access elements
+var x = 'birthYear';
+console.log(john['job']);
+console.log(john[x]);
+
+john.job = 'Designer';
+console.log(john['job']);
+
+//john.isMarried = true;
+//console.log(john);
+
+var jane = new Object();
+jane.name ='Jane';
+jane.birthYear = 1969;
+jane['lastName'] = 'Smith';
+jane.job = 'Doctor';
+
+console.log(jane);
 
 
 
+// atach functions to objects
+
+console.log(john.calcAge(1990));
+
+//john.age = john.calcAge();
+john.calcAge();
+console.log(john);
+
+
+//Coding challenge
+
+var johnInfo =
+{
+    fullName: 'John Smith',
+    mass: 80,
+    height: 1.57,
+    calcBmi: function()
+    {
+        this.bmi = this.mass / (this.height * this.height);
+        // I can also return the BMI to assign it to a variable instead of assigning it
+        // to the object as an element
+    }
+};
+
+var markInfo =
+{
+    fullName: 'Mark Smith',
+    mass: 67,
+    height: 1.65,
+    calcBmi: function()
+    {
+        this.bmi = this.mass / (this.height * this.height);
+    }
+};
+
+
+console.log(johnInfo);
+console.log(markInfo);
+johnInfo.calcBmi()
+console.log(johnInfo.fullName + '\'s BMI is ' + johnInfo.bmi);
+
+*/
+
+// LOOPS
+
+/*
+for (i = 0; i < 10; i++)
+{
+    console.log(i + 1);
+}
+
+var john = ['John', 'Smith', 1990, 'Designer', false];
+
+for (i = 0; i < john.length; i++)
+{
+    if (typeof john[i] !== 'string') break;
+    console.log(john[i]);
+}
+
+var i = 0;
+while (i < john.length)
+{
+    if (typeof john[i] !== 'string') continue;
+    console.log(john[i]);
+    i++;
+}
+
+
+// Continue and break statements
+
+for (i = john.length - 1; i >= 0; i--)
+{
+    console.log(john[i]);
+}
+
+*/
 
 
 
+// Tip Calulator challenge
+
+/*
+var restaurantBills = [124, 48, 268, 180, 42];
+
+var tipCalculator =
+{
+    tipAmount: function(bills)
+    {
+        this.tips = [];
+        this.totalPaid = [];
+        for (i = 0; i < bills.length; i++)
+        {
+            
+            if (bills[i] < 50)
+            {
+                this.tips[i] = bills[i] * 0.2;
+            } 
+            else if (bills[i] <= 200)
+                {
+                    this.tips[i] = bills[i] * 0.15;    
+                }
+            else
+                {
+                   this.tips[i] = bills[i] * 0.10; 
+                }
+            this.totalPaid[i] = this.tips[i] + bills[i];
+        }
+    },
+//    total: function(bills)
+//    {
+//        this.totalPaid = [];
+//        for (i = 0; i < this.tips.length; i++)
+//        {
+//            this.totalPaid[i] = this.tips[i] + bills[i];
+//        }
+//    }
+};
+
+tipCalculator.tipAmount(restaurantBills);
+//tipCalculator.total(restaurantBills);
+console.log(tipCalculator)
 
 
+function calcAvgTips(tips)
+{
+    var sum = 0;
+    for (i = 0; i < tips.length; i++)
+    {
+        sum += tips[i];
+    }
+    return sum / tips.length;
+}
 
+tipCalculator.tipAmount(restaurantBills);
+tipCalculator.avergae = calcAvgTips(tipCalculator.tips);
+console.log(tipCalculator.avergae);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 
 
 
