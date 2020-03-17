@@ -535,6 +535,82 @@ console.log(tipCalculator.avergae);
 
 */
 
+/*
+// Hoisting for function declarations and expressions
+calcAge(1990);
+
+function calcAge(year)
+{
+    console.log(2020 - year);
+}
+
+
+//retirement(1990);  //will get an error b/c the function expression has not been defined.
+var retirement = function(year)
+{
+    console.log(65 - (2020 - year));
+}
+
+
+//variable
+console.log(age); // will get an error as well since hoisting works with function declarations
+var age = 23;
+
+*/
+
+//console.log(this);
+
+//calcAge(1985);
+//
+//function calcAge(year)
+//{
+//    console.log(2020 - year);
+//    console.log(this);
+//}
+
+
+
+var john =    
+{
+    name: 'John',
+    yearOfBirth: 1990,
+    calcAge: function()
+    {
+        console.log(this);
+        console.log(2016 - this.yearOfBirth);
+        
+//        function innerFunction()
+//        {
+//            console.log(this);
+//        }
+//        innerFunction();
+    }
+};
+
+john.calcAge();
+
+
+var mike = 
+{
+    name: 'Mike',
+    yearOfBirth: 1984,
+};
+
+
+mike.calcAge = john.calcAge;
+
+
+mike.calcAge();
+
+
+
+
+
+
+
+
+
+
 
 
 
