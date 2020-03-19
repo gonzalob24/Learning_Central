@@ -39,3 +39,31 @@ sns.lmplot('size', 'tip_pect', tips)
 sns.lmplot('size', 'tip_pect', tips, x_jitter=0.1)
 
 sns.lmplot('size', 'tip_pect', tips, x_estimator=np.mean)
+
+sns.lmplot('total_bill', 'tip_pect', tips, hue='sex', markers=['x', 'o'])
+
+sns.lmplot('total_bill', 'tip_pect', tips, hue='day')
+
+sns.lmplot('total_bill', 'tip_pect', tips, lowess=True, line_kws={'color':'black'})
+
+
+# lmplot uses regplot-- regression plot
+# lmplot was bilt unti of regplot
+
+sns.regplot('total_bill', 'tip_pect', tips)
+fig, (axis1, axis2) = plt.subplots(1, 2, sharey=True)
+
+sns.regplot('total_bill','tip_pect', tips, ax=axis1)
+sns.violinplot(tips['size'], tips['tip_pect'], ax=axis2)
+
+
+
+
+
+
+
+
+
+
+
+
