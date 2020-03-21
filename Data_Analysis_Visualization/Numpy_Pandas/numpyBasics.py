@@ -141,7 +141,7 @@ Array Processing
 """
 # iterations
 arr_iter = np.arange(16).reshape(4,4)
-arr_reshape = arr_iter.reshape(-2,8)
+arr_reshape = arr_iter.reshape(2,8)
 
 test = np.arange(1,201, 1).reshape(25,8)
 test_ones = np.ones_like(test)
