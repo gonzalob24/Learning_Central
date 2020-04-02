@@ -568,8 +568,7 @@ var age = 23;
 //    console.log(this);
 //}
 
-
-
+/*
 var john =    
 {
     name: 'John',
@@ -601,6 +600,8 @@ mike.calcAge = john.calcAge;
 
 
 mike.calcAge();
+
+*/
 
 
 
