@@ -14,13 +14,13 @@ var scores, roundScore, activePlayer, dice;
 
 scores = [0, 0];
 roundScore = 0;
-activePlayer = 1;  // 0 is player1, 1 is player2
+activePlayer = 0;  // 0 is player1, 1 is player2
 
 // Creating the dice
 
 dice = Math.floor(Math.random() * 6) + 1;
 
-// DOM manipulation uses the document 
+// DOM manipulation uses the document object
 // Allows us to select stuff like css
 
 document.querySelector('#current-' + activePlayer).textContent = dice;
@@ -30,7 +30,72 @@ document.querySelector('#current-' + activePlayer).textContent = dice;
 
 
 // set a value in the variable x using setters and getters.
-var x = document.querySelector('#score-0').textContent;
-console.log(x)
+//var x = document.querySelector('#score-1').textContent;
+//console.log(x)
+
+// used query selector to hide the dice image
+
+
+//function btn() {
+//    //do something
+//};
+//
+//btn();
+
+//document.querySelector('.btn-roll').addEventListener('click',btn); 
+//btn here will be a call back function b/c it is called by event listener
+// or create an anonomou function, create the function within 
 
 document.querySelector('.dice').style.display = 'none';
+
+// another way to access element from HTML
+// set the scores to 0
+document.getElementById('score-0').textContent = '0';
+document.getElementById('score-1').textContent = '0';
+document.getElementById('current-0').textContent = '0';
+document.getElementById('current-1').textContent = '0';
+
+document.querySelector('.btn-roll').addEventListener('click', function() {
+    // 1. random number
+    var dice = Math.floor(Math.random() * 6) + 1;
+    
+    // 2. Display the results
+    var diceDOM = document.querySelector('.dice');
+    diceDOM.style.display = 'block';
+    diceDOM.src = 'dice-' + dice + '.png';
+    
+    // 3. update the round score IF the rolled number was not a 1
+    if (dice !== 1) {  //recall 1== does not perform type coercion
+        // Add the score
+        roundScore += dice;
+        document.querySelector('#current-' + activePlayer).textContent = roundScore;
+    } else {
+        //Its the next players turn
+        
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+        roundScore = 0;
+        document.getElementById('current-0').textContent = '0';
+        document.getElementById('current-0').textContent = '0';
+        
+        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-1-panel').classList.toggle('active');
+        // document.querySelector('.player-0-panel').classList.remove('active');
+        // document.querySelector('.player-1-panel').classList.add('active');
+        
+        document.querySelector('.dice').style.display = 'none'; 
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
