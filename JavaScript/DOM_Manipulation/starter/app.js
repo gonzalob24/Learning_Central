@@ -10,7 +10,7 @@ GAME RULES:
 */
 
 
-var scores, roundScore, activePlayer, dice, gamePlaying;
+var scores, roundScore, activePlayer, dice, gamePlaying, rollSix;
 
 newGame();
 //scores = [0, 0];
@@ -19,12 +19,12 @@ newGame();
 
 // Creating the dice
 
-dice = Math.floor(Math.random() * 6) + 1;
+//dice = Math.floor(Math.random() * 6) + 1;
 
 // DOM manipulation uses the document object
 // Allows us to select stuff like css
 
-document.querySelector('#current-' + activePlayer).textContent = dice;
+//document.querySelector('#current-' + activePlayer).textContent = dice;
 
 // I can wirte innerHTML code but it needs to be in string form
 //document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>'
@@ -47,7 +47,7 @@ document.querySelector('#current-' + activePlayer).textContent = dice;
 //btn here will be a call back function b/c it is called by event listener
 // or create an anonomou function, create the function within 
 
-document.querySelector('.dice').style.display = 'none';
+//document.querySelector('.dice').style.display = 'none';
 
 // another way to access element from HTML
 // set all the scores to 0.... moved to newGame()
@@ -65,9 +65,14 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
         var diceDOM = document.querySelector('.dice');
         diceDOM.style.display = 'block';
         diceDOM.src = 'dice-' + dice + '.png';
-
+        
+        // If the dice is a 6 add it it rollSix
+        if (dice === 6) {
+            rollSix += 1;
+        }
+        
         // 3. update the round score IF the rolled number was not a 1
-        if (dice !== 1) {  //recall 1== does not perform type coercion
+        if ( (dice !== 1) && (rollSix !== 2) ) {  //recall 1== does not perform type coercion
             // Add the score
             roundScore += dice;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
@@ -126,6 +131,7 @@ function newGame() {
     scores = [0, 0];
     activePlayer = 0;
     roundScore = 0;
+    rollSix = 0
     gamePlaying = true;
     document.querySelector('.dice').style.display = 'none';
 
@@ -144,5 +150,22 @@ function newGame() {
     document.querySelector('.player-0-panel').classList.add('active');
 
 }
+
+
+/*
+1. A player loses his entire score when he rolls two 6's in a row. After that, its the next players turn.
+
+2. Add an input field to the HTML where players can set the winning score, so that they can change the 
+predefined score of 100.  Use the .value property in JS
+
+3. Add another dice to the game to that there are two dice now. The player loses his score when one 
+of the dice is a 1. 
+
+
+*/
+
+
+
+
 
 
