@@ -3,6 +3,13 @@
 //////////////////////////////////////////////////////
 /*
 
+//function is an instance of the Object type
+// it behaves like an object
+// can be stored inside variables
+// pass it as an arg.
+// return it 
+
+
 }var john = {
     name: 'John',
     birthYear: 1990,
@@ -81,6 +88,8 @@ var jane = Object.create(personProto,
 // PRIMITIVES vs. OBJECTS
 //////////////////////////////////////////////////////
 
+/*
+
 // numbers, strings, booleans undefined, null are primitives everything
 // else are objects
 
@@ -132,6 +141,250 @@ change(age, obj)
 
 console.log(age);
 console.log(obj.city);
+
+
+*/
+
+///////////////////////////////////////////////////////
+// PASSING FUNCTIONS AS ARGUMENTS
+//////////////////////////////////////////////////////
+
+/*
+var years = [1990, 1965, 1937, 2005, 1998];
+
+function arrayCalc(arr, fn) {
+    var arrResults = [];
+    for (var i = 0; i < arr.length; i++)  {
+        arrResults.push(fn(arr[i]));
+    }
+    return arrResults;
+}
+
+function calculateAge(el) {
+    return 2016 - el;
+}
+
+function isFullAge(el) {
+    return el >= 18;
+}
+
+
+function maxHeartRate(el) {
+    if (el >= 18 && el <= 81) {
+        return Math.round(206.9 - (0.67 * el));
+    } else {
+        return - 1;
+    }
+}
+
+var ages = arrayCalc(years, calculateAge);
+console.log(ages);
+
+var resBool = arrayCalc(years, isFullAge);
+console.log(resBool);
+
+var heartRate = arrayCalc(ages, maxHeartRate);
+console.log(heartRate);
+
+*/
+
+///////////////////////////////////////////////////////
+// RETURNING FUNCTIONS
+//////////////////////////////////////////////////////
+
+/*
+function interviewQuestion(job) 
+{
+   if (job === 'designer') 
+   {
+       return function(name) 
+       {
+           console.log(name + ', can you please explain what UX design is?');
+       }
+   } else if (job === 'teacher') 
+    {
+        return function(name) 
+        {
+            console.log('What subject do you teach, ' + name + '?');
+        } 
+    } else 
+    {
+        return function(name) 
+        {
+            console.log('Hello ' + name + ', what do you do?');
+        }
+   }
+}
+
+
+var teacherQuestion = interviewQuestion('teacher');
+teacherQuestion('John');
+
+
+var designerQuestion = interviewQuestion('designer');
+designerQuestion('Jane');
+
+
+designerQuestion('Mike');
+
+interviewQuestion('teacher')('Jordan'); // Jordan name calls the function that gets returns by interviewQuestion
+
+*/
+
+///////////////////////////////////////////////////////
+// IIFE: IMMEDIATELY INVOKED FUNCTION EXPRESSIONS
+//////////////////////////////////////////////////////
+
+/*
+function game() {
+    var score = Math.random() * 10;
+    console.log(score >= 5);
+}
+
+game();    
+
+
+// wrap the function in parenthesis to trick the console that it is an expression
+// this creates data privacy because score can't be accessed outside the function 
+(function(goodLuck) {
+    var score = Math.random() * 10;
+    console.log(score >= 5 -  goodLuck);
+})(5); 
+
+*/
+
+///////////////////////////////////////////////////////
+// CLOSURES
+//////////////////////////////////////////////////////
+
+/*
+
+// closure uses scope rules and access items that arein the execution stack
+function retirement(retAge) {
+    var a = ' years left until retirement.';
+    return function(birthYear) {
+        var age = 2020 - birthYear;
+        console.log((retAge - age) + a);
+    }
+}
+
+var retirementUS = retirement(66);
+var retirementGermany = retirement(65);
+var retirementIceland = retirement(67);
+
+retirementUS(1990);
+retirementGermany(1990);
+retirementIceland(1990);
+
+// rewrite the interview questions using closures
+
+function interviewQuestion(job) {
+    var a = ', can you please what UX design is?';
+    var b = 'What subject do you teach, ';
+    var c = ', what do you teach?';    
+
+    return function(name) {
+        if (job === 'designer') {
+            console.log(name + a);
+        } else if (job === 'teacher') {
+            console.log(b + name + '?');
+            
+        } else {
+            console.log('Hello ' + name + c);
+        }
+    }
+}
+
+
+
+interviewQuestion('teacher')('John');
+
+*/
+
+///////////////////////////////////////////////////////
+// BIND, CALL & APPLY
+//////////////////////////////////////////////////////
+
+var john = {
+    name: 'John',
+    age: 26,
+    job: 'teacher',
+    presentation: function(style, timeOfDay) {
+        if (style === 'formal') {
+            console.log('Good ' + timeOfDay + ' Ladies and Gentelmen! I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.');
+        } else if (style === 'friendly') {
+            console.log('Hey! What\'s up? I\'m ' + this.name + ' I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. Have a nice ' + timeOfDay + '.');
+        }
+    }
+};
+
+var emily = {
+    name: 'Emily',
+    age: 35,
+    job: 'designer',
+};
+
+john.presentation('formal', 'morning');
+
+// Method borrowing for emily object
+john.presentation.call(emily, 'friendly', 'afternoon'); 
+
+//Apply accepts an array
+john.presentation.apply(emily, ['formal', 'afternoon'])
+
+// bind does not call the function but instead generates a copy of the function
+var johnFriendly = john.presentation.bind(john, 'friendly');
+johnFriendly('morning');
+johnFriendly('night');
+
+
+var emilyFormal = john.presentation.bind(emily, 'formal');
+emilyFormal('Zoo');
+
+
+
+
+
+
+var years = [1990, 1965, 1937, 2005, 1998];
+
+function arrayCalc(arr, fn) {
+    var arrResults = [];
+    for (var i = 0; i < arr.length; i++)  {
+        arrResults.push(fn(arr[i]));
+    }
+    return arrResults;
+}
+
+function calculateAge(el) {
+    return 2016 - el;
+}
+
+function isFullAge(limit, el) {
+    return el >= limit;
+}
+
+
+var ages = arrayCalc(years, calculateAge);
+
+var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20))
+
+console.log(fullJapan);
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
