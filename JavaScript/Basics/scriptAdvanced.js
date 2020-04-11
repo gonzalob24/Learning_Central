@@ -1,16 +1,16 @@
 ///////////////////////////////////////////////////////
 // FUNCTION CONSTRUCTORS
 //////////////////////////////////////////////////////
-/*
 
-//function is an instance of the Object type
+
+// function is an instance of the Object type
 // it behaves like an object
 // can be stored inside variables
 // pass it as an arg.
 // return it 
 
-
-}var john = {
+/*
+var john = {
     name: 'John',
     birthYear: 1990,
     job: 'Teacher'
@@ -18,6 +18,7 @@
 
 // Function constructor: pattern for writting a blueprint
 // Capital letter for constructor
+
 var Person = function(name, birthYear, job) {
     this.name = name;
     this.birthYear = birthYear;
@@ -25,13 +26,15 @@ var Person = function(name, birthYear, job) {
 //    this.calcAge: function() {
 //        console.log(2020 - this.birthYear)
 //    }
-}
+};
+
 
 // method is no longer in the constructor but we can use inheritance 
 // so that other objects can use the calcAge function
 Person.prototype.calcAge = function() {
     console.log(2020 - this.birthYear);
 };
+
 
 Person.prototype.lastName = 'Smith';
 
@@ -42,6 +45,7 @@ var john = new Person('John', 1990, 'Teacher'); // instantiate the Person object
 var jane = new Person('Jane', 1969, 'Designer');
 
 var mark = new Person('Mark', 1948, 'Retired');
+
 
 john.calcAge();
 jane.calcAge();
@@ -67,28 +71,36 @@ console.log(john instanceof Person);
 var personProto = {
     calcAge: function() {
         console.log(2016 - this.birthYear);
-    }
+    },
+    lastname: 'Smith'
 };
 
+// Object.create() will inherit values from personProto even if personProto is not a constructor
 var john = Object.create(personProto);
+
+console.log(john.hasOwnProperty('calcAge'));
+console.log(personProto.hasOwnProperty('calcAge'));
 
 john.name = 'John';
 john.birthYear = 1990;
 john.job = 'Teacher';
+//john.lastname = 'None';  // adding another lastname will replace inherited lastname
 
+console.log(john.lastname);
+
+// another way to create the Object
 var jane = Object.create(personProto,
 {
     name: {value: 'jane'},
     birthYear: {value: 1969},
     job: {value: 'Design'}
 });
-
 */
+
 ///////////////////////////////////////////////////////
 // PRIMITIVES vs. OBJECTS
 //////////////////////////////////////////////////////
 
-/*
 
 // numbers, strings, booleans undefined, null are primitives everything
 // else are objects
@@ -97,6 +109,7 @@ var jane = Object.create(personProto,
 // objects don't contain the object they contain a reference to the location
 // in memory where the data is held
 
+/*
 var a = 23;
 var b = a;
 
@@ -119,12 +132,12 @@ var obj1 = {
 var obj2 = obj1;
 
 obj1.age = 30;
-
+obj1.name = 'Changed'
 console.log(obj1.age);
 console.log(obj2.age);
 
 
-// FUNCTION
+// FUNCTIONS
 var age = 27;
 
 var obj = {
@@ -133,7 +146,7 @@ var obj = {
 };
 
 function change(a, b) {
-    a= 30;
+    a = 30;
     b.city = 'Seattle';
 }
 
@@ -141,7 +154,6 @@ change(age, obj)
 
 console.log(age);
 console.log(obj.city);
-
 
 */
 
@@ -152,10 +164,10 @@ console.log(obj.city);
 /*
 var years = [1990, 1965, 1937, 2005, 1998];
 
-function arrayCalc(arr, fn) {
+function arrayCalc(arr, func) {
     var arrResults = [];
     for (var i = 0; i < arr.length; i++)  {
-        arrResults.push(fn(arr[i]));
+        arrResults.push(func(arr[i]));
     }
     return arrResults;
 }
@@ -193,6 +205,7 @@ console.log(heartRate);
 //////////////////////////////////////////////////////
 
 /*
+
 function interviewQuestion(job) 
 {
    if (job === 'designer') 
@@ -251,6 +264,7 @@ game();
     console.log(score >= 5 -  goodLuck);
 })(5); 
 
+
 */
 
 ///////////////////////////////////////////////////////
@@ -296,7 +310,6 @@ function interviewQuestion(job) {
 }
 
 
-
 interviewQuestion('teacher')('John');
 
 */
@@ -305,6 +318,7 @@ interviewQuestion('teacher')('John');
 // BIND, CALL & APPLY
 //////////////////////////////////////////////////////
 
+/*
 var john = {
     name: 'John',
     age: 26,
@@ -326,12 +340,21 @@ var emily = {
 
 john.presentation('formal', 'morning');
 
+//////////
+// CALL //
+/////////
 // Method borrowing for emily object
 john.presentation.call(emily, 'friendly', 'afternoon'); 
 
-//Apply accepts an array
+///////////
+// APPLY //
+///////////
+//Apply accepts an ARRAY
 john.presentation.apply(emily, ['formal', 'afternoon'])
 
+///////////
+// BIND ///
+///////////
 // bind does not call the function but instead generates a copy of the function
 var johnFriendly = john.presentation.bind(john, 'friendly');
 johnFriendly('morning');
@@ -341,10 +364,7 @@ johnFriendly('night');
 var emilyFormal = john.presentation.bind(emily, 'formal');
 emilyFormal('Zoo');
 
-
-
-
-
+*/
 
 var years = [1990, 1965, 1937, 2005, 1998];
 
@@ -357,7 +377,7 @@ function arrayCalc(arr, fn) {
 }
 
 function calculateAge(el) {
-    return 2016 - el;
+    return 2020 - el;
 }
 
 function isFullAge(limit, el) {
@@ -367,31 +387,80 @@ function isFullAge(limit, el) {
 
 var ages = arrayCalc(years, calculateAge);
 
-var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20))
+var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20) );
 
 console.log(fullJapan);
 
 
- 
 
 
 
 
+///////////////////////////////////////////////////////
+// CODING CHALLENGE
+//////////////////////////////////////////////////////
+
+/*
+
+// 1.Build a quize game
+//      Allow user to select the correct answer from within console
+// 2. create a couple of questions using the constructor
+// 3. Store them all inside an array
+// 4. Select a random quesion (write a method for the question objects)
+// 5. Use the prompt function to ask the user to enter the correct number
+// 6. check of the answer is correct., write another method for this
+// Make sure code is private 
 
 
+// this function creates privacy 
+(function() {
+    // constructor
+    function Question(question, answer, correct) {
+        this.question = question;
+        this.answer = answer;
+        this.correct = correct;
+    }
+
+    Question.prototype.displayQuestion = 
+        function() {
+        console.log(this.question);
+
+        // go over the answers
+        for(var i = 0; i < this.answer.length; i++) {
+            console.log(this.answer[i]);
+        }
+    }
+
+    Question.prototype.checkAnswer = 
+        function(ans) {
+        if (ans === this.correct) {
+            console.log('Correct!!!');
+        } else {
+            console.log('Not Correct');
+        }
+    }
+
+    var q1 = new Question('Is basketball the best sport?', ['Yes', 'No'], 0);
+
+    var q2 = new Question('What is the name of this course?', ['CSI', 'JS', 'mmm'], 1);
+
+    var q3 = new Question('What does NBA stand for?', ['National Basketball Association', 'Not Bad All', 'No Boys Allowed'], 0);
+
+    var questions = [q1, q2, q3];
+
+    var n = Math.floor(Math.random() * questions.length);
+
+    questions[n].displayQuestion();
+
+    // promt 
+    // parseInt --> casting
+    var answer = parseInt(prompt('Please select the correct answer'));
 
 
+    questions[n].checkAnswer(answer);
+})();  // call it ath the end 
 
-
-
-
-
-
-
-
-
-
-
+*/
 
 
 
