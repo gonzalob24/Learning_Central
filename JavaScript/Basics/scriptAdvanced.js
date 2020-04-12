@@ -343,7 +343,7 @@ john.presentation('formal', 'morning');
 //////////
 // CALL //
 /////////
-// Method borrowing for emily object
+// Method borrowing for emily object call(this variable, param1, param2, paramN)
 john.presentation.call(emily, 'friendly', 'afternoon'); 
 
 ///////////
@@ -355,7 +355,7 @@ john.presentation.apply(emily, ['formal', 'afternoon'])
 ///////////
 // BIND ///
 ///////////
-// bind does not call the function but instead generates a copy of the function
+// bind does not call the function but instead generates a copy of the function with a preset argument
 var johnFriendly = john.presentation.bind(john, 'friendly');
 johnFriendly('morning');
 johnFriendly('night');
@@ -364,7 +364,7 @@ johnFriendly('night');
 var emilyFormal = john.presentation.bind(emily, 'formal');
 emilyFormal('Zoo');
 
-*/
+
 
 var years = [1990, 1965, 1937, 2005, 1998];
 
@@ -387,20 +387,18 @@ function isFullAge(limit, el) {
 
 var ages = arrayCalc(years, calculateAge);
 
+// "this" is the presete limit = 20
 var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20) );
 
 console.log(fullJapan);
 
-
-
-
-
+*/
 
 ///////////////////////////////////////////////////////
 // CODING CHALLENGE
 //////////////////////////////////////////////////////
 
-/*
+
 
 // 1.Build a quize game
 //      Allow user to select the correct answer from within console
@@ -427,17 +425,22 @@ console.log(fullJapan);
 
         // go over the answers
         for(var i = 0; i < this.answer.length; i++) {
-            console.log(this.answer[i]);
+            console.log(i + ': ' + this.answer[i]);
         }
     }
 
     Question.prototype.checkAnswer = 
-        function(ans) {
+        function(ans, kpscore) {
+        var sc;
+        
         if (ans === this.correct) {
             console.log('Correct!!!');
+            sc = kpscore(true);
         } else {
             console.log('Not Correct');
+            sc = kpscore(false);
         }
+        this.displayScore(sc);
     }
 
     var q1 = new Question('Is basketball the best sport?', ['Yes', 'No'], 0);
@@ -445,22 +448,64 @@ console.log(fullJapan);
     var q2 = new Question('What is the name of this course?', ['CSI', 'JS', 'mmm'], 1);
 
     var q3 = new Question('What does NBA stand for?', ['National Basketball Association', 'Not Bad All', 'No Boys Allowed'], 0);
-
+    
+    // add questions to an array to select at random with Math.random()
     var questions = [q1, q2, q3];
+    
+    function score() {
+        var points = 0;
+        return function(correct) {
+            if(correct) {
+                points++;
+            }
+            return points;
+        }
+    }
+    
 
-    var n = Math.floor(Math.random() * questions.length);
+    Question.prototype.displayScore = function(score) {
+        console.log('Your current score is : ' + score);
+        console.log('------------------------------');
+    }
 
-    questions[n].displayQuestion();
+    var keepScore = score();
+    
+    function nextQuestion() {
 
-    // promt 
-    // parseInt --> casting
-    var answer = parseInt(prompt('Please select the correct answer'));
+        var n = Math.floor(Math.random() * questions.length);
+
+        questions[n].displayQuestion();
+
+        // promt 
+        // parseInt --> casting
+        var answer = prompt('Please select the correct answer: ');
+        
+        if (answer !== 'exit') {
+            questions[n].checkAnswer(parseInt(answer), keepScore); 
+            
+            
+            nextQuestion();    
+        }
+    }
+    
+    nextQuestion();
+})();  // call it at the end 
 
 
-    questions[n].checkAnswer(answer);
-})();  // call it ath the end 
 
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
