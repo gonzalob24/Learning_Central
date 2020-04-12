@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Feb 17 09:48:48 2020
-
-@author: gonzalobetancourt
-"""
-
 import numpy as np
 from numpy.random import randn
 import pandas as pd

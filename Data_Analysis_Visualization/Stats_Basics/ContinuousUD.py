@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Mar  7 11:02:07 2020
 
-@author: gonzalobetancourt
-"""
 
 #  our data can not be divided in discrete components, for example weighing
 #  an object. With perfect precision on weight, the data can take on any value

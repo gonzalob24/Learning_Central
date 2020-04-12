@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Mar  7 12:17:38 2020
 
-@author: gonzalobetancourt
-"""
 from __future__ import division
 from math import exp
 from math import factorial

@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Mar 18 21:00:05 2020
-
-@author: gonzalobetancourt
-"""
-
 import numpy as np
 import pandas as pd
 import seaborn as sns

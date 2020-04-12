@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Mar  7 11:47:16 2020
 
-@author: gonzalobetancourt
-"""
 
 # Binomial is a specific type of a discrete probability distribution.
 

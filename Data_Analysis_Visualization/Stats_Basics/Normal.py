@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Mar 10 00:35:44 2020
 
-@author: gonzalobetancourt
-"""
 
 #Import
 import matplotlib as mpl

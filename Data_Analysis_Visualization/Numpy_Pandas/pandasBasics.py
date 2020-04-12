@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 15 00:45:43 2020
 
-@author: gonzalobetancourt
-"""
 
 # Going over series, a series is like an array except that is has labels
 import numpy as np
