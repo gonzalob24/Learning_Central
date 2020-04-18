@@ -1,10 +1,17 @@
-// Nameing ruled
+// Nameing rules
 // Can't start with numbers or simnbols only
 // $ or _
 //var firstName = 'John';
 //
 
+///////////////////////////////////////////////////////
+// VARIABLES AND DATA TYPE
+// var name = something
+// console.log() to show
+//////////////////////////////////////////////////////
+
 /*
+var firstName = 'John';
 console.log(firstName); // printing
 
 var lastName = 'Smith';
@@ -23,9 +30,12 @@ console.log(job + " Joe " + 3 + 3);
 
 */
 
-// Variable Mutation and type coercion
+///////////////////////////////////////////////////////
+// MUTATION AND TYPE COERCION
+//////////////////////////////////////////////////////
+
 /*
-//Coercion
+//Coercion: casting
 var firstName = 'John';
 var age = 28;
 
@@ -38,9 +48,7 @@ isMarried = false;
 console.log(firstName + ' is a ' + age + ' year old ' +  job + '. Is he married? ' + isMarried);
 
 
-
-//Mutation
-
+//Mutation: change value of variable
 
 age = 'twenty eight';
 job = 'driver';
@@ -55,9 +63,9 @@ console.log(lastName + ' ' + firstName);
 
 */
 
-/*************
-* Basic Operators
-*/
+///////////////////////////////////////////////////////
+// BASIC OPERATORS
+//////////////////////////////////////////////////////
 
 /*
 var year, yearJohn, yearMark;
@@ -101,8 +109,8 @@ var x, y;
 x = y = (3 + 5) * 4 - 6;
 console.log(x, y);
 
- Associativity
- right to left: yield, !, =, ? :, new
+// Associativity
+// right to left: yield, !, =, ? :, new
 
  Coding challenge
 
@@ -122,7 +130,9 @@ console.log('Is John\'s BMI lower than Mark\'s? ' + lowerBMI);
 
 */
 
-// if else stmts
+///////////////////////////////////////////////////////
+// IF ELSE 
+//////////////////////////////////////////////////////
 /*
 var firstName = 'John';
 var status = 'Single';
@@ -184,7 +194,9 @@ console.log(drink);
 
 */
 
-//Switch stmt
+///////////////////////////////////////////////////////
+// SWITCH  
+//////////////////////////////////////////////////////
 
 /*
 var job = 'Driver';
@@ -262,9 +274,12 @@ if (teamJohnAvg > teamMikeAvg && teamJohnAvg > teamMaryAvg)
 
 */
 
-// Functions. Function stmts and expression
+///////////////////////////////////////////////////////
+// FUNCTIONS
+//////////////////////////////////////////////////////
 
 /*
+// function declaration
 function calcAge(birthYear)
 {
     return 2020 - birthYear;
@@ -273,7 +288,7 @@ function calcAge(birthYear)
 var ageJohn = calcAge(1986);
 console.log(ageJohn);
 
-
+// Function expression
 var whatDoYouDo = function(job, firstName)
 {
     switch(job)
@@ -293,7 +308,10 @@ console.log(whatDoYouDo('rich', 'John'));
 
 */
 
-// Arrays
+///////////////////////////////////////////////////////
+// ARRAYS 
+//////////////////////////////////////////////////////
+
 /*
 var names = ['John', 'Mark', 'Jane'];
 var years = [1990, 1969, 1948];
@@ -315,7 +333,9 @@ console.log(john.indexOf(1990)); // looks for the element
 
 */
 
-// coding challeng tip calculator
+///////////////////////////////////////////////////////
+// CODING CHALLENGE: TIP CALCULATOR
+//////////////////////////////////////////////////////
 
 /*
 var restaurant = [124, 48, 268];
@@ -352,7 +372,9 @@ console.log(paidAmount);
 
 */
 
-// Objects and methods
+///////////////////////////////////////////////////////
+// OBJECTS AND METHODS
+//////////////////////////////////////////////////////
 
 
 /*
@@ -360,12 +382,14 @@ console.log(paidAmount);
 // oject literal key value pairs
 var john = 
 {
+    // PRIPERTIRS OF JOHN OR INSTANCES  
     firstName: 'John',
     lastName: 'Smith',
     birthYear: 1990,
     family: ['Jane', 'Mark', 'Bob', 'Emily'],
     job: 'Teacher',
     isMarried: false,
+    // METHOD INSIDE THE OBJECT
     calcAge: function()
     {
         //return 2018 - this.birthYear;
@@ -386,6 +410,7 @@ console.log(john['job']);
 //john.isMarried = true;
 //console.log(john);
 
+// ANOTHER WAY TO CREATE AN OBJECT
 var jane = new Object();
 jane.name ='Jane';
 jane.birthYear = 1969;
@@ -393,8 +418,6 @@ jane['lastName'] = 'Smith';
 jane.job = 'Doctor';
 
 console.log(jane);
-
-
 
 // atach functions to objects
 
@@ -405,7 +428,9 @@ john.calcAge();
 console.log(john);
 
 
-//Coding challenge
+///////////////////////////////////////////////////////
+// CODING CHALLENGEL: BMI 
+//////////////////////////////////////////////////////
 
 var johnInfo =
 {
@@ -439,7 +464,9 @@ console.log(johnInfo.fullName + '\'s BMI is ' + johnInfo.bmi);
 
 */
 
-// LOOPS
+///////////////////////////////////////////////////////
+// LOOPS 
+//////////////////////////////////////////////////////
 
 /*
 for (i = 0; i < 10; i++)
@@ -474,8 +501,9 @@ for (i = john.length - 1; i >= 0; i--)
 */
 
 
-
-// Tip Calulator challenge
+///////////////////////////////////////////////////////
+// CODING CHALLENGE: TIP CALCULATOR PART II 
+//////////////////////////////////////////////////////
 
 /*
 var restaurantBills = [124, 48, 268, 180, 42];
@@ -536,7 +564,12 @@ console.log(tipCalculator.avergae);
 */
 
 /*
-// Hoisting for function declarations and expressions
+///////////////////////////////////////////////////////
+// HOISTING FOR FUNCTIONS AND EXPRESSIONS 
+//////////////////////////////////////////////////////
+
+// Hoisting: function does not need to be decalred before using it. 
+// only works for function declaration not function expressions.
 calcAge(1990);
 
 function calcAge(year)
