@@ -273,7 +273,7 @@ game();
 
 /*
 
-// closure uses scope rules and access items that arein the execution stack
+// closure uses scope rules and access items that are in the execution stack
 function retirement(retAge) {
     var a = ' years left until retirement.';
     return function(birthYear) {
