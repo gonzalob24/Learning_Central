@@ -4,7 +4,7 @@
 
 This repo is used to store all folders that were used for educational purposes. Folders were created to store code that I created for a particular class and code I created from additional resources I used outside of the classroom.
 
-**Some of the code was made when I first started programming. As a result comments may not have been made properly; however all of the code is working. I wanted to keep a record of all of the work I have done up to this point.
+**Some of the code was made when I first started programming. As a result, comments may not have been made properly; however, all of the code is working. I wanted to keep a record of all of the work I have done up to this point.
 
 ## Folders
 
