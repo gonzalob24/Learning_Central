@@ -32,7 +32,20 @@ This repo is used to store all folders that were used for educational purposes. 
 
 3. [Java Script](https://github.com/gonzalob24/Learning_Central/tree/master/JavaScript)
 
+		I recently started learning JS, during Fall semester 2019. My goal is to use JS in my 
+		project(s). I started working on a website earlier in the Fall semester in 2019 for a small
+		restaurant in Everett Washington. I have been learning JS by building small games and
+		accessing elements via DOM manipulation. 
+
+
 4. [Machine Learning](https://github.com/gonzalob24/Learning_Central/tree/master/Machine_Learning)
+
+		I find machine learning to be very interesting and most of it was self-taught by reading
+		books and going through online tutorials. I also took a few tutorials to learn NumPy and
+		Pandas, since then I have just kept on expanding my knowledge in Machine Learning. I also 
+		took a course at UHCL, where I built, from scratch, the PLA and Linear Regression Models 
+		with gradient descent to predict stock prices. Under my projects section I have uploaded 
+		the source code. 
 
 5. [Data Analysis Visualization](https://github.com/gonzalob24/Learning_Central/tree/master/Data_Analysis_Visualization)
 
