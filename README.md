@@ -9,7 +9,8 @@ This repo is used to store all folders that were used for educational purposes. 
 1. [Python Programming](https://github.com/gonzalob24/Learning_Central/tree/master/Python_Programming)
 		
 		This is one of my biggest folders and one that I started several years ago. This folder
-		has all of my Python code that was created during the time I've spent learning about 		Python. The folder has basic to data structures implementation. I studied Python from 
+		has all of my Python code that was created during the time I've spent learning about
+		Python. The folder has basic to data structures implementation. I studied Python from 
 		Coursera, UHCL and I most recently tried completing a 10 hour boot camp in November 
 		2019 from Udemy. I tried most of the practice problems and completed the 2 capstone 
 		projects. I did a tic tac toe and black jack game. 
