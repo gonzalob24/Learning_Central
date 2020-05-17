@@ -27,21 +27,22 @@ console.log(job);
 job = 'Teacher';
 
 console.log(job + " Joe " + 3 + 3);
-
 */
+
 
 ///////////////////////////////////////////////////////
 // MUTATION AND TYPE COERCION
 //////////////////////////////////////////////////////
 
 /*
+
 //Coercion: casting
 var firstName = 'John';
 var age = 28;
 
 console.log(firstName + ' ' + age);
 
-var job, isMarries;
+var job, isMarried;
 job = 'Teacher'
 isMarried = false;
 
@@ -61,6 +62,12 @@ var lastName = prompt('What is his last name? ');
 
 console.log(lastName + ' ' + firstName);
 
+var num1, num2;
+
+num1 = prompt('Enter num 1');
+num2 = prompt('Enrer num 2');
+console.log(parseInt(num1) + parseInt(num2));
+
 */
 
 ///////////////////////////////////////////////////////
@@ -69,7 +76,7 @@ console.log(lastName + ' ' + firstName);
 
 /*
 var year, yearJohn, yearMark;
-now = 2018;
+now = 2020;
 ageJohn = 28;
 ageMark = 33;
 
@@ -83,14 +90,13 @@ console.log(johnOlder);
 
 
 // typeof
-
 console.log(typeof(johnOlder));
 
-*/
+
 
 // Operator precedence
 
-/*
+
 var now = 2020;
 var yearJohn = 1989;
 var fullAge = 18;
@@ -112,9 +118,8 @@ console.log(x, y);
 // Associativity
 // right to left: yield, !, =, ? :, new
 
- Coding challenge
-
-BMI = mass / height^2
+// Coding challenge
+// BMI = mass / height^2
 
 var massJohn = 81;
 var heightJohn = 1.34;
@@ -133,6 +138,7 @@ console.log('Is John\'s BMI lower than Mark\'s? ' + lowerBMI);
 ///////////////////////////////////////////////////////
 // IF ELSE 
 //////////////////////////////////////////////////////
+
 /*
 var firstName = 'John';
 var status = 'Single';
@@ -155,13 +161,12 @@ if (isMarried)
 {
     console.log(firstName + ' is not married');
 }
-*/
+
 
 // boolean logic
-
 // if else block
 
-/*
+
 var firstName = 'John';
 var age = 20;
 
@@ -179,11 +184,11 @@ if (age < 13)
     console.log(firstName + ' is a man.');
 }
 
-*/
+
 
 //terniary operator or conditional operator
 
-/*
+
 var firstName = 'John';
 var age = 16;
 
@@ -231,14 +236,14 @@ switch (true)
         console.log(firstName + ' is a man.');
 }
 
-*/
+
 
 //Truthy and Falsy values and equality operators
 
 // falsy values: undefined, null, 0, '', NaN
 // truthy values: all values that are not falsy
 
-/*
+
 var height;
 
 if (height)
@@ -254,10 +259,10 @@ var teamJohnAvg = (89 + 120 + 103) / 3;
 var teamMikeAvg = (116 + 94 + 123) / 3;
 var teamMaryAvg = (97 + 134 + 105) / 3;
 
-*/
+
 //var winner = max(teamJohnAvg, teamMaryAvg, teamMikeAvg);
 
-/*
+
 if (teamJohnAvg > teamMikeAvg && teamJohnAvg > teamMaryAvg)
 {
     console.log('Johns team has a higher average');
@@ -277,8 +282,8 @@ if (teamJohnAvg > teamMikeAvg && teamJohnAvg > teamMaryAvg)
 ///////////////////////////////////////////////////////
 // FUNCTIONS
 //////////////////////////////////////////////////////
-
 /*
+
 // function declaration
 function calcAge(birthYear)
 {
@@ -317,6 +322,7 @@ var names = ['John', 'Mark', 'Jane'];
 var years = [1990, 1969, 1948];
 
 var john = ['John', 'Smith', 1990, 'Teacher']
+
 john.push('blue') // adds at the end
 john.unshift('Mr') //adds to the front
 names[names.length] = 'Mary';
@@ -379,14 +385,14 @@ console.log(paidAmount);
 
 /*
 
-// oject literal key value pairs
+// object literal key value pairs
 var john = 
 {
-    // PRIPERTIRS OF JOHN OR INSTANCES  
+    // PROPERTIRS OF JOHN OR INSTANCES  
     firstName: 'John',
     lastName: 'Smith',
     birthYear: 1990,
-    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    family: ['Jane', 'Mark', 'Bob', 'Emily'], // can also have an object inside of the array
     job: 'Teacher',
     isMarried: false,
     // METHOD INSIDE THE OBJECT
@@ -399,6 +405,7 @@ var john =
 
 
 console.log(john);
+john.calcAge();  // call the method so that the instance age can be updated in john object
 console.log(john.firstName);  // same dot notation to access elements
 var x = 'birthYear';
 console.log(john['job']);
@@ -407,8 +414,8 @@ console.log(john[x]);
 john.job = 'Designer';
 console.log(john['job']);
 
-//john.isMarried = true;
-//console.log(john);
+john.isMarried = true;
+console.log(john);
 
 // ANOTHER WAY TO CREATE AN OBJECT
 var jane = new Object();
@@ -427,11 +434,13 @@ console.log(john.calcAge(1990));
 john.calcAge();
 console.log(john);
 
+*/
 
 ///////////////////////////////////////////////////////
 // CODING CHALLENGEL: BMI 
 //////////////////////////////////////////////////////
 
+/*
 var johnInfo =
 {
     fullName: 'John Smith',
@@ -476,6 +485,8 @@ for (i = 0; i < 10; i++)
 
 var john = ['John', 'Smith', 1990, 'Designer', false];
 
+// Continue and break statements
+
 for (i = 0; i < john.length; i++)
 {
     if (typeof john[i] !== 'string') break;
@@ -491,15 +502,12 @@ while (i < john.length)
 }
 
 
-// Continue and break statements
-
 for (i = john.length - 1; i >= 0; i--)
 {
     console.log(john[i]);
 }
 
 */
-
 
 ///////////////////////////////////////////////////////
 // CODING CHALLENGE: TIP CALCULATOR PART II 
@@ -563,13 +571,19 @@ console.log(tipCalculator.avergae);
 
 */
 
-/*
+
+
 ///////////////////////////////////////////////////////
 // HOISTING FOR FUNCTIONS AND EXPRESSIONS 
 //////////////////////////////////////////////////////
 
+
+
 // Hoisting: function does not need to be decalred before using it. 
 // only works for function declaration not function expressions.
+
+// calcAge will still run before decalring it due to hoisting. 
+// stored in a variable object and is available to use it
 calcAge(1990);
 
 function calcAge(year)
@@ -585,23 +599,23 @@ var retirement = function(year)
 }
 
 
-//variable
+//variable will be undefined since it does not have a value yet.
 console.log(age); // will get an error as well since hoisting works with function declarations
 var age = 23;
 
-*/
+
 
 //console.log(this);
 
-//calcAge(1985);
-//
-//function calcAge(year)
-//{
-//    console.log(2020 - year);
-//    console.log(this);
-//}
+calcAge(1985);
 
-/*
+function calcAge(year)
+{
+    console.log(2020 - year);
+    console.log(this);
+}
+
+
 var john =    
 {
     name: 'John',
@@ -628,13 +642,10 @@ var mike =
     yearOfBirth: 1984,
 };
 
-
+// method borrowing
 mike.calcAge = john.calcAge;
-
-
 mike.calcAge();
 
-*/
 
 
 
