@@ -10,8 +10,6 @@ GAME RULES:
 */
 
 
-var scores, roundScore, activePlayer, dice, gamePlaying, rollSix;
-
 newGame();
 //scores = [0, 0];
 //roundScore = 0;
@@ -35,7 +33,7 @@ newGame();
 //console.log(x)
 
 // used query selector to hide the dice image
-
+//document.querySelector('.dice').style.display = 'none';
 
 //function btn() {
 //    //do something
@@ -170,8 +168,5 @@ function newGame() {
     document.querySelector('.player-0-panel').classList.add('active');
 
 };
-
-
-
 
 
