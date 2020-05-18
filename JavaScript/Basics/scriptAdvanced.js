@@ -1,3 +1,13 @@
+// Everything is almos an object in JS.
+// Primitives: Numbers, string, boolean, undefined, null
+// Everything else is an object: Array, functions, Objects, Dates, Wrappers for numbers, string boolenas
+// Look at inheritance and the prototype chain
+// Objects interact with one another though methods and properties.
+// We use them to store data, structure apps into modules and they also keep code clean
+
+// Constructors and prototypes: are basically classes with attributes.
+// 
+
 ///////////////////////////////////////////////////////
 // FUNCTION CONSTRUCTORS
 //////////////////////////////////////////////////////
@@ -10,32 +20,33 @@
 // return it 
 
 /*
-var john = {
+var john = 
+{
     name: 'John',
     birthYear: 1990,
     job: 'Teacher'
 };
 
-// Function constructor: pattern for writting a blueprint
-// Capital letter for constructor
 
+// Function constructor: pattern for writting a blueprint
+// Capital letter for constructor: Similar to creating a class in Java.
 var Person = function(name, birthYear, job) {
     this.name = name;
     this.birthYear = birthYear;
     this.job = job;
-//    this.calcAge: function() {
-//        console.log(2020 - this.birthYear)
-//    }
+//    this.calcAge = function() {
+//        console.log(2016- this.birthYear);
+//    };
 };
 
 
 // method is no longer in the constructor but we can use inheritance 
 // so that other objects can use the calcAge function
 Person.prototype.calcAge = function() {
-    console.log(2020 - this.birthYear);
+    console.log(2016 - this.birthYear);
 };
 
-
+// the last name will be inherited on all of them.
 Person.prototype.lastName = 'Smith';
 
 // new creates an empty object and Person creates the object
@@ -54,10 +65,10 @@ mark.calcAge();
 console.log(john.lastName);
 console.log(jane.lastName);
 console.log(mark.lastName);
-
-console.log(john.hasOwnProperty('lasName'));
-
-console.log(john instanceof Person);
+//
+//console.log(john.hasOwnProperty('lasName'));
+//
+//console.log(john instanceof Person);
 
 */
 
@@ -78,15 +89,16 @@ var personProto = {
 // Object.create() will inherit values from personProto even if personProto is not a constructor
 var john = Object.create(personProto);
 
-console.log(john.hasOwnProperty('calcAge'));
-console.log(personProto.hasOwnProperty('calcAge'));
-
+//console.log(john.hasOwnProperty('calcAge'));
+//console.log(personProto.hasOwnProperty('calcAge'));
+//
 john.name = 'John';
 john.birthYear = 1990;
 john.job = 'Teacher';
-//john.lastname = 'None';  // adding another lastname will replace inherited lastname
-
-console.log(john.lastname);
+////john.lastname = 'None';  // adding another lastname will replace inherited lastname
+//
+//console.log(john.lastname);
+//
 
 // another way to create the Object
 var jane = Object.create(personProto,
@@ -95,6 +107,7 @@ var jane = Object.create(personProto,
     birthYear: {value: 1969},
     job: {value: 'Design'}
 });
+
 */
 
 ///////////////////////////////////////////////////////
@@ -110,6 +123,7 @@ var jane = Object.create(personProto,
 // in memory where the data is held
 
 /*
+
 var a = 23;
 var b = a;
 
@@ -126,9 +140,9 @@ var obj1 = {
     name: 'John',
     age: 26
 };
-
-// both objects hold a reference to the object in memory. They are pointing to the same 
-// object in memory
+//
+//// both objects hold a reference to the object in memory. They are pointing to the same 
+//// object in memory
 var obj2 = obj1;
 
 obj1.age = 30;
@@ -137,7 +151,7 @@ console.log(obj1.age);
 console.log(obj2.age);
 
 
-// FUNCTIONS
+//// FUNCTIONS
 var age = 27;
 
 var obj = {
@@ -148,12 +162,13 @@ var obj = {
 function change(a, b) {
     a = 30;
     b.city = 'Seattle';
+    
 }
 
 change(age, obj)
 
 console.log(age);
-console.log(obj.city);
+console.log(obj.city); 
 
 */
 
@@ -162,7 +177,7 @@ console.log(obj.city);
 //////////////////////////////////////////////////////
 
 /*
-var years = [1990, 1965, 1937, 2005, 1998];
+var years = [1990, 1965, 1937, 2005, 1986];
 
 function arrayCalc(arr, func) {
     var arrResults = [];
@@ -173,7 +188,7 @@ function arrayCalc(arr, func) {
 }
 
 function calculateAge(el) {
-    return 2016 - el;
+    return 2020 - el;
 }
 
 function isFullAge(el) {
@@ -185,14 +200,14 @@ function maxHeartRate(el) {
     if (el >= 18 && el <= 81) {
         return Math.round(206.9 - (0.67 * el));
     } else {
-        return - 1;
+        return - 1; 
     }
 }
 
 var ages = arrayCalc(years, calculateAge);
 console.log(ages);
 
-var resBool = arrayCalc(years, isFullAge);
+var resBool = arrayCalc(ages, isFullAge);
 console.log(resBool);
 
 var heartRate = arrayCalc(ages, maxHeartRate);
@@ -205,7 +220,6 @@ console.log(heartRate);
 //////////////////////////////////////////////////////
 
 /*
-
 function interviewQuestion(job) 
 {
    if (job === 'designer') 
@@ -229,7 +243,6 @@ function interviewQuestion(job)
    }
 }
 
-
 var teacherQuestion = interviewQuestion('teacher');
 teacherQuestion('John');
 
@@ -244,26 +257,29 @@ interviewQuestion('teacher')('Jordan'); // Jordan name calls the function that g
 
 */
 
+
 ///////////////////////////////////////////////////////
 // IIFE: IMMEDIATELY INVOKED FUNCTION EXPRESSIONS
 //////////////////////////////////////////////////////
 
 /*
-function game() {
-    var score = Math.random() * 10;
-    console.log(score >= 5);
-}
 
-game();    
+//function game() {
+//    var score = Math.random() * 10;
+//    console.log(score >= 5);
+//}
+//
+//game();    
 
 
 // wrap the function in parenthesis to trick the console that it is an expression
 // this creates data privacy because score can't be accessed outside the function 
+// whats inside te () can't be a statemnt. 
+
 (function(goodLuck) {
     var score = Math.random() * 10;
     console.log(score >= 5 -  goodLuck);
-})(5); 
-
+})(1); 
 
 */
 
@@ -272,8 +288,7 @@ game();
 //////////////////////////////////////////////////////
 
 /*
-
-// closure uses scope rules and access items that are in the execution stack
+// closure use scope rules and access items that are in the execution stack
 function retirement(retAge) {
     var a = ' years left until retirement.';
     return function(birthYear) {
@@ -332,6 +347,7 @@ var john = {
     }
 };
 
+
 var emily = {
     name: 'Emily',
     age: 35,
@@ -389,7 +405,7 @@ var ages = arrayCalc(years, calculateAge);
 
 // "this" is the presete limit = 20
 var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20) );
-
+console.log(ages);
 console.log(fullJapan);
 
 */
@@ -418,7 +434,8 @@ console.log(fullJapan);
         this.answer = answer;
         this.correct = correct;
     }
-
+    
+    // displays the question using prototyp
     Question.prototype.displayQuestion = 
         function() {
         console.log(this.question);
@@ -490,9 +507,6 @@ console.log(fullJapan);
     
     nextQuestion();
 })();  // call it at the end 
-
-
-
 
 
 
