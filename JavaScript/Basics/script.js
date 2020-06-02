@@ -84,6 +84,7 @@ console.log(x)
 console.log("" - 1 + 0)
 
 */
+
 ///////////////////////////////////////////////////////
 // BASIC OPERATORS
 //////////////////////////////////////////////////////
@@ -147,12 +148,16 @@ var lowerBMI = bmiJohn < bmiMark;
 
 console.log('Is John\'s BMI lower than Mark\'s? ' + lowerBMI);
 
+
+
+let i = "2"
+let m = "3"
+console.log(--i + ++m) // unary + converts to number
 */
 
 ///////////////////////////////////////////////////////
 // IF ELSE 
 //////////////////////////////////////////////////////
-
 /*
 var firstName = 'John';
 var status = 'Single';
@@ -294,16 +299,34 @@ if (teamJohnAvg > teamMikeAvg && teamJohnAvg > teamMaryAvg)
 */
 
 ///////////////////////////////////////////////////////
-// FUNCTIONS
+// FUNCTIONS:
+// get: get something
+// set: set something
+// calc: calcualte something
+// check: check something and return boolean
 //////////////////////////////////////////////////////
 /*
+
+function sayHi() {
+    console.log("Hello");
+} // ; not needed for if{}, for{}, function f{}
+
+let func = sayHi(); // if I use () then the value is stored in func and not the function
+
+func;
+sayHi();
+
+let sumAll = (n1, n2) => n1 + n2;
+
+console.log(sumAll(10,10));
+
 
 // function declaration
 function calcAge(birthYear)
 {
     return 2020 - birthYear;
 }
-
+// Function expressions
 var ageJohn = calcAge(1986);
 console.log(ageJohn);
 
