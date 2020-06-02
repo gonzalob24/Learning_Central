@@ -11,31 +11,30 @@
 //////////////////////////////////////////////////////
 
 /*
-var firstName = 'John';
-console.log(firstName); // printing
 
-var lastName = 'Smith';
-var age = 28;
+// var firstName = 'John';
+// console.log(firstName); // printing
 
-var fullAge = true;
+// // var lastName = 'Smith';
+// // var age = 28;
 
-console.log(fullAge);
+// // var fullAge = true;
 
-var job; //undefined
-console.log(job);
+// // console.log(fullAge);
 
-job = 'Teacher';
+// // var job; //undefined
+// // console.log(job);
 
-console.log(job + " Joe " + 3 + 3);
+// // job = 'Teacher';
+
+// // console.log(job + " Joe " + 3 + 3);
+
 */
-
-
 ///////////////////////////////////////////////////////
 // MUTATION AND TYPE COERCION
 //////////////////////////////////////////////////////
 
 /*
-
 //Coercion: casting
 var firstName = 'John';
 var age = 28;
@@ -68,8 +67,23 @@ num1 = prompt('Enter num 1');
 num2 = prompt('Enrer num 2');
 console.log(parseInt(num1) + parseInt(num2));
 
-*/
 
+
+let val = true;
+console.log(typeof (val));
+
+val = String(val)
+console.log(typeof (val));
+
+let x = "23.23"
+console.log(typeof (x))
+
+x = Number(x)
+console.log(typeof (x))
+console.log(x)
+console.log("" - 1 + 0)
+
+*/
 ///////////////////////////////////////////////////////
 // BASIC OPERATORS
 //////////////////////////////////////////////////////
@@ -335,7 +349,7 @@ console.log(john);
 john.shift();  //removed from the front
 console.log(john);
 
-console.log(john.indexOf(1990)); // looks for the element 
+console.log(john.indexOf(1990)); // looks for the element
 
 */
 
@@ -350,13 +364,13 @@ function calcTip(bill)
 {
     if (bill < 50)
     {
-        return bill * 0.2; 
+        return bill * 0.2;
     }
     else if (bill <= 200)
         {
             return bill * 0.15;
         }
-    else 
+    else
         {
             return bill * 0.10;
         }
@@ -369,7 +383,7 @@ for (i = 0; i < restaurant.length; i++)
 {
     tipAmount.push(calcTip(restaurant[i]));
     paidAmount[i] = tipAmount[i] + restaurant[i];
-    
+
 }
 
 console.log(tipAmount);
@@ -386,9 +400,9 @@ console.log(paidAmount);
 /*
 
 // object literal key value pairs
-var john = 
+var john =
 {
-    // PROPERTIRS OF JOHN OR INSTANCES  
+    // PROPERTIRS OF JOHN OR INSTANCES
     firstName: 'John',
     lastName: 'Smith',
     birthYear: 1990,
@@ -524,18 +538,18 @@ var tipCalculator =
         this.totalPaid = [];
         for (i = 0; i < bills.length; i++)
         {
-            
+
             if (bills[i] < 50)
             {
                 this.tips[i] = bills[i] * 0.2;
-            } 
+            }
             else if (bills[i] <= 200)
                 {
-                    this.tips[i] = bills[i] * 0.15;    
+                    this.tips[i] = bills[i] * 0.15;
                 }
             else
                 {
-                   this.tips[i] = bills[i] * 0.10; 
+                   this.tips[i] = bills[i] * 0.10;
                 }
             this.totalPaid[i] = this.tips[i] + bills[i];
         }
@@ -577,24 +591,23 @@ console.log(tipCalculator.avergae);
 // HOISTING FOR FUNCTIONS AND EXPRESSIONS 
 //////////////////////////////////////////////////////
 
+/*
 
 
-// Hoisting: function does not need to be decalred before using it. 
+// Hoisting: function does not need to be decalred before using it.
 // only works for function declaration not function expressions.
 
-// calcAge will still run before decalring it due to hoisting. 
+// calcAge will still run before decalring it due to hoisting.
 // stored in a variable object and is available to use it
 calcAge(1990);
 
-function calcAge(year)
-{
+function calcAge(year) {
     console.log(2020 - year);
 }
 
 
 //retirement(1990);  //will get an error b/c the function expression has not been defined.
-var retirement = function(year)
-{
+var retirement = function (year) {
     console.log(65 - (2020 - year));
 }
 
@@ -609,34 +622,32 @@ var age = 23;
 
 calcAge(1985);
 
-function calcAge(year)
-{
+function calcAge(year) {
     console.log(2020 - year);
     console.log(this);
 }
 
 
-var john =    
+var john =
 {
     name: 'John',
     yearOfBirth: 1990,
-    calcAge: function()
-    {
+    calcAge: function () {
         console.log(this);
         console.log(2016 - this.yearOfBirth);
-        
-//        function innerFunction()
-//        {
-//            console.log(this);
-//        }
-//        innerFunction();
+
+        //        function innerFunction()
+        //        {
+        //            console.log(this);
+        //        }
+        //        innerFunction();
     }
 };
 
 john.calcAge();
 
 
-var mike = 
+var mike =
 {
     name: 'Mike',
     yearOfBirth: 1984,
@@ -647,8 +658,7 @@ mike.calcAge = john.calcAge;
 mike.calcAge();
 
 
-
-
+*/
 
 
 
