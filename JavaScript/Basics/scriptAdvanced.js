@@ -1,6 +1,6 @@
 // Everything is almos an object in JS.
-// Primitives: Numbers, string, boolean, undefined, null
-// Everything else is an object: Array, functions, Objects, Dates, Wrappers for numbers, string boolenas
+// Primitives: Numbers, strings, boolean, undefined, null
+// Everything else is an object: Array, functions, Objects, Dates, Wrappers for numbers, string booleans
 // Look at inheritance and the prototype chain
 // Objects interact with one another though methods and properties.
 // We use them to store data, structure apps into modules and they also keep code clean
@@ -12,6 +12,13 @@
 // FUNCTION CONSTRUCTORS
 //////////////////////////////////////////////////////
 
+let name = "John"; 
+name = "Pete";
+sayHi();
+
+function sayHi() {
+    console.log("Hi, " + name);
+}
 
 // function is an instance of the Object type
 // it behaves like an object
@@ -414,7 +421,7 @@ console.log(fullJapan);
 // CODING CHALLENGE
 //////////////////////////////////////////////////////
 
-
+/*
 
 // 1.Build a quize game
 //      Allow user to select the correct answer from within console
@@ -508,7 +515,7 @@ console.log(fullJapan);
     nextQuestion();
 })();  // call it at the end 
 
-
+*/
 
 
 

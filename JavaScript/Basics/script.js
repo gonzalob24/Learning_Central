@@ -467,7 +467,7 @@ console.log(user4);
 // "key" in object_name
 
 let clone = {};
-for (let kkey in user4) {
+for (let kkey in user4) {  // optimized for objects not arrays
     clone[kkey] = user4[kkey];
     console.log(user4[kkey]);
 }
@@ -655,13 +655,12 @@ console.log(tipCalculator.avergae);
 ///////////////////////////////////////////////////////
 // HOISTING FOR FUNCTIONS AND EXPRESSIONS 
 //////////////////////////////////////////////////////
+/*
 
 let ar = [1, 15, 2];
 console.log(ar.sort(function (a, b) {
     return a - b;
 }));
-
-/*
 
 
 // Hoisting: function does not need to be decalred before using it.
