@@ -1,4 +1,4 @@
-// Everything is almos an object in JS.
+// Everything is almost an object in JS.
 // Primitives: Numbers, strings, boolean, undefined, null
 // Everything else is an object: Array, functions, Objects, Dates, Wrappers for numbers, string booleans
 // Look at inheritance and the prototype chain
@@ -12,6 +12,7 @@
 // FUNCTION CONSTRUCTORS
 //////////////////////////////////////////////////////
 
+/*
 let name = "John"; 
 name = "Pete";
 sayHi();
@@ -26,7 +27,7 @@ function sayHi() {
 // pass it as an arg.
 // return it 
 
-/*
+
 var john = 
 {
     name: 'John',
@@ -411,7 +412,7 @@ function isFullAge(limit, el) {
 var ages = arrayCalc(years, calculateAge);
 
 // "this" is the presete limit = 20
-var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20) );
+var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20));
 console.log(ages);
 console.log(fullJapan);
 
