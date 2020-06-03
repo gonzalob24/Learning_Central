@@ -1,3 +1,4 @@
+"use strict";
 // Nameing rules
 // Can't start with numbers or simnbols only
 // $ or _
@@ -419,8 +420,11 @@ console.log(paidAmount);
 // OBJECTS AND METHODS
 //////////////////////////////////////////////////////
 
-
 /*
+
+// create an empty object in one of two ways
+let user = new Object();
+let user2 = {};
 
 // object literal key value pairs
 var john =
@@ -432,14 +436,52 @@ var john =
     family: ['Jane', 'Mark', 'Bob', 'Emily'], // can also have an object inside of the array
     job: 'Teacher',
     isMarried: false,
+    "likes cake": true,
     // METHOD INSIDE THE OBJECT
-    calcAge: function()
-    {
+    calcAge: function () {
         //return 2018 - this.birthYear;
         this.age = 2018 - this.birthYear;
+    },
+};
+
+// use dot notation to access individual elements
+let key = 'likes cake'
+console.log(john);
+delete john.lastName;
+console.log(john["likes cake"]);
+console.log(john[key]);
+
+console.log('\n\n');
+
+function someStuff(name, age) {
+    return {
+        name,
+        age,
     }
 };
 
+let user4 = someStuff('Alexa', 7)
+console.log(user4);
+
+// check for certain keys in the object
+// "key" in object_name
+
+let clone = {};
+for (let kkey in user4) {
+    clone[kkey] = user4[kkey];
+    console.log(user4[kkey]);
+}
+console.log(clone);
+
+let clone2 = {};
+
+Object.assign(clone2, user4);
+console.log("This is clone2: ", clone2);
+
+let str = "Hello";
+for (let s in str) {
+    console.log(str[s]);
+}
 
 console.log(john);
 john.calcAge();  // call the method so that the instance age can be updated in john object
@@ -456,7 +498,7 @@ console.log(john);
 
 // ANOTHER WAY TO CREATE AN OBJECT
 var jane = new Object();
-jane.name ='Jane';
+jane.name = 'Jane';
 jane.birthYear = 1969;
 jane['lastName'] = 'Smith';
 jane.job = 'Doctor';
@@ -471,10 +513,10 @@ console.log(john.calcAge(1990));
 john.calcAge();
 console.log(john);
 
-*/
+* /
 
 ///////////////////////////////////////////////////////
-// CODING CHALLENGEL: BMI 
+// CODING CHALLENGEL: BMI
 //////////////////////////////////////////////////////
 
 /*
@@ -613,6 +655,11 @@ console.log(tipCalculator.avergae);
 ///////////////////////////////////////////////////////
 // HOISTING FOR FUNCTIONS AND EXPRESSIONS 
 //////////////////////////////////////////////////////
+
+let ar = [1, 15, 2];
+console.log(ar.sort(function (a, b) {
+    return a - b;
+}));
 
 /*
 
