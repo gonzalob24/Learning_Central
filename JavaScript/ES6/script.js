@@ -226,14 +226,14 @@ new Person('Gonzalo').myFriends6(friends);
 /*
 // Gives me a convenient way to extract data from a data structure.
 
-// ES5 
+// ES5
 
 var john = ['John', 26];
 // if i have many elements in an array this way will take longer to accomplish the task
 var name = john[0];
 var age = john[1];
 
-// ES6 
+// ES6
 // similar to Python tuple extraction
 const [name6, year6] = ['john', 26];
 console.log(name6);
@@ -272,10 +272,11 @@ console.log(retirement);
 // Array                                //
 //////////////////////////////////////////
 
+/*
 // returns a nodeList
 const boxes = document.querySelectorAll('.box');
 
-// ES5 
+// ES5
 var boxesArr5 = Array.prototype.slice.call(boxes); // this returns an array
 
 boxesArr5.forEach(function (current) {
@@ -286,10 +287,10 @@ boxesArr5.forEach(function (current) {
 const boxesArr6 = Array.from(boxes); // transforms nodeList in boxes into an array
 boxesArr6.forEach(current => current.style.backgroundColor = 'dodgerblue');
 
-// Loops: use for each or map method. 
+// Loops: use for each or map method.
 // cant break or continue when using forEach or map
 
-// ES5 
+// ES5
 // for (var i = 0; i < boxesArr5.length; i++) {
 
 //     if (boxesArr5[i].className === 'box blue') {
@@ -322,3 +323,141 @@ console.log(ages[fullAge.indexOf(true)]);
 // ES6: Define index method returns index of array where callback function is true
 console.log(ages.findIndex((current) => current >= 18)); // returns index where this is true
 console.log(ages.find((current) => current >= 18));
+*/
+
+
+//////////////////////////////////////////
+// Spread                               //
+//////////////////////////////////////////
+
+/*
+// Good wat to expand elements of an array
+
+function addForAges(a, b, c, d) {
+    return a + b + c + d;
+}
+
+var sum = addForAges(18, 30, 12, 21);
+console.log(sum);
+
+// Now lets say I have these 4 numbers in an array
+// How to pass the array in the function
+
+// ES5
+var ages = [18, 30, 12, 21];  // we can use the bind or call methods. apply method is new
+
+/// first paramater is the this variable as in bind. It can be null since i am not interested in that
+var sum5 = addForAges.apply(null, ages);
+
+console.log(sum5);
+
+
+// ES6 spread operator
+const sum6 = addForAges(...ages); // ... expands array into its components
+
+console.log('I am from ES6: ' + sum6);
+
+const smithFamily = ['John', 'Jane', 'Mark'];
+const millerFamily = ['Mary', 'Bob', 'Ann'];
+
+const bigFamily = [...smithFamily, 'Lily', ...millerFamily];
+console.log(bigFamily);
+
+// using spread on nodeList
+const h = document.querySelector('h1'); // is simpy a node
+const boxes = document.querySelectorAll('.box');
+
+const all = [h, ...boxes]; // don't need to expand h
+Array.from(all).forEach((curr) => curr.style.color = 'purple');
+
+*/
+
+//////////////////////////////////////////
+// Rest Parameter                       //
+//////////////////////////////////////////
+
+// receive values and converts them to an array
+/*
+// ES5 
+function isFullAge5() {
+    // console.log(arguments);  // its an array like structure
+    var argsArr = Array.prototype.slice.call(arguments);     // convert it to an array
+
+    argsArr.forEach(function (current) {
+        console.log((2016 - current) >= 18);
+    });
+}
+
+isFullAge5(1990, 1999, 1965);
+
+// ES6 rest parameter
+// ... transforms it to an array
+function isFullAge6(...years) {
+    // console.log(years);
+    years.forEach((current) => console.log((2016 - current) >= 18));
+}
+
+isFullAge6(1990, 1999, 1965);
+
+
+// spread is used in the function call
+// rest is used in the function declaration
+
+
+
+function isFullAge5(limit) {
+    // console.log(arguments);  // its an array like structure
+    // 1 arguments that where the slice starts, at position 1. It excludes the 0 posstion
+    var argsArr = Array.prototype.slice.call(arguments, 1);     // convert it to an array
+
+    argsArr.forEach(function (current) {
+        console.log((2016 - current) >= limit);
+    });
+}
+
+isFullAge5(16, 1990, 1999, 1965);
+
+// ES6 rest parameter
+// ... transforms it to an array
+function isFullAge6(limit, ...years) {
+    // console.log(years);
+    years.forEach((current) => console.log((2016 - current) >= limit));
+}
+
+isFullAge6(16, 1990, 1999, 1965);
+
+*/
+
+//////////////////////////////////////////
+// Default Parameter                    //
+//////////////////////////////////////////
+
+// used to have preset parameters
+
+// ES5 
+
+function smithPerson(fName, birthYear, lName, nationality) {
+
+    lName === undefined ? lName = 'Smith' : lName === lName;
+    nationality === undefined ? nationality = 'American' : nationality = nationality;
+
+    this.fName = fName;
+    this.birthYear = birthYear;
+    this.lName = lName;
+    this.nationality = nationality;
+}
+
+// var john = new smithPerson('John', 1990);
+// var emily = new smithPerson('Emily', 1983, 'Diaz', 'Spanish')
+
+// ES6
+
+function smithPerson6(fName, birthYear, lName = 'Smith', nationality = 'American') {
+    this.fName = fName;
+    this.birthYear = birthYear;
+    this.lName = lName;
+    this.nationality = nationality;
+}
+
+var john = new smithPerson6('John', 1990);
+var emily = new smithPerson6('Emily', 1983, 'Diaz', 'Spanish')
