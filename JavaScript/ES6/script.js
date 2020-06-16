@@ -432,6 +432,7 @@ isFullAge6(16, 1990, 1999, 1965);
 // Default Parameter                    //
 //////////////////////////////////////////
 
+/*
 // used to have preset parameters
 
 // ES5 
@@ -461,3 +462,51 @@ function smithPerson6(fName, birthYear, lName = 'Smith', nationality = 'American
 
 var john = new smithPerson6('John', 1990);
 var emily = new smithPerson6('Emily', 1983, 'Diaz', 'Spanish')
+*/
+
+//////////////////////////////////////////
+// Maps                                 //
+//////////////////////////////////////////
+
+// use them as hash maps: key, value data structue. The key can be anything not just strings
+// maps are iterable --> can use the for each method. 
+
+const question = new Map();
+
+question.set('question', 'What is the official name of the latest major JavaScript version?');
+question.set(1, 'ES5');
+question.set(2, 'ES6');
+question.set(3, 'ES2015');
+question.set(4, 'ES7');
+question.set('correct', 3);
+question.set(true, 'Correct answer');
+question.set(false, 'Wrong please try again');
+
+// get  the value of one of the keys
+console.log(question.get('question'));
+// get size of the question object
+// console.log(question.size);
+
+// delete an item
+if (question.has(4)) {
+    // question.delete(4);
+    // console.log('Key 4 is here')
+}
+
+
+// delete all s
+// question.clear();
+// question.forEach((value, key) => {
+//     console.log(`This is key ${key} and it's set to ${value}`);
+// });
+
+for (let [key, value] of question.entries()) { // question returns all entries in question map
+    // console.log(`This is key ${key} and it's set to ${value}`);
+    if (typeof (key) === 'number') {
+        console.log(`Answer ${key}: ${value}`)
+    }
+};
+
+const ans = parseInt(prompt('Write the correct answer'));
+
+console.log(question.get(ans === question.get('correct')));
