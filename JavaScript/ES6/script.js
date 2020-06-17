@@ -670,10 +670,12 @@ class Basic {
     }
 }
 
+// estend from super class using extends
 class Parks extends Basic {
+    // repeat the names in the constructor
     constructor(name, yearBuilt, numTrees, parkArea) {
+        // call the super class first
         super(name, yearBuilt);
-
         this.numTrees = numTrees;
         this.parkArea = parkArea;
     }
@@ -687,7 +689,7 @@ class Parks extends Basic {
         let year = new Date().getFullYear();
         return year - this.yearBuilt;
     }
-    trees() {
+    numberOfTrees() {
         return this.numTrees;
     }
     static avgParkAge(ages) {
@@ -707,7 +709,7 @@ class Parks extends Basic {
 }
 
 class Streets extends Basic {
-    constructor(name, yearBuilt, stLength, size = 'normal') {
+    constructor(name, yearBuilt, stLength, size = 3) {
         super(name, yearBuilt);
 
         this.stLength = stLength;
@@ -715,27 +717,98 @@ class Streets extends Basic {
 
     }
 
-    sizeClass() {
+    classifyStreet() {
+        const classification = new Map();
+        classification.set(1, 'tiny')
+        classification.set(2, 'small')
+        classification.set(3, 'normal')
+        classification.set(4, 'big')
+        classification.set(5, 'huge')
+
+        return classification.get(this.size);
+    }
+    
+    streetSize() {
         return this.size;
     }
-    static totalLength(lengthStreets) {
-        let totalLength = 0;
-        lengthStreets.forEach((street) => totalLength += street);
 
-        return [totalLength, totalLength / lengthStreets.length];
+    streetBuilt() {
+        return this.yearBuilt;
+    }
+    streetName() {
+        return this.name;
+    }
+    streetLength() {
+        return this.stLength;
+    }
+
+    static totalLength(lengStArr) {
+        let totalLength = 0;
+        for (const length of lengStArr) {
+            totalLength += length
+        }
+
+        return [totalLength, totalLength / lengStArr.length];
     }
 }
 
-const park1 = new Parks('Green Park', 1910, 204, 0.190202);
-const park2 = new Parks('National Park', 1923, 5500, 12.37);
-const park3 = new Parks('Oak Park', 2007, 900, 12.17);
+function calc(arr) {
+    // reduce ES5 technique, has access to previous, current, index
+    const sum = arr.reduce((prev, curr, index) => prev + curr, 0) // 0 is the initial value, which is prev = 0 and curr = 3
 
-let ages = [park1.parkAge(), park2.parkAge(), park3.parkAge()];
-let avgAge = Parks.avgParkAge(ages);
+    return [sum, sum / arr.length];
+}
 
-console.log(`Our 3 parks have an average age of ${avgAge} years.`);
-console.log(`${park1.parkName()} has a tree density of ${park1.treeDensity()} trees per sqaure km.`);
-console.log(`${park2.parkName()} has a tree density of ${park2.treeDensity()} trees per sqaure km.`);
-console.log(`${park3.parkName()} has a tree density of ${park3.treeDensity()} trees per sqaure km.`);
+const park1 = new Parks('Green Park', 1987, 215, 0.2);
+const park2 = new Parks('National Park', 1894, 3541, 2.9);
+const park3 = new Parks('Oak Park', 1953, 949, 0.4);
 
-console.log(Parks.moreTrees(park2));
+const parksArr = [park1, park2, park3];
+
+let ages1 = [park1.parkAge(), park2.parkAge(), park3.parkAge()];
+let avgAge1 = Parks.avgParkAge(ages1);
+
+const street1 = new Streets('Ocean Avenue', 1999, 1.1, 4);
+const street2 = new Streets('Evergreen St', 2008, 2.7, 2);
+const street3 = new Streets('4th Street', 2015, 0.8);
+const street4 = new Streets('Sunset Boulevard', 1985, 2.5, 5);
+
+const streetsArr = [street1, street2, street3, street4];
+
+let [total, avg] = Streets.totalLength([street1.streetLength(), street2.streetLength(), street3.streetLength(), street4.streetLength()]);
+
+function reportParks(p) {
+    console.log('----------PARKS REPORT----------');
+    const ages = p.map((park) => park.parkAge());
+    const[totalAge, avgAge] = calc(ages);
+    console.log(`Our 3 parks have an average age of ${avgAge} years.`);
+    
+    p.forEach((park) => console.log(`${park.parkName()} has a tree density of ${park.treeDensity()} trees per sqaure km.`));
+    // console.log(`${park1.parkName()} has a tree density of ${park1.treeDensity()} trees per sqaure km.`);
+    // console.log(`${park2.parkName()} has a tree density of ${park2.treeDensity()} trees per sqaure km.`);
+    // console.log(`${park3.parkName()} has a tree density of ${park3.treeDensity()} trees per sqaure km.`);
+    
+    // console.log(Parks.moreTrees(park2));
+    let i = p.map((park) => park.numberOfTrees()).findIndex((number) => number >= 1000);
+    // i = i.findIndex((i) => i >= 1000);
+    console.log(`${p[i].parkName()} has more than 1000 trees.`);
+
+}
+
+function reportStreets(s) {
+    console.log('----------STREETS REPORT----------')
+    // console.log(`Our 4 streets have a total length of ${total} km, with an average of ${avg} km.`);
+    const lengArr = s.map((street) => street.streetLength());
+    const [totalLength, avgLength] = calc(lengArr);
+    console.log(`Our ${s.length} streets have a total length of ${totalLength} km, with an average of ${avgLength} km.`)
+    s.forEach((street) => console.log(`${street.streetName()} buil in ${street.streetBuilt()} is a ${street.classifyStreet()}`));
+    // console.log(`${street1.streetName()} buil in ${street1.streetBuilt()} is a ${street1.classifyStreet()}`);
+    // console.log(`${street2.streetName()} buil in ${street2.streetBuilt()} is a ${street2.classifyStreet()}`);
+    // console.log(`${street3.streetName()} buil in ${street3.streetBuilt()} is a ${street3.classifyStreet()}`);
+    // console.log(`${street4.streetName()} buil in ${street4.streetBuilt()} is a ${street4.classifyStreet()}`);
+
+}
+
+reportParks(parksArr);
+console.log('\n\n');
+reportStreets(streetsArr);
