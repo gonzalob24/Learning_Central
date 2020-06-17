@@ -378,7 +378,7 @@ Array.from(all).forEach((curr) => curr.style.color = 'purple');
 
 // receive values and converts them to an array
 /*
-// ES5 
+// ES5
 function isFullAge5() {
     // console.log(arguments);  // its an array like structure
     var argsArr = Array.prototype.slice.call(arguments);     // convert it to an array
@@ -435,7 +435,7 @@ isFullAge6(16, 1990, 1999, 1965);
 /*
 // used to have preset parameters
 
-// ES5 
+// ES5
 
 function smithPerson(fName, birthYear, lName, nationality) {
 
@@ -468,8 +468,9 @@ var emily = new smithPerson6('Emily', 1983, 'Diaz', 'Spanish')
 // Maps                                 //
 //////////////////////////////////////////
 
+/*
 // use them as hash maps: key, value data structue. The key can be anything not just strings
-// maps are iterable --> can use the for each method. 
+// maps are iterable --> can use the for each method.
 
 const question = new Map();
 
@@ -510,3 +511,231 @@ for (let [key, value] of question.entries()) { // question returns all entries i
 const ans = parseInt(prompt('Write the correct answer'));
 
 console.log(question.get(ans === question.get('correct')));
+*/
+
+//////////////////////////////////////////
+// Classes                              //
+//////////////////////////////////////////
+
+/*
+
+// Class definitions are not hoisted.
+// can only add methods not properties, to classes
+// ES5
+// I can create this as a function expression or function declaration. It works the same way
+var Person5 = function (name, birthYear, job) {
+    this.name = name;
+    this.birthYear = birthYear;
+    this.job = job;
+}
+
+Person5.prototype.calculateAge = function () {
+    var age = new Date().getFullYear() - this.birthYear;
+    console.log(age);
+}
+
+var john5 = Person5('John', 1990, 'Teacher');
+
+//////////////////////////////////////////
+
+// ES6 using classes
+class Person6 {
+    constructor(name, birthYear, job) {
+        this.name = name;
+        this.birthYear = birthYear;
+        this.job = job;
+    }
+
+    calculateAge() {
+        var age = new Date().getFullYear() - this.birthYear;
+        console.log(age);
+    }
+
+    // static methods are not inherited by objects that are created.
+    static greeting() {
+        console.log('Hey there!');
+    }
+}
+
+const john6 = new Person6('John6', 1990, 'Teacher');
+Person6.greeting();
+
+*/
+
+//////////////////////////////////////////
+// Inheritance                          //
+//////////////////////////////////////////
+
+/*
+// ES5
+var Person5 = function (name, birthYear, job) {
+    this.name = name;
+    this.birthYear = birthYear;
+    this.job = job;
+}
+
+Person5.prototype.calculateAge = function () {
+    var age = new Date().getFullYear() - this.birthYear;
+    console.log(age);
+}
+
+var Athlete5 = function (name, birthYear, job, olimpicGames, medals) {
+    Person5.call(this, name, birthYear, job);
+    this.olimpicGames = olimpicGames;
+    this.medals = medals;
+}
+
+// Connects the two data structures
+Athlete5.prototype = Object.create(Person5.prototype);
+
+Athlete5.prototype.wonMedals = function () {
+    this.medals++;
+    console.log(this.medals);
+}
+
+var johnAthlete5 = new Athlete5('John', 1990, 'Swimmer', 3, 10);
+
+johnAthlete5.calculateAge();
+johnAthlete5.wonMedals();
+
+// ES6
+
+class Person6 {
+    constructor(name, birthYear, job) {
+        this.name = name;
+        this.birthYear = birthYear;
+        this.job = job;
+    }
+
+    calculateAge() {
+        var age = new Date().getFullYear() - this.birthYear;
+        console.log(age);
+    }
+}
+
+class Athlete6 extends Person6 {
+    constructor(name, birthYear, job, olimpicGames, medals) {
+        super(name, birthYear, job);
+
+        this.olimpicGames = olimpicGames;
+        this.medals = medals;
+    }
+
+    wonMedals() {
+        this.medals++;
+        console.log(this.medals);
+    }
+}
+
+const johnAthlete6 = new Athlete6('John', 1990, 'Swimmer', 3, 10);
+
+johnAthlete6.calculateAge();
+johnAthlete6.wonMedals();
+
+*/
+
+//////////////////////////////////////////
+// Coding Challenge                     //
+//////////////////////////////////////////
+
+/*
+
+Im in a small town and I am in charge of two elements
+1. Parks
+2. Streets
+
+There are 3 parks and 4 streets.
+All parks and streets have a name and a build year.
+
+Boss wants a final report at the end of the year meeting.
+
+1. Tree density of each park in the town (number of trees / park area)
+2. Avg age of each towns park (sum of all ages / number of parks)
+3. Name of the park that has more than 1000 tress
+4. Total and avg length of the town's streets.
+5. Size classification of all sreets: tiny, small, normal, big, huge. If the
+    sise is unknown the default is normal
+print all of the report to the console
+
+---------PARKS REPORT------------
+
+
+---------STREETS REPORT----------
+*/
+
+class Basic {
+    constructor(name, yearBuilt) {
+        this.name = name;
+        this.yearBuilt = yearBuilt;
+    }
+}
+
+class Parks extends Basic {
+    constructor(name, yearBuilt, numTrees, parkArea) {
+        super(name, yearBuilt);
+
+        this.numTrees = numTrees;
+        this.parkArea = parkArea;
+    }
+    parkName() {
+        return this.name;
+    }
+    treeDensity() {
+        return this.numTrees / this.parkArea;
+    }
+    parkAge() {
+        let year = new Date().getFullYear();
+        return year - this.yearBuilt;
+    }
+    trees() {
+        return this.numTrees;
+    }
+    static avgParkAge(ages) {
+        let avgAge = 0;
+        for (const age of ages) {
+            // console.log(age);
+            avgAge += age;
+        }
+        return (avgAge / ages.length);
+    }
+
+    static moreTrees(number) {
+        if (number.trees() > 1000) {
+            return number.parkName() + ' has more than 1000 trees.';
+        }
+    }
+}
+
+class Streets extends Basic {
+    constructor(name, yearBuilt, stLength, size = 'normal') {
+        super(name, yearBuilt);
+
+        this.stLength = stLength;
+        this.size = size;
+
+    }
+
+    sizeClass() {
+        return this.size;
+    }
+    static totalLength(lengthStreets) {
+        let totalLength = 0;
+        lengthStreets.forEach((street) => totalLength += street);
+
+        return [totalLength, totalLength / lengthStreets.length];
+    }
+}
+
+const park1 = new Parks('Green Park', 1910, 204, 0.190202);
+const park2 = new Parks('National Park', 1923, 5500, 12.37);
+const park3 = new Parks('Oak Park', 2007, 900, 12.17);
+
+let ages = [park1.parkAge(), park2.parkAge(), park3.parkAge()];
+let avgAge = Parks.avgParkAge(ages);
+
+console.log(`Our 3 parks have an average age of ${avgAge} years.`);
+console.log(`${park1.parkName()} has a tree density of ${park1.treeDensity()} trees per sqaure km.`);
+console.log(`${park2.parkName()} has a tree density of ${park2.treeDensity()} trees per sqaure km.`);
+console.log(`${park3.parkName()} has a tree density of ${park3.treeDensity()} trees per sqaure km.`);
+
+console.log(Parks.moreTrees(park2));
