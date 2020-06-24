@@ -1,6 +1,5 @@
 // let and const
 
-
 /*
 // ES5
 var name5 = 'Jane Smith';
@@ -55,6 +54,7 @@ console.log('Variable outside of for loop: ' + i);
 //////////////////////////////////////////
 // Blocks and IIFEs                     //
 //////////////////////////////////////////
+
 
 {
     const a = 1;
@@ -331,7 +331,7 @@ console.log(ages.find((current) => current >= 18));
 //////////////////////////////////////////
 
 /*
-// Good wat to expand elements of an array
+// Good to expand elements of an array
 
 function addForAges(a, b, c, d) {
     return a + b + c + d;
@@ -407,7 +407,7 @@ isFullAge6(1990, 1999, 1965);
 
 function isFullAge5(limit) {
     // console.log(arguments);  // its an array like structure
-    // 1 arguments that where the slice starts, at position 1. It excludes the 0 posstion
+    // 1--argument where the slice starts, at position 1. It excludes the 0 posstion
     var argsArr = Array.prototype.slice.call(arguments, 1);     // convert it to an array
 
     argsArr.forEach(function (current) {
@@ -599,7 +599,6 @@ johnAthlete5.calculateAge();
 johnAthlete5.wonMedals();
 
 // ES6
-
 class Person6 {
     constructor(name, birthYear, job) {
         this.name = name;
@@ -612,7 +611,6 @@ class Person6 {
         console.log(age);
     }
 }
-
 class Athlete6 extends Person6 {
     constructor(name, birthYear, job, olimpicGames, medals) {
         super(name, birthYear, job);
@@ -626,7 +624,6 @@ class Athlete6 extends Person6 {
         console.log(this.medals);
     }
 }
-
 const johnAthlete6 = new Athlete6('John', 1990, 'Swimmer', 3, 10);
 
 johnAthlete6.calculateAge();
@@ -663,6 +660,7 @@ print all of the report to the console
 ---------STREETS REPORT----------
 */
 
+/*
 class Basic {
     constructor(name, yearBuilt) {
         this.name = name;
@@ -812,3 +810,5 @@ function reportStreets(s) {
 reportParks(parksArr);
 console.log('\n\n');
 reportStreets(streetsArr);
+
+*/
