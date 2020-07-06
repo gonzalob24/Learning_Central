@@ -58,10 +58,10 @@
             return new Promise((resolve, reject) => {
                 setTimeout(ID => {
                     const recipe = {
-                    title: 'Fresh Tomato Pasta',
-                    publisher: 'Gonzalo',
-                };
-                resolve(`${ID}: ${recipe.title}`);
+                        title: 'Fresh Tomato Pasta',
+                        publisher: 'Gonzalo',
+                    };
+                    resolve(`${ID}: ${recipe.title}`);
                 }, 1500, recID);
             });
         };
@@ -93,7 +93,7 @@
         // .catch(error => {
         //     console.log(error);
         // })
-        
+
         // aynch function that runs in the background and I can have +1 awaite expressions
         // async function getRecipeAW() {
         //     // await instruction can only be used inside am async function
@@ -112,23 +112,24 @@
         // const rec =  getRecipeAW();
         // console.log(rec);
 
+        // getRecipeAW().then(result => console.log(result))
         // getRecipeAW().then(result => console.log(`${result} is the best.`));
         const getWeather = (woeid) => {
             // fetch returns a promise 
             fetch(`https://www.metaweather.com/api/location/${woeid}/`)
-            
-            .then(result => {
-                console.log(result);
-                return result.json();
-            })
-            .then(data => {
-                console.log(data);
-                const today = data
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }
+
+                .then(result => {
+                    console.log(result);
+                    return result.json();
+                })
+                .then(data => {
+                    // console.log(data);
+                    const today = data.consolidated_weather[0];
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
 
         // this is much easier
         async function getWeatherAW(woeid) {
@@ -137,20 +138,20 @@
                 // chaneg the result to json
                 const data = await result.json();
                 return data;
-            } catch(error) {
+            } catch (error) {
                 // console.log(error);
                 // or 
                 alert(error);
             }
         }
 
-        getWeatherAW(2487956);
+        getWeather(2487956);
         let london;
         getWeatherAW(44418).then(data => {
             dataLondon = data;
             console.log(dataLondon);
         });
-        
+
 
     </script>
 </body>
