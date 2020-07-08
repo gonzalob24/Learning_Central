@@ -51,12 +51,50 @@ class Stack:
 
     def display(self):
         print(self.items)
-
+# 346-349-8948 10am
 
 if __name__ == '__main__':
-    stack1 = Stack()
+    brackets = "(({{[[]]}}))"
+    bb2 = ')(()){([()])}'
+    b3 = '[][][]{}{}()()'
+    left = "({["
+    right = ")}]"
+    def is_valid(expression):
+        stack = Stack(max_size=13)
 
-    while True:
+        def match(left, right):
+            if left == '[' and right == ']':
+                return True
+            elif left == '(' and right == ')':
+                return True
+            elif left == '{' and right == '}':
+                return True
+            else:
+                return False
+
+        for parenthesis in expression:
+            if parenthesis in left:
+                stack.push(parenthesis)
+            else: # parenthesis in right
+                if stack.is_empty():
+                    print("Right parenthesis are greater than left")
+                    return False
+                else:
+                    popped_parenthesis = stack.pop()
+                    if not match(popped_parenthesis, parenthesis):
+                        print("Mismathed parenthesis are {} and {}".format(parenthesis, popped_parenthesis))
+                        return False
+        
+        if stack.is_empty():
+            print("Balance Parenthesis")
+            return True
+        else:
+            print("Left side is greater. Parenthesis not balanced.")
+            return False
+
+    print(is_valid(b3))  
+
+    while False:
         print('1.Push')
         print('2.Pop')
         print('3.Peek')

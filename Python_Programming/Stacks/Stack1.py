@@ -1,7 +1,6 @@
 """
-Creating the class Stack to implement instances of the class Stack\
+Creating the class Stack to implement instances of the class Stack
 """
-
 
 class EmptyStackError(Exception):
     pass
