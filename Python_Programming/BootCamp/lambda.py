@@ -49,17 +49,39 @@ class Person(object):
 class Student(Person):
 
     def __init__(self, fname, lname, schoolName):
-        Person.__init__(self, fname, lname="")
+        # Person.__init__(self, fname, lname)
+        super().__init__(fname, lname)
+
         self.schoolName = schoolName   
 
+    def print_name(self):
+        return super().print_name() + " " + self.schoolName
 
-p1 = Person("John", "Smith")
-print(p1.print_name())
-p1.change_lname("Doe")
-print(p1.print_name())
+# p1 = Person("John", "Smith")
+# print(p1.print_name())
+# p1.change_lname("Doe")
+# print(p1.print_name())
 
-p1.lname = ""
-print(p1.print_name())
+# # p1.lname = ""
+# # print(p1.print_name())
 
-s1 = Student("Jake", "Wrong", "RHS")
-print(s1.print_name())
+# s1 = Student("Jake", "Wrong", "RHS")
+# print("From Student: " + s1.print_name())
+# print(s1.lname)
+
+## map function maps a function to each element in an iterable object
+def square(num):
+    return num**2
+
+my_nums = [1,2,3,4,5, 10]
+
+nums_squared = list(map(square, my_nums))
+nums_lambda = list(map(lambda a: a**2, my_nums))
+print((nums_lambda))
+
+# Filters for true or false
+
+def check_even(num):
+    return num % 2 == 0
+
+print(list(filter(check_even, my_nums)))

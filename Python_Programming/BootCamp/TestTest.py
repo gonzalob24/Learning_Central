@@ -16,4 +16,7 @@ class TestCap(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    # unittest.main()
+
+    name = "Gonzalo"
+    print(f'My name is {name}')

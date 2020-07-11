@@ -1,4 +1,4 @@
-import sys, string
+import sys, string, collections
 
 
 def animal_crackers(str1):
@@ -122,6 +122,14 @@ def up_low(strng):
     print("Number of uppercase is : ", d_low_up["upper"])
     print("Number of lowercase is : ", d_low_up["lower"])
 
+def up_low2(strng):
+    count = collections.Counter(strng)
+    print(count.most_common())
+
+    # print("Number of uppercase is : ", d_low_up["upper"])
+    # print("Number of lowercase is : ", d_low_up["lower"])
+    return list(count)
+
 def test_suite():
     """ Run the suite of tests for code in this module (this file).
     """
@@ -148,10 +156,13 @@ def test_suite():
     test(unique_list([1,1,1,1,2,2,2,2,3,3,4,4]) == [1, 2, 3, 4])
     test(unique_list(unique_list([1,1,1,1,2,2,3,3,3,3,4,5])) == [1, 2, 3, 4, 5])
     test(is_pangram("The quick brown fox jumps over the lazy dog") is True)
+    print("\nNumber of Lower and Upper case letters.")
     up_low("Hello Mr. Rogers, how are you this fine Tuesday?")
     test(is_pangram("Gonzalo is good at basketball") is False)
     test(is_pangram("The quick brown fox jumps over the lazy dog") is True)
     test(is_pangram("The basketball") is False)
 
 if __name__ == "__main__":
-    test_suite()
+    # test_suite()
+
+    print(up_low2("Hello Mr. Rogers, how are you this fine Tuesday?"))
