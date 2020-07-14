@@ -9,15 +9,38 @@ def arithmetic_arranger(problems, show_answer = False):
     Returns:
         [arranged_problems]: [if show_answer is True I will display the formatted answers to the user]
     """
-    split_problem = problems[0].split(" ")
-    top = split_problem[0]
-    operator = split_problem[1]
-    bottom = split_problem[2]
-    dash_length = max(len(top), len(bottom)) + 2
-    print("{:>{}}".format(top, dash_length))
-    print("{} {:>{}}".format(operator, bottom, dash_length-2))
-    print("-"*dash_length)
+    if len(problems) > 5:
+        return "Error: Too many problems."
+    top_string = ""
+    bottom_string = ""
+    dashes_string = ""
+    answer = ""
+    for problem in problems:
+        problem = problem.split(' ')
+        if not (problem[0].isdigit()) or not (problem[2].isdigit()):
+                return "Error: Numbers must only contain digits."
+        if len(problem[0]) > 4 or len(problem[2]) > 4:
+            return "Error: Numbers cannot be more than four digits."
+        dashes = max(len(problem[0]), len(problem[2])) + 2
+        top_string += "{}{}".format(problem[0], " "*(dashes - len(problem[0]) + 2))
+        bottom_string += "{} {}{:<7}".format(problem[1], " "*(dashes-len(problem[2]) - 2), problem[2])
+        dashes_string += "{}{}".format("-"*dashes, " "*4)
+        number = 0
 
-    # return arranged_problems
+        if problem[1] == '+':
+            number = int(problem[0]) + int(problem[2])
+        elif problem[1] == "-":
+            number = int(problem[0]) - int(problem[2])
+        else:
+            return "Error: Operator must be '+' or '-'."
 
-arithmetic_arranger(["323244 + 10012"])
+        answer += "{:>{}}    ".format(str(number), dashes)
+    arranged_problems = top_string + "\n" + bottom_string + "\n" + dashes_string
+    if show_answer:
+        return arranged_problems + "\n" + answer
+    else:
+        return arranged_problems
+
+
+print(arithmetic_arranger(["332 + 855", "3801 - 2", "45 + 43", "123 + 49"], True))
+
