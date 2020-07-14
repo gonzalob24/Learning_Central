@@ -1,4 +1,5 @@
-class ComponentService {
+
+export class ComponentService {
     constructor() {
         this.numberOneInput = document.getElementById("numberOne");
         this.numberTwoInput = document.getElementById("numberTwo");
