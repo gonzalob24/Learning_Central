@@ -22,8 +22,8 @@ def arithmetic_arranger(problems, show_answer = False):
         if len(problem[0]) > 4 or len(problem[2]) > 4:
             return "Error: Numbers cannot be more than four digits."
         dashes = max(len(problem[0]), len(problem[2])) + 2
-        top_string += "{}{}".format(problem[0], " "*(dashes - len(problem[0]) + 2))
-        bottom_string += "{} {}{:<7}".format(problem[1], " "*(dashes-len(problem[2]) - 2), problem[2])
+        top_string += "{}{}{}".format(" "*(dashes - len(problem[0])), problem[0], " "*4)
+        bottom_string += "{} {}{}{}".format(problem[1], " "*(dashes-len(problem[2])-2), problem[2], " "*4)
         dashes_string += "{}{}".format("-"*dashes, " "*4)
         number = 0
 
@@ -35,12 +35,13 @@ def arithmetic_arranger(problems, show_answer = False):
             return "Error: Operator must be '+' or '-'."
 
         answer += "{:>{}}    ".format(str(number), dashes)
-    arranged_problems = top_string + "\n" + bottom_string + "\n" + dashes_string
+    arranged_problems = top_string.rstrip() + "\n" + bottom_string.rstrip() + "\n" + dashes_string.rstrip()
     if show_answer:
-        return arranged_problems + "\n" + answer
+        return arranged_problems + "\n" + answer.rstrip()
     else:
-        return arranged_problems
+        return arranged_problems.rstrip()
 
 
-print(arithmetic_arranger(["332 + 855", "3801 - 2", "45 + 43", "123 + 49"], True))
-
+# print(arithmetic_arranger(["332 + 8989", "3801 - 2", "45 + 43", "123 + 49"], True))
+# x = "3  "
+# print("{}{}".format(" "*4, x.rstrip()))
