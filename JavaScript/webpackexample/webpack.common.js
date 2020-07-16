@@ -4,7 +4,10 @@ var HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
     // remove mode in common webpack file
     // remove output file because in dev version I dont want contentHash in production version I do
-    entry: "./src/index.js",
+    entry: {
+        main: "./src/index.js",
+        vendor: "./src/vendor.js"
+    },
     plugins: [new HtmlWebpackPlugin({
         template: "./src/template.html"
     })],
