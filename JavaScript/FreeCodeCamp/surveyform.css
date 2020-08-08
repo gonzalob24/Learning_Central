@@ -11,12 +11,14 @@ body {
     width:100%;
     height: auto;
 }
-div {
+.main-div {
     max-width: 720px;
     width: 80%;
     margin: 0 auto;
     display: block;
-    background: rgb(3, 24, 61);
+    background: rgba(3, 24, 61, .75);
+}
+div {
     padding: 10px;
 }
 h1 {
@@ -39,6 +41,7 @@ h1 {
     height: 2.4rem;
     border: 1px solid rgb(255, 255, 255);
     border-radius: .25rem;
+    margin-top: 10px;
 }
 
 #comments {
@@ -52,6 +55,8 @@ button {
     background-color: rgb(33, 79, 117);
     color: rgb(255, 255, 255);
     font-size: 1.5rem;
+    border-radius: .25rem;
+    border: 1px solid rgb(33, 79, 117);
 }
 
 .header {
