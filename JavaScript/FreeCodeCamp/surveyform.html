@@ -1,0 +1,95 @@
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=">
+    <title>Free Code Camp Survey Project</title>
+    <link rel="stylesheet" href="./surveyform.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <h1 id="title">Machine Learning Survey</h1>
+        <p id="description">Lets take the time to see how much you love machine learning.</p>
+
+        <form id="survey-form">
+            <div class="survey">
+                <label id="name-label" for="name">Name:</label>
+                <input type="text" name="name" id="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="survey">
+                <label id="email-label" for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="survey">
+                <label id="number-label" for="number">Age (optional):</label>
+                <input type="number" name="number" id="number" min="10" max="100" placeholder="Age">
+            </div>
+
+            <div class="survey">
+                <p>What is your current occupation?</p>
+                <select name="occupation" id="dropdown" requires>
+                    <option disabled selected value>Select your current role</option>
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="professional">Full-Time</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="survey">
+                <p>How much eperience do you have with Machine Learning.</p>
+                <label for="professional">
+                    <input type="radio" id="professional" name="experience" value="professional">Pro</label>
+                <label for="intermediate">
+                    <input type="radio" name="experience" id-"intermediate" value="intermedaite">Intermediate</label>
+                <label for="beginner">
+                    <input type="radio" name="experience" id="begineer" value="beginnger">Beginner</label>
+            </div>
+
+            <div class="survey">
+                <p>What is your favorite topic in Machine Learning?</p>
+                <select name="ml-topic" id="favorite-topic">
+                    <option disabled selected value>Select your favorite topic</option>
+                    <option value="linear-regression">Linear Regression</option>
+                    <option value="random-forest">Random Forest</option>
+                    <option value="decision-trees">Decision Trees</option>
+                    <option value="ensemble">Ensemble</option>
+                    <option value="gradient-descent">Gradient Descent</option>
+                </select>
+            </div>
+
+            <div class="survey">
+                <p>What areas in ML would you like to improve on. <span class="select-some">(Select all that
+                        apply)</span> </p>
+                <label for="data-visualization">
+                    <input type="checkbox" name="improve" value="data-visualization">Data Visualization</label>
+                <label for="gradient-descent">
+                    <input type="checkbox" name="improve" value="gradient-descent">Gradient Descent</label>
+                <label for="numpy"><input type="checkbox" name="improve" value="numpy">Numpy</label>
+                <label for="pandas"><input type="checkbox" name="improve" value="pandas">Pandas</label>
+                <label for="algorithms"><input type="checkbox" name="improve" value="algorithms">Algorithms</label>
+            </div>
+
+            <div class="survey">
+                <p>What would you like us to know</p>
+                <textarea name="comments" id="comments"
+                    palceholder="Please enter any information related to machine learning.."></textarea>
+            </div>
+            <div>
+                <button type="submit" id="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

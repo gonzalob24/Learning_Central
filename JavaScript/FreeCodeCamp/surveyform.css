@@ -1,0 +1,19 @@
+body {
+    font-family: "Open Sans";
+}
+div {
+    max-width: 720px;
+    width: 80%;
+    margin: 0 auto;
+}
+h1 {
+    text-align: center;
+}
+
+#description {
+    text-align: center;
+}
+
+.survey {
+    margin-bottom: 20px;
+}
