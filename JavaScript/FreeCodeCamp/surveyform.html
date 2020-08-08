@@ -14,29 +14,32 @@
 </head>
 
 <body>
-    <div>
+    <header class="header">
         <h1 id="title">Machine Learning Survey</h1>
         <p id="description">Lets take the time to see how much you love machine learning.</p>
-
+    </header>
+    <div>
         <form id="survey-form">
             <div class="survey">
                 <label id="name-label" for="name">Name:</label>
-                <input type="text" name="name" id="name" placeholder="Enter your name" required>
+                <input type="text" name="name" id="name" placeholder="Enter your name" class="design-input" required>
             </div>
 
             <div class="survey">
                 <label id="email-label" for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <input type="email" id="email" name="email" placeholder="Enter your email" class="design-input"
+                    required>
             </div>
 
             <div class="survey">
                 <label id="number-label" for="number">Age (optional):</label>
-                <input type="number" name="number" id="number" min="10" max="100" placeholder="Age">
+                <input type="number" name="number" id="number" min="10" max="100" class="design-input"
+                    placeholder="Age">
             </div>
 
             <div class="survey">
                 <p>What is your current occupation?</p>
-                <select name="occupation" id="dropdown" requires>
+                <select name="occupation" id="dropdown" class="design-input" requires>
                     <option disabled selected value>Select your current role</option>
                     <option value="student">Student</option>
                     <option value="teacher">Teacher</option>
@@ -47,17 +50,23 @@
 
             <div class="survey">
                 <p>How much eperience do you have with Machine Learning.</p>
-                <label for="professional">
-                    <input type="radio" id="professional" name="experience" value="professional">Pro</label>
-                <label for="intermediate">
-                    <input type="radio" name="experience" id-"intermediate" value="intermedaite">Intermediate</label>
-                <label for="beginner">
-                    <input type="radio" name="experience" id="begineer" value="beginnger">Beginner</label>
+                <div>
+                    <input type="radio" id="professional" class="exp-radio" name="experience" value="professional">
+                    <label for="professional">Pro</label>
+                </div>
+                <div>
+                    <input type="radio" name="experience" id="intermediate" class="exp-radio" value="intermedaite">
+                    <label for="intermediate">Intermediate</label>
+                </div>
+                <div>
+                    <input type="radio" name="experience" id="begineer" class="exp-radio" value="beginnger">
+                    <label for="beginner">Beginner</label>
+                </div>
             </div>
 
             <div class="survey">
                 <p>What is your favorite topic in Machine Learning?</p>
-                <select name="ml-topic" id="favorite-topic">
+                <select name="ml-topic" id="favorite-topic" class="design-input">
                     <option disabled selected value>Select your favorite topic</option>
                     <option value="linear-regression">Linear Regression</option>
                     <option value="random-forest">Random Forest</option>
@@ -70,18 +79,35 @@
             <div class="survey">
                 <p>What areas in ML would you like to improve on. <span class="select-some">(Select all that
                         apply)</span> </p>
-                <label for="data-visualization">
-                    <input type="checkbox" name="improve" value="data-visualization">Data Visualization</label>
-                <label for="gradient-descent">
-                    <input type="checkbox" name="improve" value="gradient-descent">Gradient Descent</label>
-                <label for="numpy"><input type="checkbox" name="improve" value="numpy">Numpy</label>
-                <label for="pandas"><input type="checkbox" name="improve" value="pandas">Pandas</label>
-                <label for="algorithms"><input type="checkbox" name="improve" value="algorithms">Algorithms</label>
+                <div>
+                    <input type="checkbox" name="improve" value="data-visualization">
+                    <label for="data-visualization">Data Visualization</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" name="improve" value="gradient-descent">
+                    <label for="gradient-descent">Gradient Descent</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" name="improve" value="numpy">
+                    <label for="numpy">Numpy</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" name="improve" value="pandas">
+                    <label for="pandas">Pandas</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" name="improve" value="algorithms">
+                    <label for="algorithms">Algorithms</label>
+                </div>
             </div>
 
             <div class="survey">
                 <p>What would you like us to know</p>
-                <textarea name="comments" id="comments"
+                <textarea name="comments" id="comments" class="design-input"
                     palceholder="Please enter any information related to machine learning.."></textarea>
             </div>
             <div>
