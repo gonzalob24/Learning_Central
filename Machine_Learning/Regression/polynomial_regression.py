@@ -12,7 +12,7 @@ x = dataset.iloc[:, 1:2].values  # is a list of all the values in the table call
 y = dataset.iloc[:, 2].values    # is a list of the last column (y is a vector)
 
 # When data is very small there is no need to split the data.
-# We have 10 elements in thsi training set
+# We have 10 elements in this training set
 # Split data set into two sets, training and test set
 # from sklearn.model_selection import train_test_split
 # dependant and independant variable, 20% goes to test_set
@@ -36,7 +36,7 @@ from sklearn.preprocessing import PolynomialFeatures
 poly_reg = PolynomialFeatures(degree=4)
 # Now create the squared matrix
 # poly reg created the np.ones in the first colunm of matrix of features and 
-# transormed matrix to x_poly
+# transormed matrix of features to x_poly
 x_poly = poly_reg.fit_transform(x)
 poly_reg.fit(x_poly, y)
 # We need to include the fit into a multiple linear regression model
@@ -47,7 +47,7 @@ lin_reg_2.fit(x_poly, y)
 # Visualising the Linear Regression results
 plt.scatter(x, y, color="red")
 # ploting the real points and the predictions using lin_reg
-# this model is not very good because it does not fir the points very well
+# this model is not very good because it does not fit the points very well
 plt.plot(x, lin_reg.predict(x), color="blue")
 plt.title("Truth or Bluff (Linear Regression)")
 plt.xlabel("Position Level")

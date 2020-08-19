@@ -45,12 +45,18 @@ classifier.fit(x_train, y_train)
 # Predicting the test set results
 y_pred = classifier.predict(x_test)
 
+classifier.predict(sc_x.transform([[30, 87000]]))
+
+print(np.concatenate((y_pred.reshape(-1,1), y_test.reshape(-1,1)), 1))
+
 # Evaluating the performance, take a look at the number of correct predictions
 # making the confusion matrix (wlil contain the correct from test set 
 # and incorrect predictions)
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, accuracy_score
 cm = confusion_matrix(y_test, y_pred)
 
+acc = accuracy_score(y_test, y_pred)
+print(acc)
 
 # Visualising the Training set results
 from matplotlib.colors import ListedColormap
