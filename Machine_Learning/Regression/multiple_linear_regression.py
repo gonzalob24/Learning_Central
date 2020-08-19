@@ -5,22 +5,31 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# Importing the dataset
+# Importing the dataset --> which start up to invest in
 dataset = pd.read_csv('50_Startups.csv')
 x = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, 4].values
 
 # encoding categorical data into values
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder
-label_encoder_x = LabelEncoder()
-x[:, 3] = label_encoder_x.fit_transform(x[:, 3])
+# from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+# label_encoder_x = LabelEncoder()
+# x[:, 3] = label_encoder_x.fit_transform(x[:, 3])
 
 # Changes the country names to values
-onehutencoder = OneHotEncoder(categorical_features=[3])
-x = onehutencoder.fit_transform(x).toarray()
+# onehutencoder = OneHotEncoder(categories=[3], sparse=False)
+# x[:,3] = onehutencoder.fit_transform(x[:,3].reshape(-1,1)).toarray()
+# Encode independent variables into values using onehot encoding with sklearn
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
 
+ct = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [3])], remainder='passthrough')
+x = np.array(ct.fit_transform(x)) # returns new matrix      
+
+# always omit one dummy variable
 # Avoiding the dummy variable trap
-x = x[:, 1:]
+# the linear model will remove it form me b/c it will select the 
+# best parameters for the best fit line
+# x = x[:, 1:]
 
 # Split data set into two sets, training and test set
 from sklearn.model_selection import train_test_split
@@ -45,6 +54,10 @@ regressor.fit(x_train, y_train)
 
 # Predicting the Test set results
 y_pred = regressor.predict(x_test)
+np.set_printoptions(precision=2)
+# print(np.concatenate((y_pred.reshape(-1,1), y_test.reshape(-1,1))))
+print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1))))
+
 
 # Building the optimal model using Backward Elimination
 # Remove non statistically important variables.

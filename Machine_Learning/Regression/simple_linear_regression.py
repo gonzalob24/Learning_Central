@@ -48,4 +48,6 @@ plt.xlabel('Years of Experience')
 plt.ylabel('Salary')
 plt.show()
 
-# 
+# Getting the weights and the intercept from the model
+regressor.coef_
+regressor.intercept_
