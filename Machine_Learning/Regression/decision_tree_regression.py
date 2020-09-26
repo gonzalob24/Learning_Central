@@ -12,6 +12,11 @@ x = dataset.iloc[:, 1:2].values
 # Dependent variable
 y = dataset.iloc[:,2].values
 
+# Splitting the dataset into the Training set and Test set
+# from sklearn.model_selection import train_test_split
+# x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 0)
+
+
 # Fitting the Decision Tree Regression to the dataset
 from sklearn.tree import DecisionTreeRegressor
 # use the default setting means square error
@@ -22,6 +27,12 @@ regressor.fit(x, y)
 # Predicting a new result
 # Salary is slightly below
 y_pred = regressor.predict([[6.5]])
+np.set_printoptions(precision=2)
+print(np.concatenate((y_pred.reshape(len(y_pred),1), y.reshape(len(y),1)),1))
+
+from sklearn.metrics import r2_score
+r2_score(y, y_pred)
+
 
 # Visualizing the results
 # This visualization plots the 10 observaitons and 

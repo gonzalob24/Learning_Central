@@ -5,17 +5,21 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# Importing the dataset --> which start up to invest in
+# Importing the dataset
+# Feature_Name
+#   Value
 dataset = pd.read_csv('50_Startups.csv')
 x = dataset.iloc[:, :-1].values
-y = dataset.iloc[:, 4].values
+y = dataset.iloc[:, -1].values
 
 # encoding categorical data into values
+# Only needed if we need to encode any values 
 # from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 # label_encoder_x = LabelEncoder()
 # x[:, 3] = label_encoder_x.fit_transform(x[:, 3])
 
-# Changes the country names to values
+# Changes the country names to values 
+# only needed of I need to encode categorical data
 # onehutencoder = OneHotEncoder(categories=[3], sparse=False)
 # x[:,3] = onehutencoder.fit_transform(x[:,3].reshape(-1,1)).toarray()
 # Encode independent variables into values using onehot encoding with sklearn
@@ -23,13 +27,14 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 
 ct = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [3])], remainder='passthrough')
-x = np.array(ct.fit_transform(x)) # returns new matrix      
+# returns new matrix 
+x = np.array(ct.fit_transform(x))     
 
 # always omit one dummy variable
 # Avoiding the dummy variable trap
 # the linear model will remove it form me b/c it will select the 
 # best parameters for the best fit line
-# x = x[:, 1:]
+x = x[:, 1:]
 
 # Split data set into two sets, training and test set
 from sklearn.model_selection import train_test_split
@@ -49,7 +54,7 @@ y_train = sc_y.fit_transform(y_train.reshape(-1,1))"""
 from sklearn.linear_model import LinearRegression
 # regressor object
 regressor = LinearRegression()
-# FIt the regressor to training set
+# Fit the regressor to training set
 regressor.fit(x_train, y_train)
 
 # Predicting the Test set results
@@ -57,6 +62,18 @@ y_pred = regressor.predict(x_test)
 np.set_printoptions(precision=2)
 # print(np.concatenate((y_pred.reshape(-1,1), y_test.reshape(-1,1)),1))
 print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)), 1))
+
+# Evaluating the Model Performance
+from sklearn.metrics import r2_score
+r2_score(y_test, y_pred)
+
+
+
+
+
+
+
+
 
 
 # Building the optimal model using Backward Elimination

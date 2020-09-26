@@ -7,17 +7,18 @@ import pandas as pd
 
 # Importing the dataset
 dataset = pd.read_csv('Position_Salaries.csv')
-x = dataset.iloc[:, 1:2].values  # is a list of all the values in the table called 
-                                 # features (x is a matrix)
-y = dataset.iloc[:, 2].values    # is a list of the last column (y is a vector)
+# is a list of all the values in the table called
+# x features (x is a matrix)
+# y labels is a list of the last column (y is a vector) 
+x = dataset.iloc[:, 1:2].values
+y = dataset.iloc[:, -1].values
 
 # When data is very small there is no need to split the data.
 # We have 10 elements in this training set
 # Split data set into two sets, training and test set
-# from sklearn.model_selection import train_test_split
 # dependant and independant variable, 20% goes to test_set
-# x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, 
-                                                        # random_state = 0)
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 0)
 
 # No need for feature scalling either
 # Feature Scaling
@@ -33,9 +34,9 @@ lin_reg.fit(x, y)
 
 # Fitting Polynomial Regression to the dataset
 from sklearn.preprocessing import PolynomialFeatures
-poly_reg = PolynomialFeatures(degree=4)
+poly_reg = PolynomialFeatures(degree=2)
 # Now create the squared matrix
-# poly reg created the np.ones in the first colunm of matrix of features and 
+# poly reg created the np.ones in the first column of matrix of features and 
 # transormed matrix of features to x_poly
 x_poly = poly_reg.fit_transform(x)
 poly_reg.fit(x_poly, y)
@@ -76,3 +77,7 @@ plt.show()
 lin_reg.predict([[6.5]])
 # Predicting a new result with Polynomial Regression
 lin_reg_2.predict(poly_reg.fit_transform([[6.5]]))
+
+# Evaluating the Model Performance
+from sklearn.metrics import r2_score
+r2_score(y, lin_reg_2.predict(poly_reg.fit_transform(x)))

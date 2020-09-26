@@ -7,9 +7,12 @@ import pandas as pd
 
 # Importing the dataset
 dataset = pd.read_csv('Position_Salaries.csv')
-x = dataset.iloc[:, 1:2].values  # is a list of all the values in the table called 
-                                 # features (x is a matrix)
-y = dataset.iloc[:, 2].values    # is a list of the last column (y is a vector)
+# is a list of all the values in the table called 
+# x features (x is a matrix)
+# y is a list of the last column (y is a vector)
+x = dataset.iloc[:, 1:2].values
+y = dataset.iloc[:, 2].values
+y = y.reshape(len(y), -1)
 
 # When data is very small there is no need to split the data.
 # We have 10 elements in thsi training set
@@ -32,7 +35,7 @@ x = sc_x.fit_transform(x)
 y = sc_y.fit_transform(y.reshape(-1, 1))
 
 # Fitting SVR to the dataset. The 3 lines below create the SVR regressor
-# rkb makes the kernel non linear
+# rbf makes the kernel non linear
 # For the last data point since it is very far from the other employees
 # The SVR model decided to treat it as an outlier
 from sklearn.svm import SVR
@@ -43,6 +46,15 @@ regressor.fit(x, y)
 # This will give us the scalled version so we need to inverse with
 # inverse_tranform method
 y_pred = sc_y.inverse_transform(regressor.predict(sc_x.transform(np.array([[6.5]]))))
+
+
+# Evaluating the Model Performance
+from sklearn.metrics import r2_score
+r2_score(y, y_pred)
+
+
+
+
 
 # Visualising the SVR results                                       
 plt.scatter(x, y, color='red')
