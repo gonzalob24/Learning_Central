@@ -1,6 +1,6 @@
 # Logistic Regression
 """
-data set containes information of users in social network and estimated salary
+data set contains information of users in social network and estimated salary
 one client is a car company who launched an SUV and we want to see which users 
 would by the SUV
 one colum has 0 nor no 1 for yes
@@ -50,7 +50,7 @@ classifier.predict(sc_x.transform([[30, 87000]]))
 print(np.concatenate((y_pred.reshape(-1,1), y_test.reshape(-1,1)), 1))
 
 # Evaluating the performance, take a look at the number of correct predictions
-# making the confusion matrix (wlil contain the correct from test set 
+# making the confusion matrix (will contain the correct predictions from test set 
 # and incorrect predictions)
 from sklearn.metrics import confusion_matrix, accuracy_score
 cm = confusion_matrix(y_test, y_pred)
