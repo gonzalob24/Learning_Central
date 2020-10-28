@@ -112,6 +112,17 @@ console.log('Map to array', eventsAArray);
 gameEvents.delete(64)
 console.log(gameEvents, 'ENDDDD');
 
+const checkDogs = (dogsJulia, dogsKate) => {
+    const juliaCopy = dogsJulia.slice(1, -1)
+    const allDogs = [...juliaCopy, ...dogsKate]
+    allDogs.forEach((age, i) => {
+        if (age < 3) { // its a puppu
+            console.log(`Do number ${i+1} is a puppy, and is ${age} years old`);
+        } else { // its an adult
+            console.log(`Do number ${i+1} is an adult, and is ${age} years old`);
+        }
+    })
+}
 
-
+// checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3])
 

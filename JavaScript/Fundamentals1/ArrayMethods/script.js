@@ -89,7 +89,9 @@ createUserName(accounts);
 
 console.log(accounts);
 
-
+const deposits = account1.movements.filter(function(mov) {
+  console.log(mov);
+})
 
 
 

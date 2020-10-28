@@ -236,8 +236,17 @@ console.log(poll);
 
 // document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll))
 
-const testArray1 = [5,2,3]
-const testArray2 = [1,5,3,9,6,1]
+const testArray1 = [5,2,3];
+const testArray2 = [1,5,3,9,6,1];
 
-poll.displayResults.call({answers: testArray1})
-poll.displayResults.call({answers: testArray2})
+poll.displayResults.call({answers: testArray1});
+poll.displayResults.call({answers: testArray2});
+
+
+(function(){
+    const header = document.querySelector('h1');
+    header.style.color = 'red';
+    document.querySelector('body').addEventListener('click', function() {
+        header.style.color = 'blue'
+    });
+})();
