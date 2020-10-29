@@ -22,14 +22,18 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
   hours,
-  order: function(startIndex, mainIndex) {
-    return [this.starterMenu[startIndex], this.mainMenu[mainIndex]]
+  order: function (startIndex, mainIndex) {
+    return [this.starterMenu[startIndex], this.mainMenu[mainIndex]];
   },
 
-  orderDelivery: function({startIndex, mainIndex, time, address}) {
-    console.log(`Order received! ${this.starterMenu} and ${this,this.mainMenu[mainIndex]} will be delivered at ${address} at ${time}`);
+  orderDelivery: function ({ startIndex, mainIndex, time, address }) {
+    console.log(
+      `Order received! ${this.starterMenu} and ${
+        (this, this.mainMenu[mainIndex])
+      } will be delivered at ${address} at ${time}`
+    );
   },
-  orderPizza: function(mainIngredients, ...otherIngredients) {
+  orderPizza: function (mainIngredients, ...otherIngredients) {
     console.log(mainIngredients);
     console.log(otherIngredients);
   },
@@ -42,108 +46,109 @@ restaurant.orderDelivery({
   strterIndex: 2,
 });
 
-const arr = [1,2,3,4]
+const arr = [1, 2, 3, 4];
 
-const [w, ,x] = arr
+const [w, , x] = arr;
 
-let [first, ,second] = restaurant.categories
+let [first, , second] = restaurant.categories;
 
 console.log(`${first} , ${second}`);
-[first, second] = [second, first]
+[first, second] = [second, first];
 console.log(`${first} , ${second}`);
 
-const [starter, mainCourse] = restaurant.order(2,0)
-console.log(`${starter} ${mainCourse}`)
+const [starter, mainCourse] = restaurant.order(2, 0);
+console.log(`${starter} ${mainCourse}`);
 
-const nested = [1, 2, [3, 4]]
-const [i, ,j] = nested
+const nested = [1, 2, [3, 4]];
+const [i, , j] = nested;
 console.log(i, j);
 
 // destructure inside destructure
-const [l, ,[m, n]] = nested
+const [l, , [m, n]] = nested;
 console.log(l, m, n);
 
 // Defualt values can be indefined of not enough values to destructure
 
 // destructure objects with {}
 
-const {name, openingHours, categories} = restaurant
+const { name, openingHours, categories } = restaurant;
 console.log(name, openingHours, categories);
 
 // change variable names
-const {name: restName, openingHours: hours1, categories: tags} = restaurant
+const { name: restName, openingHours: hours1, categories: tags } = restaurant;
 
 console.log(restName, hours1, tags);
 
-// 
-const {menu=[], starterMenu:starters=[]} = restaurant
+//
+const { menu = [], starterMenu: starters = [] } = restaurant;
 console.log(menu, starters);
 
 // mutating variable while destructuing
 let a = 111;
 let b = 999;
 
-const obj = {a: 23, b: 7, c: 14};
+const obj = { a: 23, b: 7, c: 14 };
 
-({a, b} = obj);
+({ a, b } = obj);
 console.log(a, b);
 
 // nested objects
-const {fri: {open: o, close: c}} = hours
+const {
+  fri: { open: o, close: c },
+} = hours;
 console.log(o, c);
 
 // Array spread operator --> works on all iterabels --? arrays, string, maps, sets NOT Objects
-const arr2 = [7,8,9]
+const arr2 = [7, 8, 9];
 
-const arr3 = [1, 2, ...arr2]
+const arr3 = [1, 2, ...arr2];
 
 console.log(arr3);
 console.log(...arr3);
 
-const newMenu = [...restaurant.mainMenu, 'Gnocci']
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
 console.log(newMenu);
 
-
 // copy array
-const mainMenuCopy = [...restaurant.mainMenu]
+const mainMenuCopy = [...restaurant.mainMenu];
 
 // join 2 arrays
-const joinedArray = [...restaurant.mainMenu, ...restaurant.starterMenu]
+const joinedArray = [...restaurant.mainMenu, ...restaurant.starterMenu];
 console.log(joinedArray);
 
-const str = 'Gonzalo'
-const letters = [...str, 'GG']
+const str = 'Gonzalo';
+const letters = [...str, 'GG'];
 console.log(letters);
-const letter2 = str.split('').join()
+const letter2 = str.split('').join();
 console.log(letter2);
-
 
 // Rest Pattern and Parameters --> opposite of spread--> this packs elements into an array
 
-const [az, bz, ...others] = [1,2,3,4,5]
+const [az, bz, ...others] = [1, 2, 3, 4, 5];
 console.log(a, b, others);
 
-const [pizza, , risoto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu]
+const [pizza, , risoto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
 
 console.log(pizza, risoto, otherFood);
 
-
 //Objects
-const {sat, ...weekends} = restaurant.hours
+const { sat, ...weekends } = restaurant.hours;
 console.log(weekends);
 
-const add = function(...numbers) {
+const add = function (...numbers) {
   let sum = 0;
-  for(let i=0; i<numbers.length; i++) {
-    sum += numbers[i]
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
   }
   return sum;
-}
+};
 
+console.log(add(5, 3, 7, 2));
 
-console.log(add(5,3,7,2));
-
-restaurant.orderPizza('mushrooms', 'onions', 'spinach')
+restaurant.orderPizza('mushrooms', 'onions', 'spinach');
 
 const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
 console.log(guests1);
@@ -154,97 +159,101 @@ console.log(guests1);
 // console.log(guestCorrect);
 
 // Looping
-const menu1 = [...restaurant.starterMenu, ...restaurant.mainMenu]
+const menu1 = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-for(const item of menu1) {
-    console.log(menu1)
+for (const item of menu1) {
+  console.log(menu1);
 }
 
 for (const [i, el] of menu1.entries()) {
   // console.log(item); // entries contianes the index of the current element its an iterator
-  console.log(`${i+1}: ${el}`)
+  console.log(`${i + 1}: ${el}`);
 }
 
-for(const day of Object.keys(hours)){
-  console.log(day)
+for (const day of Object.keys(hours)) {
+  console.log(day);
 }
 
-for(const day of Object.values(hours)){
-  console.log(day)
+for (const day of Object.values(hours)) {
+  console.log(day);
 }
 
-for(const [day, {open, close}] of Object.entries(hours)){
-  console.log(`On ${day} we are open from ${open} to ${close}.`)
+for (const [day, { open, close }] of Object.entries(hours)) {
+  console.log(`On ${day} we are open from ${open} to ${close}.`);
 }
 
 // SETS and MAPS --> are also iterable
 
 // Sets collection of unique values
-const ordersSet = new Set(['Pasta', 'Pizza', 'Pasta', 'Risotto'])
-console.log(ordersSet)
+const ordersSet = new Set(['Pasta', 'Pizza', 'Pasta', 'Risotto']);
+console.log(ordersSet);
 console.log(ordersSet.size);
 console.log(ordersSet.has('Pizza'));
-ordersSet.add('Bread')
+ordersSet.add('Bread');
 console.log(ordersSet);
 
 for (const i of ordersSet) {
-    console.log(i);
+  console.log(i);
 }
 
-// 
-const staff = ['Waiter', 'Chef', 'Waiter', 'manager']
+//
+const staff = ['Waiter', 'Chef', 'Waiter', 'manager'];
 
-const staffUnique = new Set(staff)
+const staffUnique = new Set(staff);
 console.log(staffUnique);
 
-const staffArray = [...staffUnique]
+const staffArray = [...staffUnique];
 
 console.log(staffArray);
 
 // MAPS --> map key value pairs. The key can be anything
 
 const rest = new Map();
-rest.set('name', 'Classico Italiano')
-rest.set(1, 'Firenze, Italy')
-rest.set(2, 'Lisbon, Portugal')
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+rest.set(2, 'Lisbon, Portugal');
 
-rest.set('categories', ['italian', 'Pizzeria', 'Vegetariano', 'Organic']).set('Open', 11).set('close', 23).set(true, 'We are open').set(false, 'We are close')
+rest
+  .set('categories', ['italian', 'Pizzeria', 'Vegetariano', 'Organic'])
+  .set('Open', 11)
+  .set('close', 23)
+  .set(true, 'We are open')
+  .set(false, 'We are close');
 
-console.log(rest.get('name'))
-console.log(rest.get(true))
-console.log(rest.get(1))
+console.log(rest.get('name'));
+console.log(rest.get(true));
+console.log(rest.get(1));
 
 // console.log(rest);
 
-const time = 21
-console.log(rest.get(time < rest.get('close')))
+const time = 21;
+console.log(rest.get(time < rest.get('close')));
 
 console.log(rest.has('categories'));
-rest.delete(2)
+rest.delete(2);
 // rest.clear()
-const arr33 = [1,2]
-rest.set(arr33, 'Test')
+const arr33 = [1, 2];
+rest.set(arr33, 'Test');
 
 const question = new Map([
-    ['question', 'What is the best progamming language in the world?'],
-    [1,'C'],
-    [2, 'Java'],
-    [3, 'JS'],
-    ['correct', 3],
-    [true, 'correct \u{1F973}'],
-    [false, 'incorrect \u{1F625}']
-
-])
+  ['question', 'What is the best progamming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JS'],
+  ['correct', 3],
+  [true, 'correct \u{1F973}'],
+  [false, 'incorrect \u{1F625}'],
+]);
 
 console.log(question);
 
 // Object to map
 
-const mapHours = new Map(Object.entries(hours))
+const mapHours = new Map(Object.entries(hours));
 console.log(mapHours);
 
-for(const [key, value] of question) {
-  if(typeof key === 'number') {
+for (const [key, value] of question) {
+  if (typeof key === 'number') {
     console.log(`Answer ${key}: ${value}`);
   }
 }
@@ -252,28 +261,27 @@ for(const [key, value] of question) {
 // const answer = Number(prompt('Your answer'));
 // console.log(question.get(question.get('correct') === answer))
 
-
 // map to array
 console.log([...question]);
 
-const airline = 'TAP Air Seattle'
-const plane = 'SEA2021'
+const airline = 'TAP Air Seattle';
+const plane = 'SEA2021';
 
 console.log(airline.indexOf('r'));
 console.log(airline.slice(4, 7));
 
-const checkMiddleSeat = function(seat) {
+const checkMiddleSeat = function (seat) {
   // B and E are middle seats
   if (seat.slice(-1) === 'B' || seat.slice(-1) === 'E') {
     console.log('Middle seat');
   } else {
     console.log('Not middle seat');
   }
-}
+};
 
-checkMiddleSeat('11B')
-checkMiddleSeat('23C')
-checkMiddleSeat('3E')
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
 
 // behind the scenes js converts string to Object string
 console.log(typeof new String('Gonzalo').slice(1));
@@ -281,26 +289,26 @@ console.log(typeof new String('Gonzalo').slice(1));
 console.log(airline.toLowerCase());
 console.log(airline.toUpperCase());
 
-const passanger = 'gonZAlo'
+const passanger = 'gonZAlo';
 
-const email = 'hello@me.com'
-const loginEmail = ' Hello@Me.Io \n'
+const email = 'hello@me.com';
+const loginEmail = ' Hello@Me.Io \n';
 
 const lowerEmail = loginEmail.toLowerCase();
 const trimmedEmail = lowerEmail.trim();
 console.log(trimmedEmail);
 
-const price = '288,97l'
-const priceUS = price.replace('l', '$').replace(',','.')
+const price = '288,97l';
+const priceUS = price.replace('l', '$').replace(',', '.');
 console.log(priceUS);
 
-const announcement = 'All passenger come to boarding door 23, boarding door 23'
+const announcement = 'All passenger come to boarding door 23, boarding door 23';
 // console.log(announcement.replaceAll('door', 'gate'));
 
-const newAnnouncement = announcement.replace(/door/g, 'gate')
+const newAnnouncement = announcement.replace(/door/g, 'gate');
 console.log(newAnnouncement);
 
-const plane2 = 'A320'
+const plane2 = 'A320';
 console.log(plane2.includes('A320'));
 console.log(plane2.startsWith('A'));
 console.log(plane2.padEnd(20, '-'), '\u{1F197}');
