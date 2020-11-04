@@ -192,6 +192,76 @@ const sumDigits = (num) =>{
     }
 }
 
-console.log(sumDigits(126));
-console.log(sumDigits(113));
-console.log(sumDigits(12));
+// console.log(sumDigits(126));
+// console.log(sumDigits(113));
+// console.log(sumDigits(12));
+
+const count7 = (positiveInt) => {
+    // Base case
+    if(positiveInt === 0) {
+        return 0
+    } else { // Recursion
+        if(positiveInt % 10 === 7) {
+            return 1 + count7(Math.trunc(positiveInt/10))
+        } else {
+            return count7(Math.trunc(positiveInt/10))
+        } 
+    }
+}
+
+// console.log(count7(1));
+
+const count8 = (posInt) => {
+    // Base case
+    if(posInt === 0) {
+        return 0
+    } else {
+        if(posInt % 100 === 88) {
+            return 2 + count8(Math.trunc(posInt/10))
+        } else if(posInt % 10 === 8) {
+            return 1 + count8(Math.trunc(posInt/10))
+        } else {
+            return count8(Math.trunc(posInt/10))
+        }
+    }
+}
+
+// console.log(count8(8818));
+
+
+const powersN = (base, n) => {
+    // base
+    if(n === 1) {
+        return base
+    } else { // recursion
+        return base * powersN(base, n - 1)
+    } 
+}
+
+
+// console.log(powersN(4, 2));
+// console.log(powersN(3, 3));
+// console.log(powersN(5, 5));
+
+const countLowerX = (str) => {
+    // base
+    if(str === "") {
+        return 0
+    } else {
+        if(str.charAt(0) === 'x') {
+            return 1 + countLowerX(str.slice(1))
+        } else {
+            return countLowerX(str.slice(1))
+        }
+    }
+    //recursion
+}
+
+
+
+// var s = 'Gonzalo'
+// console.log(s.charAt(0))
+// console.log(s.slice(1))
+
+console.log(countLowerX('XxxrsxxxhgtQX'));
+
