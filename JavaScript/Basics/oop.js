@@ -1,11 +1,10 @@
-// ES5 DRY eliminates erros and less work for programmers
+// ES5 DRY eliminates errors and less work for programmers
 
 /* 
 * Own properties -- are defined directly on the object 
 * Prototype properties --- are defined on the prototype 
     - The construtor propperty is a reference to the constructor function that created the instance. 
     - We can check what type of constructor it is to find out what kind of object it is. 
-
 * 
 */
 
