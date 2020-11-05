@@ -113,3 +113,82 @@ const mercedes = new Car("Mercedes", 95);
 
 bmw.accelerate();
 mercedes.break();
+
+//**************** INHERITANCE *************/
+
+const Person3 = function (fName, birthYear) {
+  this.fName = fName;
+  this.birthYear = birthYear;
+};
+
+Person3.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+const Student = function (fName, birthYear, major) {
+  // This is duplicate code so lets inherit form Person3
+  // this.fName = fName;
+  // this.birthYear = birthYear;
+
+  // use call to inherit things from Person
+  Person3.call(this, fName, birthYear);
+
+  this.major = major;
+};
+
+// Linking prototypes to use methods
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.fName} and my major is ${this.major}`);
+};
+
+const james2 = new Student("James", 2020, "CSI");
+console.log("James2");
+james2.introduce();
+console.log(`First name: ${james2.fName}`);
+james2.calcAge();
+
+// ****************** Car Class **************//
+
+// Challenge exercise
+const Car2 = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+
+Car2.prototype.accelerate = function () {
+  this.speed += 10;
+  console.log(this.speed);
+};
+
+Car2.prototype.break = function () {
+  this.speed -= 5;
+  console.log(this.speed);
+};
+
+const EV = function (make, speed, charge) {
+  // inherit
+  Car2.call(this, make, speed);
+
+  this.charge = charge;
+};
+
+// Link prototypes
+EV.prototype = Object.create(Car2.prototype);
+
+EV.prototype.chargeBattery = function (chargeTo) {
+  this.charge = chargeTo;
+};
+
+EV.prototype.accelerate = function () {
+  this.speed += 20;
+  this.charge -= 1;
+
+  console.log(
+    `${this.make} going ${this.speed}, with a charge of ${this.charge}%`
+  );
+};
+
+const tesla = new EV("Tesla", 120, 23);
+tesla.accelerate();

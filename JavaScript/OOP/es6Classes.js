@@ -141,3 +141,22 @@ const ford = new Car2("Ford", 120);
 console.log(ford.speedUS);
 ford.speedUS = 50;
 console.log(ford.speed);
+
+// ************* INHERITANCE ******* ////
+// extends links prototypes
+class Student extends Person {
+  constructor(fName, birthYear, major) {
+    // super is responsible for the this keyword
+    super(fName, birthYear);
+    this.major = major;
+  }
+
+  introduce() {
+    console.log(`My name is ${this.fName} and my major is ${this.major}.`);
+  }
+}
+
+const mike = new Student("Mike Jones", 1990, "Bio");
+console.log(mike);
+mike.introduce();
+mike.calcAge();
