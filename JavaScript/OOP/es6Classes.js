@@ -10,34 +10,34 @@
 
 // Expression
 class Person {
-  constructor(fName, birthYear) {
-    this.fName = fName;
-    this.birthYear = birthYear;
-  }
+	constructor(fName, birthYear) {
+		this.fName = fName;
+		this.birthYear = birthYear;
+	}
 
-  // these become part of the prototype property of the
-  // Person class
-  calcAge() {
-    console.log(2037 - this.birthYear);
-  }
+	// these become part of the prototype property of the
+	// Person class
+	calcAge() {
+		console.log(2037 - this.birthYear);
+	}
 
-  greet() {
-    console.log(`Hey ${this.fName}`);
-  }
+	greet() {
+		console.log(`Hey ${this.fName}`);
+	}
 
-  get age() {
-    return 2037 - this.birthYear;
-  }
+	get age() {
+		return 2037 - this.birthYear;
+	}
 
-  set fullName(name) {
-    if (name.includes(" ")) {
-      this._fName = name;
-    } else alert(`${name} is not a ful name`);
-  }
+	set fullName(name) {
+		if (name.includes(" ")) {
+			this._fName = name;
+		} else alert(`${name} is not a ful name`);
+	}
 
-  static hey() {
-    console.log("Hey there!!");
-  }
+	static hey() {
+		console.log("Hey there!!");
+	}
 }
 
 const fonzi = new Person("Fonzi", 1996);
@@ -49,7 +49,7 @@ console.log(fonzi.__proto__ == Person.prototype);
 
 // recall we can add methods this way
 Person.prototype.greet = function () {
-  console.log(`Hey ${this.fName}`);
+	console.log(`Hey ${this.fName}`);
 };
 
 fonzi.greet();
@@ -66,17 +66,17 @@ console.log(gonzalo);
 // Getters and Setters --> Accessors
 
 const account = {
-  owner: "Jonas",
-  movements: [200, 530, 120, 300],
+	owner: "Jonas",
+	movements: [200, 530, 120, 300],
 
-  // without calling the function
-  get latest() {
-    return this.movements.slice(-1).pop();
-  },
+	// without calling the function
+	get latest() {
+		return this.movements.slice(-1).pop();
+	},
 
-  set latest(mov) {
-    this.movements.push(mov);
-  },
+	set latest(mov) {
+		this.movements.push(mov);
+	},
 };
 
 console.log(account.latest);
@@ -88,14 +88,14 @@ Person.hey();
 // object.create
 
 const PersonProto = {
-  calcAge() {
-    console.log(2037 - this.birthYear);
-  },
+	calcAge() {
+		console.log(2037 - this.birthYear);
+	},
 
-  init(fName, birthYear) {
-    this.fName = fName;
-    this.birthYear = birthYear;
-  },
+	init(fName, birthYear) {
+		this.fName = fName;
+		this.birthYear = birthYear;
+	},
 };
 
 // linked PersonProto object
@@ -116,25 +116,25 @@ james.calcAge();
 
 //
 class Car2 {
-  constructor(model, speed) {
-    this.model = model;
-    this.speed = speed;
-  }
+	constructor(model, speed) {
+		this.model = model;
+		this.speed = speed;
+	}
 
-  accelerate() {
-    this.speed += 10;
-  }
+	accelerate() {
+		this.speed += 10;
+	}
 
-  break() {
-    this.speed -= 10;
-  }
-  get speedUS() {
-    return this.speed / 1.6;
-  }
+	break() {
+		this.speed -= 10;
+	}
+	get speedUS() {
+		return this.speed / 1.6;
+	}
 
-  set speedUS(speedUS) {
-    this.speed = speedUS * 1.6;
-  }
+	set speedUS(speedUS) {
+		this.speed = speedUS * 1.6;
+	}
 }
 
 const ford = new Car2("Ford", 120);
@@ -145,15 +145,15 @@ console.log(ford.speed);
 // ************* INHERITANCE ******* ////
 // extends links prototypes
 class Student extends Person {
-  constructor(fName, birthYear, major) {
-    // super is responsible for the this keyword
-    super(fName, birthYear);
-    this.major = major;
-  }
+	constructor(fName, birthYear, major) {
+		// super is responsible for the this keyword
+		super(fName, birthYear);
+		this.major = major;
+	}
 
-  introduce() {
-    console.log(`My name is ${this.fName} and my major is ${this.major}.`);
-  }
+	introduce() {
+		console.log(`My name is ${this.fName} and my major is ${this.major}.`);
+	}
 }
 
 const mike = new Student("Mike Jones", 1990, "Bio");
