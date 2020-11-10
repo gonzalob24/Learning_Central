@@ -96,6 +96,7 @@ class SinglyLinkedList {
 			for (let i = 0; i < index; i++) {
 				p = p.next;
 			}
+			console.log("itemAt", p.info);
 			return p;
 		}
 	}
@@ -129,6 +130,37 @@ class SinglyLinkedList {
 		}
 	}
 
+	remove(index) {
+		if (index < 0) {
+			return undefined;
+		} else if (index === this.length - 1) {
+			var removedItem = this.pop();
+		} else if (index === 0) {
+			var removedItem = this.shift();
+		} else {
+			var prevNode = this.itemAt(index - 1);
+			var removedItem = prevNode.next.info;
+			prevNode.next = prevNode.next.next;
+		}
+		this.length--;
+		return removedItem;
+	}
+
+	reverse() {
+		var prev = null;
+		var p = this.head;
+		this.head = this.tail;
+		this.tail = p;
+		var next1;
+
+		while (p !== null) {
+			next1 = p.next;
+			p.next = prev;
+			prev = p;
+			p = next1;
+		}
+	}
+
 	get listSize() {
 		return this.length;
 	}
@@ -155,7 +187,12 @@ console.log(`Item at 2 ${sll.itemAt(2)}`);
 sll.set(55, 2);
 sll.displayList();
 sll.insert(17, 0);
-console.log("New item added");
+console.log("New item added----");
+sll.displayList();
+// sll.itemAt(3);
+// console.log(`Removed: ${sll.remove(3)}`);
+sll.reverse();
+console.log(`-----Reversed------`);
 sll.displayList();
 // console.log(`Last item is ${sll.lastItem}`);
 // console.log(`Popped item: ${sll.pop()}`);
