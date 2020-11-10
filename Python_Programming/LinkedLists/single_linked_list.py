@@ -110,8 +110,36 @@ class SinglyLinkedList:
             tempNode = Node(data)
             tempNode.next = foundNode.next
             foundNode.next = tempNode
-            
+            self.length+=1
             return True
+    
+    def remove(self, index):
+        if (index < 0 or index > self.length):
+            return None
+        elif(index == 0):
+            removedItem = self.shift()
+        elif(index == self.length - 1):
+            removedItem = self.pop()
+        else:
+            prevNode = self.itemAt(index - 1)
+            print(prevNode.info)
+            removedItem = prevNode.next.info
+            prevNode.next = prevNode.next.next
+        self.length -=1
+
+        return removedItem
+
+    def reverse(self):
+        p = self.head
+        self.head = self.tail
+        self.tail = p
+        prev = None
+
+        while p is not None:
+            p_future = p.next
+            p.next = prev
+            prev = p
+            p = p_future
 
     def getSize(self):
         return self.length
@@ -147,7 +175,11 @@ print(sll.set(55, 2))
 sll.display()
 sll.insert(70, 2)
 sll.display()
-
+print(sll.remove(3))
+#print('Removed at 3',sll.remove(3))
+sll.display()
+sll.reverse()
+sll.display()
 
 
 

@@ -1,6 +1,20 @@
 # Double Linked List
 
+class Node(object):
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+        self.prev = None
 
+
+class DoubleLinkedList():
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.length = 0
+
+
+"""
 class Node(object):
 
     def __init__(self, value):
