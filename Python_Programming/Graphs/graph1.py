@@ -5,36 +5,36 @@ class Graph:
     def addVertex(self, vertex):
         if vertex not in self.adjacencyList:
             self.adjacencyList[vertex] = []
-    
+
     def addEdge(self, vertex1, vertex2):
         self.adjacencyList[vertex1].append(vertex2)
         self.adjacencyList[vertex2].append(vertex1)
-    
-    def removeEdge(self, vertex1, vertex2):
-        def filterCity(city):
-            if city != vertex2:
-                return True
-            elif city != vertex1:
-                return True
-            else:
-                return False
 
-        self.adjacencyList[vertex1] = list(filter(lambda vertex: vertex != vertex2, self.adjacencyList[vertex1]))
-        self.adjacencyList[vertex2] = list(filter(lambda vertex: vertex != vertex1, self.adjacencyList[vertex2]))
+    def removeEdge(self, vertex1, vertex2):
+
+        # Good use for a lambda function
+        self.adjacencyList[vertex1] = list(
+            filter(lambda vertex: vertex != vertex2, self.adjacencyList[vertex1]))
+        self.adjacencyList[vertex2] = list(
+            filter(lambda vertex: vertex != vertex1, self.adjacencyList[vertex2]))
 
     def removeVertex(self, vertex):
         del_vertex = self.adjacencyList[vertex]
 
         for city in del_vertex:
             self.removeEdge(vertex, city)
-        
+
+        # delete teh vertex
         del self.adjacencyList[vertex]
-    
+
     def dfsRecursive(self, start):
+        # Store results here
         endResults = []
+        # Mark node as visited
         visited = {}
         adjacencyList = self.adjacencyList
-        
+
+        # Helper function called recursively
         def dfs(vertex):
             if vertex is None:
                 return None
@@ -48,21 +48,23 @@ class Graph:
         return endResults
 
     def dfsIterative(self, start):
-        # create a stack to store results
+        # create a stack to store vertex and neighbors
         stack_arr = [start]
         visited = {}
         results = []
         popped_vertex = None
-
         visited[start] = True
+
         while len(stack_arr) != 0:
             popped_vertex = stack_arr.pop()
+            # append popped verted to results
             results.append(popped_vertex)
+            # check neighbors
             for neighbor in self.adjacencyList[popped_vertex]:
                 if neighbor not in visited:
                     visited[neighbor] = True
                     stack_arr.append(neighbor)
-        return results    
+        return results
 
     def displayGraph(self):
         for city, route in self.adjacencyList.items():
@@ -108,3 +110,6 @@ if __name__ == "__main__":
     g2.displayGraph()
     print(g2.dfsRecursive("A"))
     print(g2.dfsIterative("A"))
+    print("Lambda Example")
+    arr = ['a', 'b', 'c', 'a', 'a', 'e']
+    print(list(filter(lambda a: a != 'a', arr)))
