@@ -1,6 +1,4 @@
 # Heap Tree array implementation
-
-
 class HeapEmptyError(Exception):
     pass
 
@@ -10,7 +8,8 @@ class Heap:
     def __init__(self, maxSize=20):
         self.a = [None] * maxSize
         self.n = 0
-        self.a[0] = 99999  # all values in the heap should be less than this value
+        # all values in the heap should be less than this value
+        self.a[0] = 99999
 
     def insert(self, value):
         self.n += 1  # increment the size of the heap
@@ -21,7 +20,8 @@ class Heap:
         k = self.a[i]
         iparent = i // 2  # index of the parent key
 
-        while self.a[iparent] < k:  # No sentinal  - while (iparent >= 1 && self.a[iparent] < k
+        # No sentinal  - while (iparent >= 1 && self.a[iparent] < k
+        while self.a[iparent] < k:
             self.a[i] = self.a[iparent]
             i = iparent
             iparent = i // 2
@@ -69,7 +69,6 @@ class Heap:
     def display(self):
         if self.n == 0:
             raise HeapEmptyError("Heap is empty")
-            return
         print("Heap size = ", self.n)
         for i in range(1, self.n):
             print(self.a[i], end=" ")
