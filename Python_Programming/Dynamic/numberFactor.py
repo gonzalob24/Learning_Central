@@ -19,4 +19,6 @@ def waysToGetN(n):
     return waysToGetN_TopDown(dp, n)
 
 
-print(waysToGetN(5))
+n = 2
+arr = [0] * (n + 1)
+print(len(arr))
