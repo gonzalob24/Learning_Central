@@ -1,4 +1,4 @@
-
+# O(2^n)
 def fib(nth):
     # first two numbers are 0 and 1 as given
     if nth < 1:
