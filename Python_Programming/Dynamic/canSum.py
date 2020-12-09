@@ -30,13 +30,13 @@ def canSum1(targetSum, nums):
 
     for num in nums:
         remainder = targetSum - num
-        if canSum(remainder, nums) == True:
+        if canSum1(remainder, nums) == True:
             return True
     return False
 
 
-print(canSum1(7, [2, 3]))
-print(canSum1(7, [5, 3, 4, 7]))
-print(canSum1(7, [2, 4]))
-print(canSum1(8, [2, 3, 5]))
-# print(canSum1(300, [7, 14]))
+print(canSum(7, [2, 3], {}))
+print(canSum(7, [5, 3, 4, 7], {}))
+print(canSum(7, [2, 4], {}))
+print(canSum(8, [2, 3, 5], {}))
+print(canSum(300, [7, 14], {}))
