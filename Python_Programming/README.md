@@ -8,7 +8,11 @@ I may not do all of the problems from each chapter since a lot of it is just for
 
     - copy.copy(A) vs copy.deepcopy(A): Use import copy
         - Relevant for compund objects
-    - I can also use slicing to do a shallow copy
+    - I can also use slicing to copy arrays
+
+## Trees
+
+    - understand tree traversal using. Recursion makes it easier to travers trees.
 
 ## Recursion
 

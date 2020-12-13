@@ -25,8 +25,19 @@ def howSum(targetSum, nums, memo={}):
 # print(*arr)
 
 
-print(howSum(7, [2, 3], {}))
-print(howSum(7, [5, 3, 4, 7], {}))
-print(howSum(7, [2, 4], {}))
-print(howSum(8, [2, 3, 5], {}))
-print(howSum(300, [7, 14], {}))
+# print(howSum(7, [2, 3], {}))
+# print(howSum(7, [5, 3, 4, 7], {}))
+# print(howSum(7, [2, 4], {}))
+# print(howSum(8, [2, 3, 5], {}))
+# print(howSum(300, [7, 14], {}))
+arr = [1, 2, 3]
+print(arr)
+
+arr[:] = []
+print(arr)
+n = []
+a = [1, 2, 3]
+n[:] = a[:]
+n[0] = 'H'
+print(n)
+print(10 + None)
