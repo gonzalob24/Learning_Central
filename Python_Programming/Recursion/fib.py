@@ -3,11 +3,10 @@ def fib(n):
     # O(n) -- Time
     # base, we know that the first two numbers are 1, 1
     if n < 0:
-        return "n can't be negative"
-    if n == 1 or n == 2:
-        return 1
-
-    return fib(n - 1) + fib(n - 2)
+        return "Number has to be positive!"
+    if n < 2:
+        return n
+    return fib(n - 2) + fib(n - 1)
     # recursive case
 
 

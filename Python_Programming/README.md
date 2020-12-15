@@ -21,9 +21,14 @@ I may not do all of the problems from each chapter since a lot of it is just for
 
 ## Recursion
 
+    - Use when:
+
+        - problem breaks down into smaller similar subproblems
+        - Graphs, trees, permutations, combinations
+
     - List out different test cases
 
-    - Find base case
+    - Find base case: There can be more than one base case
     - Find recursive case
 
     - Time complexity:
@@ -33,6 +38,12 @@ I may not do all of the problems from each chapter since a lot of it is just for
     - Working with arrays or strings:
 
         - Create a helper function and maintain a reference to the index of the array. This avoids copying the array and reduces time complexity.
+
+## Greedy
+
+    - Choose the next piece that offers most obvious and immediate benefit.
+    - Works great for problems where choosing a locally optimall solution also leads to the optimal solution
+    - Think about it in terms of layers of a brick wall (local solution) --> after many layers we get a wall (optimal solution)
 
 ## Dynamic Prgramming
 
@@ -47,3 +58,4 @@ I may not do all of the problems from each chapter since a lot of it is just for
     - max, sum can be used on array
     - name.count(char) --> counts cahracters in a string
     - collections.count(object) --> create dictionary very easily
+    - Usse deque

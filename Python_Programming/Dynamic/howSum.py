@@ -75,8 +75,8 @@ ar3 = [1, 2, 3, 4]
 for n in ar2:
     print(ar3[1:len(n)] == n)
 art = [1, 2, 3, 4]
-art2 = [6, 2, 6, 5, 1, 2]
-art2.sort()
-print(art[::2])
-print(art2[::2])
-print((art2[::2]))
+# art2 = [6, 2, 6, 5, 1, 2]
+# art2.sort()
+# print(art[::2])
+# print(art2[::2])
+print(art[-1:-4:-1])
