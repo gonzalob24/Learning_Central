@@ -4,6 +4,11 @@ This folder has problems from various books I have read. Like How to Think like 
 
 I may not do all of the problems from each chapter since a lot of it is just for review.
 
+## Time Complexity
+
+    - Time
+    - Space
+
 ## Arrays
 
     - copy.copy(A) vs copy.deepcopy(A): Use import copy
@@ -27,6 +32,7 @@ I may not do all of the problems from each chapter since a lot of it is just for
         - Graphs, trees, permutations, combinations
 
     - List out different test cases
+    - Think about the stack and the order in which items are removed from the stack
 
     - Find base case: There can be more than one base case
     - Find recursive case
