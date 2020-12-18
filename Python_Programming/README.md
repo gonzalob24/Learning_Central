@@ -8,6 +8,9 @@ I may not do all of the problems from each chapter since a lot of it is just for
 
     - Time
     - Space
+    - BigO
+        - Compare two functions f(n) and g(n) for very large values of n.
+        - f(n) is O(g(n)) is there exists some positive real constant c and integer n_0 >= 0 for all n >= n_0: f(n) <= cg(n)
 
 ## Arrays
 
@@ -65,3 +68,4 @@ I may not do all of the problems from each chapter since a lot of it is just for
     - name.count(char) --> counts cahracters in a string
     - collections.count(object) --> create dictionary very easily
     - Usse deque
+    - sorted(array_name) --> nlog(n)
