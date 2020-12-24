@@ -27,6 +27,3 @@ def postfix_evaluation(postfix_expr):
             elif symbol == '^':
                 st.push(y ** x)
     return st.pop()
-
-
-

@@ -12,13 +12,20 @@ I may not do all of the problems from each chapter since a lot of it is just for
         - Compare two functions f(n) and g(n) for very large values of n.
         - f(n) is O(g(n)) is there exists some positive real constant c and integer n_0 >= 0 for all n >= n_0: f(n) <= cg(n)
 
-## Arrays
+## Lists (Python Arrays are faster)
 
     - copy.copy(A) vs copy.deepcopy(A): Use import copy
         - Relevant for compund objects
     - I can also use slicing to copy arrays
     - think about storing elements in a stack or queue for temporary storage
     - Once I have a brute force solution. Look into time complexity and determine why it is slow. what is impacting its performance. Time/Space complexity.
+
+## Linked Lists
+
+    - Why is the head used? To keeep track of the list. It points to the beginning of the list
+    - When a list is created head = None
+    - Similar to Lists except in the way items are inserted and deleted.
+    -
 
 ## Trees
 
@@ -67,5 +74,20 @@ I may not do all of the problems from each chapter since a lot of it is just for
     - max, sum can be used on array
     - name.count(char) --> counts cahracters in a string
     - collections.count(object) --> create dictionary very easily
-    - Usse deque
+    - Use deque
+        - rotate() method
     - sorted(array_name) --> nlog(n)
+
+## Hashing
+
+    - dict
+        - Can't have duplicate keys but can have duplciate values
+        - no order
+    - set
+        - no duplcates
+        - name.add(item)
+        - name.remove(item)
+        - name1 - name2 --> difference
+        - name1 & name2 --> intersection
+        - key in name:
+         (a, b) and (c, d) are symmetric pairs iff, a = d and b = c

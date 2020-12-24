@@ -9,7 +9,7 @@ def postfix_eval(postfix_expr):
         if token in '0123456789':  # isdigit()
             operand_stack.push(int(token))
         else:
-            operand2 = operand_stack.pop() # The last number popped is the second operand
+            operand2 = operand_stack.pop()  # The last number popped is the second operand
             operand1 = operand_stack.pop()
             result = do_math(token, operand1, operand2)
             operand_stack.push(result)
@@ -23,7 +23,7 @@ def do_math(op, op1, op2):
         return op1 / op2
     elif op == '+':
         return op1 + op2
-    else: # op == -
+    else:  # op == -
         return op1 - op2
 
 
