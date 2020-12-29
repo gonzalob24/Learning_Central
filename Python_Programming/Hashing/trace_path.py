@@ -24,8 +24,6 @@ dict = {
     "Boston": "Texas",
     "Missouri": "NewYork",
     "Texas": "Missouri"
-
-
 }
 
 print(trace_path(dict))

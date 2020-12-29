@@ -19,6 +19,7 @@ I may not do all of the problems from each chapter since a lot of it is just for
     - I can also use slicing to copy arrays
     - think about storing elements in a stack or queue for temporary storage
     - Once I have a brute force solution. Look into time complexity and determine why it is slow. what is impacting its performance. Time/Space complexity.
+    - time complexity of slicing is O(n)
 
 ## Linked Lists
 
@@ -74,6 +75,7 @@ I may not do all of the problems from each chapter since a lot of it is just for
     - max, sum can be used on array
     - name.count(char) --> counts cahracters in a string
     - collections.count(object) --> create dictionary very easily
+    - collections.OrderedDict()
     - Use deque
         - rotate() method
     - sorted(array_name) --> nlog(n)
