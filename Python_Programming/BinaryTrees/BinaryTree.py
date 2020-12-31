@@ -74,7 +74,7 @@ class BinaryTree:
         self._postorder(p.rchild)
         print(p.info, end=' ')
 
-    def level_order(self):  # All nodes are visited level by level
+    def level_order(self):  # All nodes are visited level by level BFS
         if self.root is None:
             print("Tree is empty")
             return

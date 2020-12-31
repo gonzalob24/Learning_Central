@@ -1,6 +1,7 @@
 import sys
-sys.path.insert(0,'/home/gonzalo/Documents/git/Learning_Central/Python_Programming/LinkedLists')
+sys.path.insert(0, '/home/gonzalo/Documents/git/Learning_Central/Python_Programming/LinkedLists')
 from edu_linked_list import LinkedList
+
 
 class Graph():
     def __init__(self, vertices):
@@ -16,14 +17,22 @@ class Graph():
         # add an edge
         if source < self.vertices and destination < self.vertices:
             # for directed graph use only this line
-            self.array[source].insert_at_head(destination)  
+            self.array[source].insert_at_head(destination)
             # use this line as well for undirected graph
             # self.array[destination].insert_at_head(source)
 
             # If I were to implement an Undirected Graph i.e (1,0) == (0,1)
             # I would create an edge from destination towards source as well
             # i.e self.list[destination].insertAtHead(source)
-        
+    def bfs(self):
+        result = ""
+        num_of_vertices = self.vertices
+        # Write - Your - Code
+        queue = MyQueue()
+        sta
+        # For the above graph, it should return "01234" or "02143" etc
+        return result
+
     def print_graph(self):
         print(">>Adjacency List of Directed Graph<<")
         print
@@ -34,6 +43,7 @@ class Graph():
                 print("[", temp.data, end=" ] -> ")
                 temp = temp.next_element
             print("None")
+
 
 g = Graph(3)
 g.print_graph()
