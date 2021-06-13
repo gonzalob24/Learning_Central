@@ -9,7 +9,7 @@
 
 public class Letters {
 	public static void main(String[] args) {
-		System.out.println(secondHalfLetters("ruminates"));
+		System.out.println(secondHalfLetters("ruminaates"));
 		
 	}
 
