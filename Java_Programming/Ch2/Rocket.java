@@ -34,6 +34,7 @@
 
 public class Rocket {
 
+	// so that static methods can access the constant
 public static final int SIZE = 5;
 
 	public static void main(String[] args) {

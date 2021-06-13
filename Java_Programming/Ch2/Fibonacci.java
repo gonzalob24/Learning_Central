@@ -24,7 +24,7 @@ public class Fibonacci
 			first_number = third_number;
 		}
 
-		System.out.println("\nfib2 function: " + fib2(12));
+		System.out.println("\nfib2 function: " + fib2(5));
 
 	}
 
@@ -32,7 +32,7 @@ public class Fibonacci
 	{
 		int i, fac = 1;
 
-		for (i = 2; i <= n; i++)
+		for (i = 1; i <= n; i++)
 		{
 			fac += 2 * i;
 		}
