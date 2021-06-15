@@ -1,3 +1,4 @@
+import java.util.*;
 
 public class Array {
 
@@ -12,6 +13,7 @@ public class Array {
 				data[r][i] = 1;
 			}
 		}
+		// This only works with 1D arrays not 2D
+		System.out.println(Arrays.toString(data));
 	}
-
 }

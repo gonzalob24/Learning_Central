@@ -16,7 +16,8 @@ public class Exercise1_Stewie
 
 		char x = 'a';
 		char w = 'c';
-
+		int val = 10/2;
 		System.out.println(w - x);
+		System.out.println(val);
 	}
 }
