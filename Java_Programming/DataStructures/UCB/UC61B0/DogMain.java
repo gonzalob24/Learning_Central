@@ -1,3 +1,5 @@
+package UCB.UC61B0;
+
 public class DogMain {
     public static void main(String[] args) {
         int[] nums = new int[5];

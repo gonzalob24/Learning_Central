@@ -3,7 +3,7 @@ package UCB.Project1B;
 import java.io.*;
 import java.util.*;
 
-import edu.princeton.cs.algs4.In;
+//import edu.princeton.cs.algs4.In;
 
 /**
  * This class outputs all palindromes in the words file in the current directory.

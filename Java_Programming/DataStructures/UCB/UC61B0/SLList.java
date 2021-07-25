@@ -1,3 +1,4 @@
+package UCB.UC61B0;
 /** Singly linked list*/
 public class SLList {
     // make variables private to hide implementation details, encapsulation

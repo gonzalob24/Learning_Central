@@ -1,6 +1,7 @@
-package DataStructures.UCB.Lab2;
+package UCB.Lab2;
 
 import java.util.*;
+import DataStructures.UCB.Lab2.IntList;
 
 import edu.princeton.cs.algs4.In;
 

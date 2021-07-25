@@ -1,6 +1,7 @@
-package DataStructures.UCB.Lab2;
+package UCB.Lab2;
 
 import static org.junit.Assert.*;
+import DataStructures.UCB.Lab2.IntList;
 
 import org.junit.Test;
 
