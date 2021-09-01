@@ -16,7 +16,7 @@ ALTER TABLE student ADD gpa DECIMAL(3, 2);
 ALTER TABLE student DROP COLUMN gpa;
 
 -- inserting values
-INSERT INTO student(name, major) VALUES('Gonzalo Betancourt', 'Computer Science');
+INSERT INTO student(name, major) VALUES('Alison Carrillo', 'Computer Science');
 
 INSERT INTO student(name) VALUES('Maria Carrillo');
 
