@@ -20,7 +20,7 @@ public class Exercise11_TwoRockets
 	// This static method produces the top of the rockets
 	public static void cone()
 	{
-		System.out.println("   /\\       /\\");
+		System.out.println("   /\\      o /\\");
 		System.out.println("  /  \\     /  \\");
 		System.out.println(" /    \\   /    \\");
 	}
@@ -34,7 +34,7 @@ public class Exercise11_TwoRockets
 		System.out.println("+------+ +------+");
 	}
 
-	// This statice methid produces the box with the words United State
+	// This static method produces the box with the words United State
 	public static void usa()
 	{
 		System.out.println("|United| |United|");

@@ -9,6 +9,8 @@
 
 public class Fibonacci
 {
+	public static final String finalValue = "Gonzalo";
+
 	public static void main(String[] args)
 	{
 		int first_number = 1;
@@ -23,9 +25,12 @@ public class Fibonacci
 			second_number = first_number;
 			first_number = third_number;
 		}
+		int x = 5;
+		System.out.printf("\nfib2 function: %d", fib2(5));
+		System.out.printf("\nFinal value: %s", finalValue);
+		x = 10;
 
-		System.out.println("\nfib2 function: " + fib2(5));
-
+		System.out.printf("\nx value changed: %d", x);
 	}
 
 	public static int fib2(int n)

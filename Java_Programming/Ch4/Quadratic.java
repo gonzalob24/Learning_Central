@@ -6,12 +6,12 @@
 
 public class Quadratic {
 	public static void main(String[] args) {
-		quadratic(4,10,5);
+		quadratic(0,10,5);
 
 	}
 	public static void quadratic(int a, int b, int c) {
     	if (a == 0) {
-        	throw new IllegalArgumentException("a can't be zero.");
+        	throw new IllegalArgumentException("\"a\" can't be zero.");
     	}
     
     	double determinant = b * b - 4 * a * c;
