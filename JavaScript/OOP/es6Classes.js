@@ -31,7 +31,7 @@ class Person {
 
 	set fullName(name) {
 		if (name.includes(" ")) {
-			this._fName = name;
+			this.fName = name;
 		} else alert(`${name} is not a ful name`);
 	}
 
