@@ -30,12 +30,25 @@ const findTopRomanceMovies = () => {
 /**
  * group all by rating
  *
+ * value in _id is an expression
+ * the expression can be a literal, epxression object, operator for field path
+ * 
+ * we need to tell aggregate that we cant access to the field path
  */
-
 const pipeline2 = [{ $group: { _id: "$rated" } }];
 
+// this is the same thing
+const pipeline2Alt = [{$group: {_id: "$$CURRENT.rated"}}];
+ 
+
 /**
+ * ACCUMULATORS...page 286
+ * accumulakte their value accrosss multiple documens belongin to the same group
  * identify total number of movies in each group
+ * filed -- this will be e computed field
+ * accumulator
+ * 	- I can also accumulate the value of a given field
+ * expressiion 
  */
 
 const pipeline3 = [
@@ -79,7 +92,9 @@ const pipeline5 = [
 ];
 
 /**
- * For only movies older than 2001, find the average and maximum popularity for each genre, sort the genres by popularity, and find the adjusted (with trailers) runtime of the longest movie in each genre.
+ * For only movies older than 2001, find the average and maximum popularity 
+ * for each genre, sort the genres by popularity, and find the adjusted 
+ * (with trailers) runtime of the longest movie in each genre.
  *
  * find the pipelines:
  * $match: {}

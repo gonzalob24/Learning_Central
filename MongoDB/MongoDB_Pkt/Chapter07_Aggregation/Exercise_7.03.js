@@ -80,3 +80,46 @@ findGenrePopularity();
     "top_movie" : 9.4,
     "adjusted_runtime" : 1152
 }
+
+
+/**
+ * match movies released before 2001
+ */
+
+db.movies.aggregate([
+    {
+        $match: {year: { $lt: 2001}}
+    }
+])
+
+/**
+ * avg popularity of each genre using imdb.rating
+ */
+
+db.movies.aggregate([
+    {
+        $match: {
+            year: { $lt: 2001},
+            genres: { $exists: true, $not: { $size: 0} }
+        }
+    },
+    {
+        $group: { 
+            _id: { $arrayElemAt: ['$genres', 0]},
+            popularity: { $avg: '$imdb.rating'},
+            top_movie: { $max: '$imdb.rating'},
+            longest_movie: { $max: '$runtime'}
+        }
+    },
+    {
+        $sort: { popularity: -1}
+    },
+    {
+        $project: {
+            _id: 1,
+            popularity: 1,
+            top_movie: 1,
+            addjusted_longest_movie: { $add: ['$longest_movie', 12]}
+        }
+    }
+])
