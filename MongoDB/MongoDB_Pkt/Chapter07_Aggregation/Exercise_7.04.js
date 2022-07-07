@@ -99,3 +99,38 @@ findGenrePopularity();
   "adjusted_runtime" : 212
 }
 
+db.movies.aggregate([
+  {
+      $match: {
+          year: { $lt: 2001},
+          genres: { $exists: true, $not: { $size: 0} },
+          runtime: {$lt: 218},
+          'imdb.rating': {$gte: 7.0}
+      }
+  },
+  {
+    $sort: { 'imdb.rating': -1}
+  },
+  {
+      $group: { 
+          _id: { $arrayElemAt: ['$genres', 0]},
+          recommended_title: {$first: '$title'},
+          recommended_rating: {$first: '$imdb.rating'},
+          recommended_raw_runtime: {$first: '$runtime'},
+          popularity: { $avg: '$imdb.rating'},
+          top_movie: { $max: '$imdb.rating'},
+          longest_movie: { $max: '$runtime'}
+      }
+  },
+  {
+      $project: {
+          _id: 1,
+          popularity: 1,
+          top_movie: -1,
+          addjusted_longest_movie: { $add: ['$longest_movie', 12]},
+          recommended_title: 1,
+          recommended_rating: 1, 
+          recommended_raw_runtime: 1
+      }
+  }
+]);
