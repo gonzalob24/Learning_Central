@@ -15,7 +15,7 @@ db.movies.aggregate([
             awards: /Won \d{1,2} Oscars?/
         }
     },
-    {
+    {   
         $group: {
             _id: 0,
             "imdb_rating_min": {$min: "$imdb.rating"},
