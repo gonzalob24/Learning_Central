@@ -51,6 +51,10 @@ public class RefExamples {
         Integer integer4 = Integer.valueOf(5);
         Integer integer5 = Integer.valueOf("6");
 
+        // auto boxing
+        Integer integer6 = Integer.valueOf(7);
+        // syntactic sugar coating
+        Integer integer7 = 7; // this is called autoboxing and user Integer.valueOf()
 
     }
 }
