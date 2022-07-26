@@ -2,6 +2,10 @@ package six.references;
 
 import edu.princeton.cs.algs4.In;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 public class RefExamples {
     public static void main(String[] args) {
         String test = "Test";
@@ -56,5 +60,15 @@ public class RefExamples {
         // syntactic sugar coating
         Integer integer7 = 7; // this is called autoboxing and user Integer.valueOf()
 
+
+        // TIME
+        LocalDateTime now = LocalDateTime.now();
+        LocalDate now1 = LocalDate.now();
+        LocalTime now2 = LocalTime.now();
+        System.out.println(now);
+        System.out.println(now1);
+        System.out.println(now2);
+        System.out.println(now1.isLeapYear());
+        System.out.println(now1.minusYears(20));
     }
 }
