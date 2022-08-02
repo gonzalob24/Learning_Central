@@ -8,5 +8,11 @@ public class MainRunner {
         student.setEmail("test@me.com");
         System.out.println(student.getEmail());
         System.out.println(student instanceof Person);
+
+        // Object is at top of inheritance
+        // every class extends the Object class by default they don't extend anything,
+        // it is the root of the class hierarchy
+        Person person = new Person();
+        person.
     }
 }
