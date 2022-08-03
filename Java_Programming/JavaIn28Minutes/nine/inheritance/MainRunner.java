@@ -13,6 +13,7 @@ public class MainRunner {
         // every class extends the Object class by default they don't extend anything,
         // it is the root of the class hierarchy
         Person person = new Person();
-        person.
+        person.setEmail("alexa@gmail.com");
+        System.out.println(person);
     }
 }
