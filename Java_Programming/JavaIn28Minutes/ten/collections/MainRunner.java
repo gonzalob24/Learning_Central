@@ -10,6 +10,14 @@ class DescendingStudentComparator implements Comparator<Student> {
     }
 }
 
+class StringLengthComparator implements Comparator<String> {
+
+    @Override
+    public int compare(String o1, String o2) {
+        return Integer.compare(o1.length(), o2.length());
+    }
+}
+
 public class MainRunner {
 
     public static void main(String[] args) {
@@ -78,5 +86,41 @@ public class MainRunner {
         studentsAL.sort(new DescendingStudentComparator());
         Collections.sort(studentsAL, new DescendingStudentComparator());
         System.out.println("Descending: " + studentsAL);
+
+        // set: it does not care about the position
+        Set<String> set = Set.of("Apple", "Bannana", "Cat");
+        System.out.println(set);
+//        set.add("Bannana");
+
+        Set<String> hashSet = new HashSet<>(set);
+        hashSet.add("Apple");
+        System.out.println(hashSet);
+
+        // not stored in insertion order
+        // Set<Integer> numbers = new HashSet<>();
+
+        // stored in order in which I insert them
+        // Set<Integer> numbers = new LinkedHashSet<>();
+
+        // Tree set inserts in sorted order, does not add duplicate values as well
+        Set<Integer> numbers = new TreeSet<>();
+        numbers.add(765432);
+        numbers.add(76543);
+        numbers.add(7654);
+        numbers.add(765);
+        numbers.add(76);
+        System.out.println(numbers);
+
+        List<Character> characters = List.of('A', 'Z', 'A', 'B', 'Z', 'F');
+        // find the unique characters in sorted order
+        Set<Character> sortedChars = new TreeSet<>(characters);
+        System.out.println(sortedChars);
+
+        // Queues -> insert in natural order
+        Queue<String> queue = new PriorityQueue<>(new StringLengthComparator());
+        queue.offer("Apple");
+        queue.addAll(List.of("Cat", "Orange", "Bear"));
+        queue.offer("Appl");
+        System.out.println(queue);
     }
 }
