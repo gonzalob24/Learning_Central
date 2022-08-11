@@ -122,5 +122,55 @@ public class MainRunner {
         queue.addAll(List.of("Cat", "Orange", "Bear"));
         queue.offer("Appl");
         System.out.println(queue);
+
+        // map --> does not extend collection interface
+        // store key value pairs
+        // recall when using Map.of() is immutable
+        Map<String, Integer> map = Map.of("A", 3, "B", 5, "Z", 10);
+        System.out.println(map);
+
+        System.out.println(map.keySet());
+        System.out.println(map.values());
+
+        Map<String, Integer> hashMap = new HashMap<>(map);
+        hashMap.put("F", 5);
+        System.out.println(hashMap);
+        hashMap.put("F", 11);
+        System.out.println(hashMap);
+
+        // hashMap, treeMap, linkedHashMap
+        // does not care about insertion odrder
+        Map<String, Integer> hashMap2 = new HashMap<>();
+        hashMap2.put("Z", 5);
+        hashMap2.put("A", 15);
+        hashMap2.put("D", 25);
+        hashMap2.put("L", 250);
+        System.out.println("hashMap2: " + hashMap2);
+
+        // stores insertion order
+        Map<String, Integer> linkedHashMap = new HashMap<>();
+        linkedHashMap.put("Z", 5);
+        linkedHashMap.put("A", 15);
+        linkedHashMap.put("D", 25);
+        linkedHashMap.put("L", 250);
+        System.out.println("linkedHashMap" + linkedHashMap);
+
+        // sorted order insertion
+        Map<String, Integer> treeMap = new TreeMap<>();
+        treeMap.put("Z", 5);
+        treeMap.put("A", 15);
+        treeMap.put("D", 25);
+        treeMap.put("L", 250);
+        System.out.println("treeMap" + treeMap);
+
+        String s = "This is a great thing";
+        // how many times each word appears
+        // how many times does each char appears
+
+        Map<String, Integer> wordCount = new HashMap<>();
+        Map<String, Integer> charCount = new HashMap<>();
+        System.out.println(Arrays.toString(s.split(" ")));
+        // convert array to map
+//        Arrays.toMap(s.split(" "));
     }
 }
