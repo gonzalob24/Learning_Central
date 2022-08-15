@@ -4,8 +4,15 @@
  */
 // CRUD
 //CREATE
+// These two return the id after I insert
 db.movies.insertOne(data, options);
 db.movies.insertMany(data, options);
+// got to file using terminal
+// -d --> document name
+// -c --> collection name
+// --jsonArray --> multiple documents in file
+// --drop --> drop the collection if reimporting new one. Otherwise it will append
+// mongoimport fileName.json -d documentName -c collectionName --drop --jsonArray
 
 // READ:
 // this one returns a cursor
