@@ -22,6 +22,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Ch8" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Inheritance" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Polymorphism" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/JavaIn28Minutes" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
