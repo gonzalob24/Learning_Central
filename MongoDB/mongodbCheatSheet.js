@@ -1,7 +1,7 @@
 // https://www.mongodb.com/docs/manual/introduction/
 ///////////////////////////////////////////////////////////////////////
 /**
- * QUERIES
+ * QUERIES OPERATORS: https://www.mongodb.com/docs/manual/reference/operator/query/
  */
 // CRUD
 //CREATE
@@ -27,6 +27,27 @@ db.movies.findOne(filter, options);
 db.movies.updateOne(filter, data, options);
 db.movies.updateMany(filter, data, options);
 db.movies.replaceOne(filter, data, options);
+
+/*
+//////////////// ARRAYS ///////////////////////////////////////////////
+{field: value} -> the array contains at least this value
+{field: ['find an exact array']} -> order of the elements matters
+{field: {$all: [values(s)]}} -> see if the array contains these two elements, order or other elements does not matter 
+{field: {$in: [value1, value2..]}} -> equals any value
+{$or: [{field: {value}}, {field: value}]} -. in the array
+{$nor: [{field: {value}}, {field: value}]} -> not in the array
+
+// $and -> by defualt is used, these two ways are equal
+// why? there may be multiple conditions on the same field
+db.shows.find({'rating.average': {$gt: 9}, genres: 'Drama'})
+db.shows.find({$and: [{'rating.average': {$gt: 9}}, {genres: 'Drama'}]})
+// db.shows.find({genres: 'Drama', genres: 'Horror'}) -> return 23 results and some items only have 'Horror' in the genres array
+// why? in some drivers having the same field is not permitted and the last one takes takes precedence and replaces the first key
+// so use $and instead --> db.shows.field({$and: [db.shows.find({$and: [{genres: 'Drama'}, {genres: 'Horror'}]})]})
+
+// {$xpr: {$gt: ['$field1', '$field2']}}
+// {$elemMatch: {}} -> I think will be very useful when constructing queries for players and games
+*/
 
 // DELETE
 db.movies.deleteOne(filter, options);
