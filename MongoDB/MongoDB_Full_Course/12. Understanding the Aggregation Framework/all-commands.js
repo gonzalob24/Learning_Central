@@ -282,3 +282,68 @@ db.persons.aggregate([
 		},
 	},
 ]);
+
+db.matches.aggregate([
+	{ $match: { _id: ObjectId("632d22c230281c165e3d447c") } },
+	{
+		$lookup: {
+			from: "users",
+			localField: "user",
+			foreignField: "_id",
+			as: "user",
+		},
+	},
+	{
+		$lookup: {
+			from: "comments",
+			localField: "comments",
+			foreignField: "_id",
+			as: "comments",
+		},
+	},
+	{
+		$project: {
+			awayTeam: 1,
+			homeTeam: 1,
+			description: 1,
+			comments: 1,
+			likes: 1,
+			user: { $first: "$user" },
+		},
+	},
+	{
+		$lookup: {
+			from: "likes",
+			localField: "likes",
+			let: { user_id: ObjectId("632d96e04b2919862fb74474") },
+			pipeline: [{ $match: { $expr: { $eq: ["$user", "$$user_id"] } } }],
+			foreignField: "_id",
+			as: "likes",
+		},
+	},
+	{
+		$project: {
+			awayTeam: 1,
+			homeTeam: 1,
+			description: 1,
+			comments: 1,
+			likes: 1,
+			"user._id": 1,
+			"user.username": 1,
+			"user.email": 1,
+		},
+	},
+]);
+
+///
+db.matches.aggregate([
+	{ $project: { comments: 1 } },
+	{
+		$lookup: {
+			from: "comments",
+			localField: "comments",
+			foreignField: "_id",
+			as: "comments",
+		},
+	},
+]);
