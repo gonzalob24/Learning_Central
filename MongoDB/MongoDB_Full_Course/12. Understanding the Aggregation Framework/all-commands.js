@@ -17,6 +17,11 @@ db.contacts.aggregate([
 	{ $group: { _id: { state: "$location.state" }, totalPersons: { $sum: 1 } } },
 ]);
 
+db.contacts.aggregate([
+	{ $match: { gender: "female" } },
+	{ $group: { _id: "$location.state" }, totalPersons: { $sum: 1 } },
+]);
+
 /**
  * more grouping
  * $sort
