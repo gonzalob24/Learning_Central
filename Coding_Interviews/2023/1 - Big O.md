@@ -198,3 +198,65 @@ An algorithm: a series of steps to accomplish a task
 - This pattern involves dividing a data set into smaller chunks and then repeating a process with a subset of data.
 
 - This pattern can tremendously decrease time complexity
+
+# Recursion
+
+- a process that calls itself --> a function that calls itself
+- JSON.parse / JSON.stringify
+- document.getElementById and DOM traversal algorithms
+- Object traversal
+- Very common with more complex algorithms
+- It's sometimes a cleaner alternative to iteration
+- Invoke the same function with a different input until you reach your base case!
+- Base case:
+  - The condition when the recursion ends.
+  - This is the most important concept to understand
+  - return here to end recursion
+- Call stack:
+
+  - anytime a function is invoked it is places **(pushed)** on top of the stack
+  - when JS sees the return keyword or when the function ends, the compiler will remove **(pop)**
+
+` What can go wrong:`
+
+    No base case or wrong base case
+    Forgetting to return or returning the wrong thing!
+
+- Helper method recursion:
+
+  - a function that calls itself
+
+    `Example`
+
+        function collectOddValues(arr){
+
+          let result = []
+
+          function helper(helperInput) {
+              if(helperInput.length === 0) {
+                  return;
+              }
+
+              if(helperInput[0] % 2 !== 0){
+                  result.push(helperInput[0])
+              }
+
+              helper(helperInput.slice(1))
+          }
+
+            helper(arr)
+
+          return result;
+        }
+
+- Tips
+
+  - For arrays, use methods like slice, the spread operator, and concat that make copies of arrays so you do not mutate them
+  - Remember that strings are immutable so you will need to use methods like slice, substr, or substring to make copies of strings
+  - To make copies of objects use Object.assign, or the spread operator
+
+  `BigO for recursion`
+
+      Measuring time complexity is relatively simple. You can measure the time complexity of a recursive function as then number of recursive calls you need to make relative to the input
+
+      Measuring space complexity is a bit more challenging. You can measure the space complexity of a recursive function as the maximum number of functions on the call stack at a given time, since the call stack requires memory.
