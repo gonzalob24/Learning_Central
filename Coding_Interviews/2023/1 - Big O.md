@@ -25,6 +25,14 @@
 
 # Big O
 
+- `Run time analysis`
+
+      Study of a given algorithm's running time, by identify its behavior as the input size increases. How much time will the given algorithm take to run as input size increases.
+
+- `Why learn it`
+
+      To measure efficiency of the given algorithm
+
 - allows us to evaluate the algo independent of hardware and software environments
 - does not require implementation of algorithm --> only a high level understanding
 - takes into account all possible inputs
@@ -33,8 +41,32 @@
 - Useful in discussing trade-offs between different approaches
 - When code slows down and crashes, identify parts of the code that inefficient can help us find pin points in our application
 - we can count number of simple operations
+
   - \*, +, -, /
   - numbers will be constant time
+
+- `Notations used`
+
+  1.  Omega()
+
+      - gives lower bound of algorithm
+      - For any given input the running time of a given algorithm will not be less than given time.
+
+  2.  BigO
+
+      - Gives the tighter upper bound of algorithm
+      - For any given input the running time of a given algorithm will not be more than given time
+
+  3.  Theta
+
+           - decides upper and lower bound of a given algorithm if they are the same or not
+           - For any given input the running time of a given algorithm will on average be equal to given time.
+
+      ![](./images//time.png)
+
+  4.  Best Case
+  5.  Worst Case
+  6.  Average Case
 
 ## Constant time
 
@@ -51,8 +83,10 @@
 - An algorithm is O(f(n)) if the number of simple operations the computer has do is eventually less than a constant times f(n), as n increases
 - f(n) could be linear (f(n) = n)
 - f(n) could be quadratic (f(n) = n )
-- f(n) could be constant (f(n) = 1)
+- f(n) could be constant (f(n) = 1) : We can remove these since they won't impact time when we are talking about it in "n" units of time. "n" could be in billions.
 - f(n) could be something entirely different!
+
+  ![](./images/tc.png)
 
 - for loops are O(n)
 - nested for loops could be O(n^2)
@@ -201,21 +235,40 @@ An algorithm: a series of steps to accomplish a task
 
 # Recursion
 
-- a process that calls itself --> a function that calls itself
+- a process that calls itself --> a function that calls itself with different input
+- in every step we try to make the problem smaller until we get to the base case
+- we can have multiple base cases
 - JSON.parse / JSON.stringify
 - document.getElementById and DOM traversal algorithms
 - Object traversal
 - Very common with more complex algorithms
 - It's sometimes a cleaner alternative to iteration
 - Invoke the same function with a different input until you reach your base case!
-- Base case:
-  - The condition when the recursion ends.
-  - This is the most important concept to understand
-  - return here to end recursion
-- Call stack:
+- `Recursive case:`
 
-  - anytime a function is invoked it is places **(pushed)** on top of the stack
-  - when JS sees the return keyword or when the function ends, the compiler will remove **(pop)**
+      1. where the function recurs, calls itself
+
+- `Base case:`
+
+      1. The condition when the recursion ends.
+      2. This is the most important concept to understand
+      3. return here to end recursion
+
+- `Call stack:`
+
+        1. anytime a function is invoked it is places (pushed) on top of the stack
+        2. when JS sees the return keyword or when the function ends, the compiler will remove (pop)
+
+  ![](./images/call_stack.png)
+
+- `When to use it` 1. When we can easily breakdown a problem into similar subproblem 2. when we are ok with overhead, time and space that comes with it 3. when we need a quick working solution instead if efficient
+
+### Why Learn it
+
+- Makes code easy to write and read compared to iterative when a problem can be broken down into similar sub-problems
+- if the sub-problem is similar to big problem
+  - How do I know if it is of similar type? with practice
+- Used when dealing with Tree's or Graphs, Divide and Conquer, Greedy, Dynamic Programming
 
 ` What can go wrong:`
 
@@ -260,3 +313,11 @@ An algorithm: a series of steps to accomplish a task
       Measuring time complexity is relatively simple. You can measure the time complexity of a recursive function as then number of recursive calls you need to make relative to the input
 
       Measuring space complexity is a bit more challenging. You can measure the space complexity of a recursive function as the maximum number of functions on the call stack at a given time, since the call stack requires memory.
+
+      I found equation #2 and #3 by  using (n-1) and (n-2) in equation #1
+
+      Example: s3-21
+
+  ![](./images/backSubstitution.png)
+
+  ![](./images/bs2.png)
