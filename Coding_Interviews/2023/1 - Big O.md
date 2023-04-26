@@ -111,6 +111,13 @@
   - Variable assignment is constant
   - Accessing elements in an array (by index) or object (by key) is constant
   - In a loop, the the complexity is the length of the loop times the complexity of whatever happens inside of the loop
+  - FREQUENCY COUNT METHOD -> count items that happen in the algorithm
+  - Loops normally run n + 1 times
+  - nested loops are n^x. x is the number of nested loops
+  - when we write the O(n) we are using the degree of "n" and ignoring any constants
+  - when in doubt plot the variables when iterating for loop
+    ![](./images/tc1.png)
+    ![](./images/tc-ex2.png)
 
 # Objects
 
