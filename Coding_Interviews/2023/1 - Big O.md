@@ -59,10 +59,10 @@
 
   3.  Theta
 
-           - decides upper and lower bound of a given algorithm if they are the same or not
-           - For any given input the running time of a given algorithm will on average be equal to given time.
+      - decides upper and lower bound of a given algorithm if they are the same or not
+      - For any given input the running time of a given algorithm will on average be equal to given time.
 
-      ![](./images//time.png)
+  ![](./images//time.png)
 
   4.  Best Case
   5.  Worst Case
