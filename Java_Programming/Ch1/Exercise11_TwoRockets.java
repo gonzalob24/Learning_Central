@@ -20,9 +20,9 @@ public class Exercise11_TwoRockets
 	// This static method produces the top of the rockets
 	public static void cone()
 	{
-		System.out.println("   /\\      o /\\");
-		System.out.println("  /  \\     /  \\");
-		System.out.println(" /    \\   /    \\");
+		System.out.println("   /\\       /\\");
+		System.out.println("  /  \\     /  \\");
+		System.out.println(" /    \\   /    \\");
 	}
 
 	// This static method produces part of the body of the rocket
