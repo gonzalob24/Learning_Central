@@ -46,4 +46,10 @@ public class PointClass {
     this.x = newX;
     this.y = newY;
   }
+
+  public static void callMe() {
+    System.out.println("I am static method can must be called from PointClass. Each instance does not get its own copy" +
+            "of this static method");
+  }
+
 }
