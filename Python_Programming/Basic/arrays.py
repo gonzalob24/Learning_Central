@@ -66,3 +66,20 @@ def arrangeElements(arr, pivot_index):
         return arr
 
 print(arrangeElements([14,1,11,2,3,15, 7], 4))
+arr = list(range(10))
+print(list(range(10)))
+for num in arr:
+    # suppress the new line
+    print(num, end=" ")
+
+print("\n")
+print(*arr)
+
+total = 0
+while True:
+    response = input("Enter the next number. (Leave blank to end)")
+    if response == "":
+        break
+    total += int(response)
+
+print(f'Total is {total}')
