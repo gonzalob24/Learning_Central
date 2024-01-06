@@ -25,3 +25,29 @@ year_born = ("Alexa", 2013)
 (name, year) = year_born 
 print(*year_born)
 print(name)
+
+"""
+  11 - Lists
+"""
+a = "banana"
+b = "banana"
+if a is b:
+  print('yes')
+else: 
+  print('No') 
+  
+if a == b:
+  print('yes')
+else: 
+  print('No')
+  
+# Cloning a List
+a = [1,2,3,4]
+a_clone = a[:]
+print(a[:])
+
+# List parameters
+print(enumerate(a))
+
+inpt = input('Something: ')
+print(inpt.strip())

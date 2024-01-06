@@ -58,6 +58,10 @@ for n in range(0, 10, 2):
 """
 (01:14:09) Iteration by Item
 """
+
+inpt = input('Something: ')
+print(inpt.strip())
+
 """
 (01:20:13) String Methods
 """
@@ -67,6 +71,10 @@ for n in range(0, 10, 2):
 """
 (01:33:41) Functions
 """
+
+def func_name():
+  pass
+
 """
 (01:42:10) How to Read a Text File
 """
