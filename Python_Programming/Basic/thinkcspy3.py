@@ -32,7 +32,7 @@ print(name)
 a = "banana"
 b = "banana"
 if a is b:
-  print('yes')
+  print('yes as is b')
 else: 
   print('No') 
   
@@ -49,5 +49,11 @@ print(a[:])
 # List parameters
 print(enumerate(a))
 
-inpt = input('Something: ')
-print(inpt.strip())
+# inpt = input('Something: ')
+# print(inpt.strip())
+
+al = [1, 2, 3, [3, 4, [5, 6, 7]]]
+
+a2 = al[:]
+print(a2)
+print(al is a2)
