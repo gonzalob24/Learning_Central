@@ -1,4 +1,4 @@
-.idea
+/.idea
 .DS_Store
 node_modules
 dist
@@ -6,3 +6,5 @@ dist
 .__pycache__
 __pycache__
 *.class
+/Java_Programming/.idea/
+/.idea/
