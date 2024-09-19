@@ -49,3 +49,39 @@ let user_2 = {
 
 user_2.skill = 'Kicking';
 console.log(user_2);
+
+const soccer_player = {
+	u_name: 'Alexa',
+	skill: 'running',
+	// arrow function do not have a this keyword
+	// intro: () => console.log(`Hi my name is ${this.u_name} and I love ${this.skill}`),
+	intro: function () {
+		console.log(this);
+		console.log(`Hi my name is ${this.u_name} and I love ${this.skill}`);
+	},
+};
+
+soccer_player.intro();
+let say_hi = soccer_player.intro;
+// the this keyword is lost here:
+
+console.log('1');
+console.log('2');
+console.log('3');
+
+const one = () => {
+	const get_data = () =>
+		setTimeout(() => {
+			console.log('time out');
+		}, 2000);
+	const get_data_2 = () =>
+		setTimeout(() => {
+			console.log('more time');
+		}, 1000);
+
+	get_data();
+	get_data_2();
+	console.log('oneeee');
+};
+
+one();
