@@ -84,4 +84,39 @@ const one = () => {
 	console.log('oneeee');
 };
 
-one();
+// one();
+
+let num = new Number('123');
+console.log(typeof num);
+// type is object..
+if (num) {
+	console.log('its truthy');
+}
+
+let num2 = Number('123');
+console.log(typeof num2);
+
+// type is of type number
+if (num2) {
+	console.log('still truthy');
+}
+// 64 bits to store a number, 52 are used to store the digit and 11 to store precision
+console.log((123).toString());
+console.log((123.456).toFixed(2));
+console.log(0.1 + 0.2 == 0.3);
+console.log(0.1 + 0.2); // loss of precision
+
+/**
+ * numbers are store in memory as binary
+ * 0.1 -- 1/10 -> in binary becomes an endless binary fraction
+ * 03. -- 1/3 --> 0.33333 to infinity
+ */
+
+// precision loss is still there, we are simply rounding
+console.log(Number((0.1 + 0.2).toFixed(2)) == 0.3);
+console.log(Number((0.1 + 0.2).toFixed(2)));
+console.log((1.35).toFixed(1));
+console.log((6.35).toFixed(1)); // 6.4 due to precision loss
+console.log((1.35).toFixed(20));
+console.log((6.35).toFixed(20));
+console.log(Math.round(6.35 * 10) / 10);

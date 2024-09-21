@@ -1,3 +1,4 @@
+'use-strict';
 const strings = ['a', 'b', 'c', 'd'];
 
 strings.splice(2, 0, 'allen');
@@ -277,3 +278,84 @@ function contains_duplicate(arr) {
 
 console.log(contains_duplicate([1, 2, 3, 1]));
 console.log(contains_duplicate([1, 2, 3, 4]));
+
+// Some examples
+const unique = (str) => {
+	const chr_lookup = new Map();
+	for (let i = 0; i < str.length; i++) {
+		if (chr_lookup.has(str[i])) {
+			return false;
+		}
+		chr_lookup.set(str[i], true);
+	}
+	if (str.length === chr_lookup.size) {
+		return true;
+	} else {
+		return 'Check your logic';
+	}
+};
+
+const is_permutation = (str_1, str_2) => {
+	if (!str_1 || !str_2) {
+		console.log('what');
+		return false;
+	}
+
+	if (str_1.length !== str_2.length) {
+		return false;
+	}
+
+	const map_1 = new Map();
+	const map_2 = new Map();
+
+	for (let i = 0; i < str_1.length; i++) {
+		if (!map_1.has(str_1[i])) {
+			map_1.set(str_1[i], 1);
+		} else {
+			let value = Number(map_1.get(str_1[i]));
+			map_1.set(str_1[i], (value += 1));
+		}
+	}
+
+	for (let i = 0; i < str_2.length; i++) {
+		if (!map_2.has(str_1[i])) {
+			map_2.set(str_1[i], 1);
+		} else {
+			let value = Number(map_2.get(str_1[i]));
+			map_2.set(str_1[i], (value += 1));
+		}
+	}
+
+	for (char of map_1) {
+		if (map_2[char[0]] !== map_1[char[0]]) {
+			return false;
+		}
+	}
+	return true;
+};
+
+const replace_white_spaces = (str, length) => {
+	str = str.trim();
+	let new_str = '';
+	if (length == 0) {
+		return null;
+	}
+
+	for (let i = 0; i < str.length; i++) {
+		if (str[i] === ' ') {
+			new_str = new_str + '%20';
+		} else {
+			new_str += str[i];
+		}
+	}
+	return new_str;
+};
+
+console.log('\nCheck if its a unique character in the string');
+console.log(unique('Alexa'));
+console.log(unique('alisona'));
+console.log('\nIs Permutation');
+console.log(is_permutation('abcd', 'cdba'));
+console.log(is_permutation('ccdf', 'fcdd'));
+
+console.log(replace_white_spaces('Mr John Smith    ', 13));
