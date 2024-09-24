@@ -359,3 +359,29 @@ console.log(is_permutation('abcd', 'cdba'));
 console.log(is_permutation('ccdf', 'fcdd'));
 
 console.log(replace_white_spaces('Mr John Smith    ', 13));
+
+const is_palindrome_permutation = (str) => {
+	// checks
+	str = str.replace(' ', '');
+	const map = new Map();
+	let odd_count = 0;
+	for (let i = 0; i < str.length; i++) {
+		if (!map.has(str[i])) {
+			map.set(str[i], 1);
+		} else {
+			let update_count = map.get(str[i]) + 1;
+			map.set(str[i], update_count);
+		}
+	}
+	for (let [letter, count] of map.entries()) {
+		if (count % 2 !== 0) {
+			odd_count++;
+		}
+		if (odd_count > 1) {
+			return false;
+		}
+	}
+	return true;
+};
+
+console.log(is_palindrome_permutation('tacocat'));
