@@ -19,11 +19,14 @@ class Graph {
 	}
 
 	add_vertex(node) {
-		this.adjacent_list[this.num_of_nodes] = node;
+		this.adjacent_list[node] = [];
 		this.num_of_nodes++;
 	}
 
-	add_edge() {}
+	add_edge(node_1, node_2) {
+		this.adjacent_list[node_1].push(node_2);
+		this.adjacent_list[node_2].push(node_1);
+	}
 
 	show_connections() {}
 }
@@ -42,6 +45,6 @@ my_graph.add_edge('4', '2');
 my_graph.add_edge('4', '5');
 my_graph.add_edge('1', '2');
 my_graph.add_edge('1', '0');
-my_graph.add_edge('0', '3');
-my_graph.add_edge('0', '5');
+my_graph.add_edge('0', '2');
+my_graph.add_edge('6', '5');
 console.log(my_graph);
