@@ -120,3 +120,67 @@ console.log((6.35).toFixed(1)); // 6.4 due to precision loss
 console.log((1.35).toFixed(20));
 console.log((6.35).toFixed(20));
 console.log(Math.round(6.35 * 10) / 10);
+
+// Strings
+
+// There are many array strings, look up the ones that are needed
+// indexOf, startsWith, endsWith, includes, slice()
+
+// comparing strings, uppercase before lowercase
+// all strings are encoded using UTF-16
+
+// arrays
+const arr_1 = new Array(4);
+const arr_2 = [];
+console.log(arr_1); // created with 4 empty items
+console.log(arr_2);
+
+const max_sub_sum = (arr) => {
+	let current_sum = 0;
+	let max_sum = 0;
+
+	for (let i = 0; i < arr.length; i++) {
+		current_sum = Math.max(current_sum + arr[i], arr[i]);
+		max_sum = Math.max(current_sum, max_sum);
+	}
+
+	return max_sum;
+};
+
+console.log(max_sub_sum([-1, 2, 3, -9]));
+console.log(max_sub_sum([2, -1, 2, 3, -9]));
+
+// in place sort values are treated as strings and then compared
+console.log([1, 15, 2].sort());
+
+const compare = (a, b) => {
+	if (a > b) {
+		return 1;
+	}
+	if (a == b) {
+		return 0;
+	}
+	if (a < b) {
+		return -1;
+	}
+};
+
+console.log([1, 15, 2].sort(compare));
+
+let arr_3 = [1, 2, 3, 4, 5];
+
+let sum = arr_3.reduce((sum, current_number) => sum + current_number, 0);
+console.log(sum);
+
+function sort_by_age(arr) {
+	return arr.sort((a, b) => (a.age > b.age ? 1 : -1));
+}
+
+const users = [
+	{ name: 'Alexa', age: 11 },
+	{ name: 'Alison', age: 6 },
+	{ name: 'Gonzalo', age: 37 },
+	{ name: 'Mary', age: 35 },
+];
+
+console.log(sort_by_age(users));
