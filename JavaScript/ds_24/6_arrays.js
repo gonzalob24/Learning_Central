@@ -385,3 +385,25 @@ const is_palindrome_permutation = (str) => {
 };
 
 console.log(is_palindrome_permutation('tacocat'));
+
+let my_str = 'ple';
+console.log(my_str.substring(0, 1) + 'a' + my_str.substring(1, my_str.length));
+console.log('-------');
+
+const one_away = (str_1, str_2) => {
+	let edits = 0;
+	for (let i = 0; i < str_1.length; i++) {
+		if (str_1[i] !== str_2[i]) {
+			edits++;
+			str_2 = str_2.substring(i - 1, i) + str_1[i] + str_2.substring(i, str_2.length);
+		}
+		if (edits > 1) {
+			return false;
+		}
+	}
+	return true;
+};
+
+console.log(one_away('pale', 'ple'));
+console.log(one_away('pales', 'pale'));
+console.log(one_away('pale', 'bake'));
