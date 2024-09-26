@@ -184,3 +184,51 @@ const users = [
 ];
 
 console.log(sort_by_age(users));
+
+// Date and time
+const time_1 = new Date();
+console.log(time_1);
+console.log(typeof time_1);
+console.log(time_1.getFullYear());
+console.log(time_1.getTime());
+
+const arr_6 = [1, 2, 3];
+const obj_2 = { name: 'Alexa', age: 11 };
+
+console.log([-1, -2, 0, ...arr_6]);
+console.log({ ...obj_2, name: 'Alison' });
+
+let namee = 'Alexa';
+
+function say_hii() {
+	console.log('Hi, ' + namee);
+}
+
+function some_person() {
+	// this namee is local to this function
+	let namee = 'Gonzalo';
+	return function () {
+		console.log(namee);
+	};
+}
+
+// namee gets updated before the function is called
+namee = 'Maria';
+
+say_hii();
+let person = some_person();
+person();
+
+let some_user = {
+	fname: 'Jose',
+	say_hi() {
+		console.log(`Hello, ${this.fname}`);
+	},
+};
+// this works
+// some_user.say_hi();
+// passing in a reference to the function loses its context
+setTimeout(some_user.say_hi, 1000);
+
+// I can call the function inside of the setTimeout or bind it
+//
