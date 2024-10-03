@@ -407,3 +407,33 @@ const one_away = (str_1, str_2) => {
 console.log(one_away('pale', 'ple'));
 console.log(one_away('pales', 'pale'));
 console.log(one_away('pale', 'bake'));
+
+// String compression
+// aabcccccaaa --> a2b1c5a3
+// if the compressed string is not smaller than the original string return the original string
+// cas matters
+
+const string_compression = (str) => {
+	// checks
+	if (str.length === 1) {
+		return str;
+	}
+	let recurrence = 1;
+	let compressed_string = '';
+	for (let i = 0; i < str.length; i++) {
+		if (str[i] === str[i + 1]) {
+			recurrence++;
+		} else {
+			compressed_string += str[i] + recurrence;
+			recurrence = 1;
+		}
+	}
+	if (str.length < compressed_string.length) {
+		return str;
+	} else {
+		return compressed_string;
+	}
+};
+
+console.log(string_compression('aabcccccaaa'));
+console.log(string_compression('abca'));
