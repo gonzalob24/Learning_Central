@@ -17,6 +17,7 @@ const bubble_sort = (arr) => {
 				let temp_number = arr[j];
 				arr[j] = arr[j + 1];
 				arr[j + 1] = temp_number;
+				console.log(arr);
 			}
 		}
 		// console.log(arr);
@@ -24,7 +25,7 @@ const bubble_sort = (arr) => {
 	return arr;
 };
 
-// bubble_sort([5, 6, 8, 1, 2]);
+bubble_sort([5, 6, 8, 1, 2]);
 // bubble_sort([99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0]);
 // place the smallest elements at the front. Always scans for smallest item and
 // places it towards the front
@@ -57,6 +58,7 @@ const insertion_sort = (arr) => {
 		if (arr[i] < arr[0]) {
 			//move number to first position
 			console.log(i);
+			// move item from one position to i'th position
 			arr.unshift(arr.splice(i, 1)[0]);
 			console.log(arr);
 		} else {
@@ -65,6 +67,7 @@ const insertion_sort = (arr) => {
 				if (arr[i] > arr[j - 1] && arr[i] < arr[j]) {
 					console.log(i, j);
 					console.log(arr);
+					// delete and move i'th item to correct place in sorted portion of list, to j'th position
 					arr.splice(j, 0, arr.splice(i, 1)[0]);
 					console.log(arr);
 				}
@@ -73,7 +76,11 @@ const insertion_sort = (arr) => {
 	}
 	return arr;
 };
-// const temp_arr = [5, 6, 8, 1, 2];
+const temp_arr = [23, 1, 10, 5, 6];
+temp_arr.unshift(temp_arr.splice(1, 1)[0]); // 1,23,10,5,2
+temp_arr.splice(1, 0, temp_arr.splice(2, 1)[0]);
+console.log('----', temp_arr);
+
 // console.log(temp_arr);
 // console.log(temp_arr.splice(1, 0, temp_arr.splice(3, 1)[0]));
 // console.log(temp_arr);
@@ -82,7 +89,7 @@ const insertion_sort = (arr) => {
 // console.log(temp_arr);
 // temp_arr.unshift(temp_arr.splice(0, 1)[0]);
 // console.log(temp_arr);
-console.log(insertion_sort([5, 6, 8, 1, 2]));
+// console.log(insertion_sort([5, 6, 8, 1, 2]));
 
 const merge_sort = (arr) => {
 	if (arr.length === 1) {
@@ -126,9 +133,10 @@ function quickSort(array, left, right) {
 
 	if (left < right) {
 		pivot = right;
+		// move partition index to middle
 		partitionIndex = partition(array, pivot, left, right);
 
-		//sort left and right
+		//sort left and right with divide and conqueror
 		quickSort(array, left, partitionIndex - 1);
 		quickSort(array, partitionIndex + 1, right);
 	}
