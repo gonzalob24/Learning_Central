@@ -177,6 +177,26 @@ class BST {
 		return this.bfs_recursive(queue, list);
 	}
 
+	bfs_recursive_2() {
+		let list = this.bfs_recursive_helper([this.root], []);
+		return list;
+	}
+
+	bfs_recursive_helper(queue, list) {
+		if (queue.length === 0) {
+			return list;
+		}
+		let current_node = queue.shift(); // get first item from queue
+		list.push(current_node.value);
+		if (current_node.left) {
+			queue.push(current_node.left);
+		}
+		if (current_node.right) {
+			queue.push(current_node.right);
+		}
+		return this.bfs_recursive_helper(queue, list);
+	}
+
 	// use recursion
 	dfs_in_order() {
 		return this.traverse_in_order(this.root, []);
@@ -191,7 +211,7 @@ class BST {
 	}
 
 	traverse_in_order(node, list) {
-		console.log(node.value);
+		// console.log(node.value);
 
 		if (node.left) {
 			this.traverse_in_order(node.left, list);
@@ -204,7 +224,7 @@ class BST {
 	}
 
 	traverse_post_order(node, list) {
-		console.log(node.value);
+		// console.log(node.value);
 
 		if (node.left) {
 			this.traverse_post_order(node.left, list);
@@ -217,7 +237,7 @@ class BST {
 	}
 
 	traverse_pre_order(node, list) {
-		console.log(node.value);
+		// console.log(node.value);
 		list.push(node.value);
 		if (node.left) {
 			this.traverse_pre_order(node.left, list);
@@ -262,6 +282,7 @@ console.log('BFS');
 console.log(bst1.bfs());
 console.log('recursive');
 console.log(bst1.bfs_recursive([bst1.root], []));
+console.log(bst1.bfs_recursive_2());
 console.log('DFS');
 console.log(bst1.dfs_in_order());
 console.log(bst1.dfs_post_order());

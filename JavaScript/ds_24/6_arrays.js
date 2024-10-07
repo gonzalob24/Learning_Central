@@ -104,8 +104,13 @@ class SomeArray {
 const ar_1 = new SomeArray();
 ar_1.push('Alexa');
 ar_1.push('Alison');
-console.log(ar_1.get(0));
-ar_1.pop();
+// console.log(ar_1.get(0));
+// ar_1.pop();
+ar_1.push('1');
+ar_1.push('2');
+console.log('----');
+console.log(ar_1);
+ar_1.delete();
 console.log(ar_1);
 
 function reverse(str) {
@@ -160,7 +165,10 @@ function merge_sorted_arrays(arr1, arr2) {
 	return sorted_array;
 }
 
-console.log(merge_sorted_arrays([0, 3, 4, 33], [4, 6, 30]));
+console.log('Merge Sorted arrays');
+console.log(merge_sorted_arrays([0, 3, 4, 20, 31, 33], [4, 6, 7, 8]));
+let test = [0, 3, 4, 20, 21, 33];
+console.log(!test[1]);
 
 // two sum
 /**
@@ -183,6 +191,8 @@ const two_sum = (arr, target_sum) => {
 	for (let i = 0; i < arr.length; i++) {
 		const difference = target_sum - arr[i];
 		if (!hashed.has(difference)) {
+			console.log('--- ', i, difference);
+
 			hashed.set(arr[i], i);
 		} else {
 			let difference_index = hashed.get(difference);
@@ -194,7 +204,7 @@ const two_sum = (arr, target_sum) => {
 	// current_sum = arr[i] + arr[i + 1]
 };
 
-console.log(two_sum([2, 7, 11, 15], 9));
+console.log(two_sum([2, 11, 15, 7], 9));
 console.log(two_sum([3, 2, 4], 6));
 console.log(two_sum([3, 2, 4], 55));
 

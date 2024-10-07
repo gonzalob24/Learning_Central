@@ -14,18 +14,22 @@ const bubble_sort = (arr) => {
 	for (let i = 0; i < arr.length; i++) {
 		for (let j = 0; j < arr.length; j++) {
 			if (arr[j] > arr[j + 1]) {
-				let temp_number = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = temp_number;
-				console.log(arr);
+				swap_rl_lr(arr, j);
 			}
 		}
-		// console.log(arr);
+		console.log('Pass: ', i);
 	}
 	return arr;
 };
+const swap_rl_lr = (arr, index) => {
+	const temp_item = arr[index];
+	arr[index] = arr[index + 1];
+	arr[index + 1] = temp_item;
+};
 
-bubble_sort([5, 6, 8, 1, 2]);
+console.log('Bubble sort');
+
+console.log(bubble_sort([5, 6, 8, 2, 1]));
 // bubble_sort([99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0]);
 // place the smallest elements at the front. Always scans for smallest item and
 // places it towards the front
@@ -45,6 +49,7 @@ const selection_sort = (arr) => {
 	}
 	return arr;
 };
+console.log('Selection Sort');
 
 console.log(selection_sort([5, 6, 8, 1, 2]));
 
@@ -89,7 +94,7 @@ console.log('----', temp_arr);
 // console.log(temp_arr);
 // temp_arr.unshift(temp_arr.splice(0, 1)[0]);
 // console.log(temp_arr);
-// console.log(insertion_sort([5, 6, 8, 1, 2]));
+console.log(insertion_sort([5, 6, 8, 1, 2]));
 
 const merge_sort = (arr) => {
 	if (arr.length === 1) {
