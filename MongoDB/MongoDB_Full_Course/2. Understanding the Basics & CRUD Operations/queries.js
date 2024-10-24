@@ -46,3 +46,22 @@ s;
 
 // access / filer embedded documents
 db.flightData.find({ 'status.description': 'on-time' });
+
+// Patient example
+db.patients.insertMany([
+	{ firstName: 'Gonzalo', lastName: 'Bet', age: 38, history: [{ disease: 'Cold' }, { disease: 'Diarrhea' }] },
+	{ firstName: 'Mary', lastName: 'Car', age: 38, history: [{ disease: 'Cold' }] },
+	{ firstName: 'Alexa', lastName: 'Car', age: 17, history: [{ disease: 'Cold' }] },
+]);
+
+// find patients older than 30
+db.patients.find({ age: { $gt: 30 } });
+// update a patient
+db.patients.updateOne({ firstName: 'Mary' }, { $set: { age: 35, lastName: 'Carrillo', history: [] } });
+
+// find patients with disease of cold
+db.patients.find({ history: { $elemMatch: { disease: 'Cold' } } });
+
+// delete patient that have a cold, can use one of these queries
+db.patients.deleteMany({ history: { $elemMatch: { disease: 'Cold' } } });
+db.patients.deleteMany({ 'history.disease': 'Cold' });

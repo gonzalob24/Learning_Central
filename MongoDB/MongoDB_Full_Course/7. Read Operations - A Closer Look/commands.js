@@ -24,16 +24,32 @@ db.movies.find({ 'rating.average': { $gt: 7 } });
 db.movies.find({ runtime: { $in: [60, 90] } });
 db.movies.find({ $or: [{ runtime: { $eq: 60 } }, { runtime: { $eq: 90 } }] });
 
+// movies of Drama or Action
+db.movies.find({ $or: [{ genres: 'Drama' }, { genres: 'Action' }] });
 // and is the default in mongo
 db.movies.find({ 'imdb.rating': { $gt: 9 }, genres: 'Drama' });
 
-// query a field that is an array
+// use $expr to compare two fields
+db.movies.find({ $expr: { $gt: ['$field_1', '$field_2'] } });
+
+// query a field that is an ARRAY
 // searching like this checks to see if drama is in the array
 db.movies.find({ genres: 'Drama' });
 // Drama like this mongo looks to see if genres is the only one in the array
 db.movies.find({ genres: ['Drama'] });
-
+// search for title in hobbies array that has Sports
+db.users.find({ 'hobbies.title': 'Sports' }).count();
+//this does not care of sports frequency is gte 2
+db.users.find({ $and: [{ 'hobbies.title': 'Sports' }, { 'hobbies.frequency': { $gte: 2 } }] });
 //
+db.users.find({ hobbies: { $elemMatch: { title: 'Sports', frequency: { $gte: 5 } } } });
+
+//find all movies with exactly two genres
+db.movies.find({ genres: { $size: 2 } });
+// find all movies which aired in 2018
+db.movies.find({ year: { $eq: '2018' } });
+// find all movies which have a rating greater than 8 but less than 10
+db.movies.find({ 'imdb.rating': { $gt: 8 }, 'imdb.rating': { $lt: 10 } });
 db.users.insertMany([
 	{
 		name: 'Max',
@@ -136,3 +152,7 @@ db.sales.find({
 		],
 	},
 });
+
+//
+db.movies.find({ genres: { $all: ['Drama', 'Horror'] } }, { 'genres.$': 1 });
+db.movies.find({ genres: 'Drama' }, { genres: { $elemMatch: { $eq: 'Horror' } } });
