@@ -225,3 +225,51 @@ const longest_substring_no_repeating_characters_LR_pointer = (str) => {
 // console.log(longest_substring_no_repeating_characters('bbbbb'));
 console.log(longest_substring_no_repeating_characters('pwwkew'));
 console.log(longest_substring_no_repeating_characters_LR_pointer('pwwkew'));
+
+// Brute force solution
+const container_with_most_water = (arr) => {
+	// a = h X w
+	let max_area = 0;
+	for (let p1 = 0; p1 < arr.length; p1++) {
+		for (let p2 = p1 + 1; p2 < arr.length; p2++) {
+			let min_height = Math.min(arr[p1], arr[p2]);
+			let area = min_height * (p2 - p1);
+			max_area = Math.max(max_area, area);
+		}
+	}
+	return max_area;
+};
+
+const container_with_most_water_optimized = (arr) => {
+	let max_area = 0;
+	let p2 = arr.length - 1;
+	for (let p1 = 0; p1 < arr.length; ) {
+		if (p2 - p1 < 0) {
+			break;
+		}
+		let min_height = Math.min(arr[p1], arr[p2]);
+		let area = min_height * (p2 - p1);
+		max_area = Math.max(max_area, area);
+
+		if (arr[p1] < arr[p2]) {
+			p1++;
+		} else {
+			p2--;
+		}
+	}
+	return max_area;
+};
+
+console.log('Max container with water BRUTE FORCE');
+
+console.log(container_with_most_water([1, 7, 2, 0, 1, 3]));
+console.log(container_with_most_water([]));
+console.log(container_with_most_water([1]));
+console.log(container_with_most_water([6, 9, 3, 4, 5, 8]));
+
+console.log('Max container with water Optimized');
+console.log(container_with_most_water_optimized([1, 7, 2, 0, 1, 3]));
+console.log(container_with_most_water_optimized([]));
+console.log(container_with_most_water_optimized([1]));
+console.log(container_with_most_water_optimized([6, 9, 3, 4, 5, 8]));
+console.log(container_with_most_water_optimized([7, 1, 2, 3, 9]));
