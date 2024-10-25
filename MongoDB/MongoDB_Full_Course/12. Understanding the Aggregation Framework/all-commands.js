@@ -1,4 +1,19 @@
 /**
+ * From Book
+ */
+
+db.users.findOneAndUpdate(
+	{ name: 'The Sleeper' },
+	[{ $set: { name_array: { $split: ['$name', ' '] } } }, { $set: { f_name: { $arrayElemAt: ['$name_array', 0] }, l_name: { $arrayElemAt: ['$name_array', 1] } } }],
+	{ $project: { f_name: 1, l_name: 1, name: 0, name_array: 0 } }
+);
+
+// this replaces Unknown with ""
+db.movies.findOneAndUpdate({ title: 'Macbeth' }, { $set: { 'genre.$[el]': '' } }, { arrayFilters: [{ el: 'Unknown' }] });
+// this removes a certain item from the arrays
+db.movies.findOneAndUpdate({ title: 'Macbeth' }, { $pullAll: { genre: ['Unknown'] } });
+
+/**
  * $match
  */
 
@@ -24,6 +39,13 @@ db.contacts.aggregate([{ $match: { gender: 'female' } }, { $group: { _id: { stat
  */
 db.contacts.aggregate([{ $match: { gender: 'female' } }, { $group: { _id: { state: '$location.state' }, totalPersons: { $sum: 1 } } }, { $sort: { totalPersons: -1 } }]);
 
+// Find persons older than 50 and group them by gender, number of persons by gender, show average age
+// sort by total persons per gender
+db.persons.aggregate([
+	{ $match: { 'dob.age': { $gt: 50 } } },
+	{ $group: { _id: { gender: '$gender' }, totalByGender: { $sum: 1 }, averageAge: { $avg: '$dob.age' } } },
+	{ $sort: { totalByGender: -1 } },
+]);
 /**
  * transform data with project
  * transform the name --> fullName
