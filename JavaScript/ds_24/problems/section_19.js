@@ -243,6 +243,8 @@ const container_with_most_water = (arr) => {
 const container_with_most_water_optimized = (arr) => {
 	let max_area = 0;
 	let p2 = arr.length - 1;
+	// I can also use a while loop
+	// while (p1 < p2) --> this removes the if (p2 - p1 < 0)
 	for (let p1 = 0; p1 < arr.length; ) {
 		if (p2 - p1 < 0) {
 			break;
