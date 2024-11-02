@@ -23,6 +23,8 @@ class LinkedList {
 	traverse() {}
 
 	reverse() {}
+
+	revers_m_n(m, n) {}
 }
 
 class DoublyNode {
