@@ -1,5 +1,8 @@
 // Typed out strings
 // # --> backspace
+
+const { Stack } = require('../common_classes/LinkedLists');
+
 // are both equal when they are both types out
 const typed_out_string = (str1) => {
 	const arr_string = []; // S: (n)
@@ -263,3 +266,84 @@ console.log(is_palindrome('abc')); //F
 console.log(is_palindrome('a')); //T
 console.log(is_palindrome('')); //T
 console.log(is_palindrome('A man, a plan, a canal: Panama')); //T
+
+console.log('Parentheses Checker');
+
+class ParenthesesChecker extends Stack {
+	constructor() {
+		super();
+		this.left_parentheses = new Map([
+			['{', '}'],
+			['[', ']'],
+			['(', ')'],
+		]);
+		this.right_parentheses = new Map([
+			['}', '{'],
+			[']', '['],
+			[')', '('],
+		]);
+	}
+
+	add(value) {
+		this.array.push(value);
+		this.length++;
+	}
+
+	pop() {
+		let value = this.array.pop();
+		this.length--;
+		return value;
+	}
+
+	peek() {
+		return this.array[this.length - 1];
+	}
+	is_valid_parenthesis(str) {
+		for (let i = 0; i < str.length; i++) {
+			if (this.left_parentheses.has(str[i])) {
+				this.add([str[i]]);
+			} else {
+				let left = this.pop();
+				if (this.left_parentheses.get(left) !== str[i]) {
+					return false;
+				}
+			}
+		}
+		return this.length === 0;
+	}
+
+	remove_brackets(str) {
+		let string = str.split('');
+		for (let i = 0; i < string.length; i++) {
+			if (string[i] === '(') {
+				this.add(i);
+			} else {
+				if (this.length === 0 && str[i] === ')') {
+					string[i] = '';
+				} else if (str[i] === ')') {
+					this.array.pop();
+				}
+			}
+		}
+		for (let i = 0; i < this.array.length; i++) {
+			string[this.array[i]] = '';
+		}
+		this.array = [];
+		this.length = 0;
+		return string.join('');
+	}
+}
+
+let stack = new ParenthesesChecker();
+let string = '{([])}';
+let string2 = '';
+let string3 = '{(])]}';
+console.log(stack.is_valid_parenthesis(string));
+console.log(stack.is_valid_parenthesis(string2));
+console.log(stack.is_valid_parenthesis(string3));
+
+let stack2 = new ParenthesesChecker();
+let str_brackets = 'a)bc(d)';
+let str_2 = '(a(bc(a)';
+console.log(stack2.remove_brackets(str_brackets));
+console.log(stack2.remove_brackets(str_2));
