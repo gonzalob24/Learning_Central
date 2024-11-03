@@ -87,11 +87,11 @@ class Queue extends Stack {
 		super();
 	}
 
-	enqueue() {}
+	enqueue(value) {}
 
 	dequeue() {}
 
 	peek() {}
 }
 
-module.exports = { Node, DoublyNode, SinglyLL, DoublyLL, DoublyNode3, DoublyLL3, Stack };
+module.exports = { Node, DoublyNode, SinglyLL, DoublyLL, DoublyNode3, DoublyLL3, Stack, Queue };
