@@ -197,6 +197,85 @@ class BST {
 		return this.bfs_recursive_helper(queue, list);
 	}
 
+	bfs_level_order() {
+		return this.bfs_level_order_helper([this.root], 1, [], []);
+	}
+
+	bfs_level_order_helper(queue, temp_list, list) {
+		if (queue.length === 0) {
+			return list;
+		}
+
+		let current_node = queue.shift();
+		if (current_node.left) {
+			queue.push(current_node.left);
+			temp_list.push(current_node.value);
+		}
+		if (current_node.right) {
+			queue.push(current_node.right);
+			temp_list.push(current_node.value);
+		}
+
+		list.push(temp_list);
+		return this.bfs_level_order_helper(queue, temp_list, list);
+	}
+
+	bfs_iterative() {
+		return this.bfs_iterative_helper(this.root);
+	}
+
+	bfs_iterative_helper(root) {
+		let results = [];
+		let queue = [root];
+
+		while (queue.length) {
+			let current_node = queue.shift();
+			results.push(current_node.value);
+
+			if (current_node.left) {
+				queue.push(current_node.left);
+			}
+			if (current_node.right) {
+				queue.push(current_node.right);
+			}
+		}
+		return results;
+	}
+
+	bfs_level_order_iterative() {
+		return this.bfs_level_order_iterative_helper(this.root);
+	}
+
+	bfs_level_order_iterative_helper(root) {
+		let results = [];
+		let temp_arr = [];
+		let queue = [root];
+		let level_length = queue.length;
+		let counter = 0;
+
+		while (queue.length) {
+			let current_node = queue.shift();
+			counter++;
+			temp_arr.push(current_node.value);
+
+			if (current_node.left) {
+				queue.push(current_node.left);
+			}
+
+			if (current_node.right) {
+				queue.push(current_node.right);
+			}
+
+			if (counter === level_length) {
+				results.push(temp_arr);
+				temp_arr = [];
+				counter = 0;
+				level_length = queue.length;
+			}
+		}
+		return results;
+	}
+
 	// use recursion
 	dfs_in_order() {
 		return this.traverse_in_order(this.root, []);
@@ -268,6 +347,20 @@ class BST {
 		}
 		return true;
 	}
+
+	max_depth() {
+		return this.max_depth_traversal(this.root, 0);
+	}
+
+	max_depth_traversal(node, depth) {
+		if (!node) {
+			return depth;
+		}
+		depth++;
+		let left = this.max_depth_traversal(node.left, depth);
+		let right = this.max_depth_traversal(node.right, depth);
+		return Math.max(left, right);
+	}
 }
 
 const bst1 = new BST();
@@ -276,6 +369,8 @@ bst1.insert(4);
 bst1.insert(20);
 bst1.insert(1);
 bst1.insert(6);
+bst1.insert(8);
+bst1.insert(10);
 bst1.insert(15);
 bst1.insert(170);
 console.log('BFS');
@@ -283,6 +378,9 @@ console.log(bst1.bfs());
 console.log('recursive');
 console.log(bst1.bfs_recursive([bst1.root], []));
 console.log(bst1.bfs_recursive_2());
+console.log('Level order');
+console.log(bst1.bfs_level_order_iterative());
+
 console.log('DFS');
 console.log(bst1.dfs_in_order());
 console.log(bst1.dfs_post_order());
@@ -302,6 +400,8 @@ function traverse(node) {
 console.log('\n Found node: ', bst1.lookup(1));
 console.log('\n Found node: ', bst1.lookup(170));
 console.log('\n Found node: ', bst1.lookup(4));
+console.log('Max depth');
+console.log(bst1.max_depth());
 
 // bst1.remove(6);
 // console.log(JSON.stringify(bst1.root));
