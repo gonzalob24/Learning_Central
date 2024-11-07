@@ -574,3 +574,82 @@ const traversal_num_islands = (matrix) => {
 	return count;
 };
 console.log(traversal_num_islands(island_matrix));
+
+const contains_duplicates = (arr) => {
+	// use a hash set: insert and check in O(1) -> constant time
+	const values_seen = new Set();
+	// T: O(n)
+	// S: O(n)
+	for (let i = 0; i < arr.length; i++) {
+		if (!values_seen.has(arr[i])) {
+			values_seen.add(arr[i]);
+		} else {
+			return true;
+		}
+	}
+	return false;
+};
+
+const valid_anagram = (s, t) => {
+	// Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+	const string_1_hash = new Map();
+	const string_2_hash = new Map();
+
+	if (s.length !== t.length) {
+		return false;
+	}
+	for (let i = 0; i < s.length; i++) {
+		string_1_hash.set(s[i], (string_1_hash.get(s[i]) || 0) + 1);
+		string_2_hash.set(t[i], (string_2_hash.get(t[i]) || 0) + 1);
+	}
+
+	for (let [char, count] of string_1_hash) {
+		const count_2 = string_2_hash.get(char);
+
+		if (count !== count_2) {
+			return false;
+		}
+	}
+
+	return true;
+};
+
+const valid_anagram_2 = (s, t) => {
+	// Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+	const str_s = s.split('').sort().join('');
+	const str_t = t.split('').sort().join('');
+
+	return str_s === str_t;
+};
+
+console.log(valid_anagram('aacc', 'ccac'));
+
+const group_anagrams = (strs) => {
+	if (strs.length === 0) {
+		return [''];
+	}
+	if (strs.length === 1) {
+		return [strs];
+	}
+
+	const results = {};
+	for (let i = 0; i < strs.length; i++) {
+		let str_key = strs[i].split('').sort().join('');
+
+		if (!results[str_key]) {
+			results[str_key] = [strs[i]];
+		} else {
+			let current_array = results[str_key];
+			current_array.push(strs[i]);
+			results[str_key] = current_array;
+		}
+	}
+
+	return Object.values(results);
+};
+
+const strs = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat'];
+console.log('group anagrams');
+
+console.log(group_anagrams(strs));
