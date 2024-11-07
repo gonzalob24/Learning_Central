@@ -447,3 +447,130 @@ const string_compression = (str) => {
 
 console.log(string_compression('aabcccccaaa'));
 console.log(string_compression('abca'));
+
+console.log('2D ARRAYS');
+console.log('BFS or DFS');
+const array_2d = [
+	[1, 2, 3, 4, 5],
+	[6, 7, 8, 9, 10],
+	[11, 12, 13, 14, 15],
+	[16, 17, 18, 19, 20],
+];
+
+const directions = [
+	[-1, 0], //up
+	[0, 1], //right
+	[1, 0], //down
+	[0, -1], //left
+];
+
+const recursive_dfs = (matrix, row, col, seen, values) => {
+	if (row < 0 || col < 0 || row >= matrix.length || col >= matrix[0].length || seen[row][col]) {
+		return;
+	}
+
+	values.push(matrix[row][col]);
+	seen[row][col] = true;
+
+	for (let i = 0; i < directions.length; i++) {
+		const current_dir = directions[i];
+		recursive_dfs(matrix, row + current_dir[0], col + current_dir[1], seen, values);
+	}
+};
+const dfs_traversal_2d_array = (matrix) => {
+	const seen = new Array(matrix.length).fill(0).map(() => new Array(matrix[0].length).fill(false));
+
+	const values = [];
+	recursive_dfs(matrix, 0, 0, seen, values);
+	return values;
+};
+
+const traversal_bfs = (matrix) => {
+	const seen = new Array(matrix.length).fill(0).map(() => new Array(matrix[0].length).fill(false));
+	const values = [];
+
+	const queue = [[0, 0]];
+
+	while (queue.length) {
+		const current_pos = queue.shift();
+		const row = current_pos[0];
+		const col = current_pos[1];
+
+		if (row < 0 || row >= matrix.length || col < 0 || col >= matrix[0].length || seen[row][col]) {
+			continue;
+		}
+
+		seen[row][col] = true;
+		values.push(matrix[row][col]);
+
+		for (let i = 0; i < directions.length; i++) {
+			const current_dir = directions[i];
+			queue.push([row + current_dir[0], col + current_dir[1]]);
+		}
+	}
+	return values;
+};
+
+console.log(dfs_traversal_2d_array(array_2d));
+console.log(traversal_bfs(array_2d));
+
+console.log('no of Islands');
+const directions_2 = [
+	[-1, 0], //up
+	[0, 1], //right
+	[1, 0], //down
+	[0, -1], //left
+];
+
+const island_matrix = [
+	[1, 1, 1, 0, 0],
+	[1, 1, 1, 0, 1],
+	[0, 1, 0, 0, 1],
+	[0, 0, 0, 1, 1],
+];
+
+const traversal_num_islands = (matrix) => {
+	let count = 0;
+	if (matrix.length === 0) {
+		return 0;
+	}
+
+	for (let row = 0; row < matrix.length; row++) {
+		for (let col = 0; col < matrix[0].length; col++) {
+			if (matrix[row][col] === 1) {
+				count++;
+				matrix[row][col] = 0; // flip 1 to 0 so that I don't count it again
+				// BFS to find adjacent islands
+				const queue = []; // use array since JS does not have a queue implementation
+				queue.push([row, col]); // add current direction
+
+				while (queue.length) {
+					const current_pos = queue.shift();
+					const current_row = current_pos[0];
+					const current_col = current_pos[1];
+
+					for (let i = 0; i < directions.length; i++) {
+						const current_dir = directions[i];
+						console.log(`dir -- ${i}`, current_dir);
+
+						const next_row = current_row + current_dir[0];
+						const next_col = current_col + current_dir[1];
+
+						// make sure coords are not out of bounds
+						if (next_row < 0 || next_row >= matrix.length || next_col < 0 || next_col >= matrix[0].length) {
+							continue;
+						}
+						console.log('next row - col', next_row, next_col);
+
+						if (matrix[next_row][next_col] === 1) {
+							queue.push([next_row, next_col]);
+							matrix[next_row][next_col] = 0; // flip the 1 to avoid double counting
+						}
+					}
+				}
+			}
+		}
+	}
+	return count;
+};
+console.log(traversal_num_islands(island_matrix));
