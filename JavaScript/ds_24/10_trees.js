@@ -382,11 +382,11 @@ console.log('Level order');
 console.log(bst1.bfs_level_order_iterative());
 
 console.log('DFS');
-console.log(bst1.dfs_in_order());
-console.log(bst1.dfs_post_order());
-console.log(bst1.dfs_pre_order());
+console.log('In Order - ', bst1.dfs_in_order());
+console.log('Pos Order - ', bst1.dfs_post_order());
+console.log('Pre Order - ', bst1.dfs_pre_order());
 console.log('TRUE BST');
-console.log(bst1.true_bst());
+console.log('True BST - ', bst1.true_bst());
 
 console.log(JSON.stringify(bst1.root));
 

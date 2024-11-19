@@ -653,3 +653,58 @@ const strs = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat'];
 console.log('group anagrams');
 
 console.log(group_anagrams(strs));
+
+console.log('Top Frequent Elements');
+
+const top_k_frequent_elements = (nums, k) => {
+	const seen_values = {};
+
+	for (let i = 0; i < nums.length; i++) {
+		if (seen_values[nums[i]]) {
+			seen_values[nums[i]] += 1;
+		} else {
+			seen_values[nums[i]] = 1;
+		}
+	}
+	const arr = Object.entries(seen_values).map(([num, count]) => [num, parseInt(count)]);
+	console.log(arr);
+
+	arr.sort((a, b) => b[1] - a[1]);
+	console.log(arr);
+
+	if (arr.length === 1) {
+		return [Number(arr[0][0])];
+	}
+	return arr.slice(0, k).map((pair) => Number(pair[0]));
+};
+
+console.log('K Frequent Elements');
+console.log(top_k_frequent_elements([-1, -1], 1));
+console.log(top_k_frequent_elements([1, 1, 1, 2, 2, 3], 2));
+console.log(top_k_frequent_elements([3, 0, 1, 0], 1));
+
+console.log('Encode and decode a string');
+
+const encode = (strs) => {
+	if (strs.length === 0) {
+		return [];
+	}
+	if (strs.length === 1 && strs[0] === '') {
+		return [''];
+	}
+	return strs.join(':;');
+};
+
+const decode = (str) => {
+	if (str.length === 0) {
+		return [];
+	}
+	if (str[0] === '') {
+		return [''];
+	}
+	return str.split(':;');
+};
+
+console.log(encode(['']));
+console.log(decode(['']));
+console.log([''].length);

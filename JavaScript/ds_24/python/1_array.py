@@ -120,6 +120,7 @@ minStack = MinStack();
 minStack.push(-2);
 minStack.push(0);
 minStack.push(-3);
+minStack.push(-6)
 print(minStack.getMin()); 
 print(minStack.pop());
 print(minStack.top());   
