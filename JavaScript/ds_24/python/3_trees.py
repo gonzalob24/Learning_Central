@@ -33,8 +33,20 @@ class BST:
         else:
           current_node = current_node.right
   
-  def lookup(self):
-    pass
+  def lookup(self, value):
+    current_node = self.root
+    
+    if current_node == None:
+      return None
+    
+    while current_node:
+      if current_node.value == value:
+        return current_node
+      elif current_node.value < value:
+        current_node = current_node.right
+      else:
+        current_node = current_node.left
+    return None
   
   def remove(self):
     pass
@@ -70,3 +82,23 @@ bst1.insert(10);
 bst1.insert(15);
 bst1.insert(170);
 print(bst1.traverse())
+print(bst1.lookup(11))
+print(bst1.lookup(1))
+
+def search(nums, target):
+  left = 0
+  right = len(nums) - 1
+  mid = left + ((right - left) // 2) 
+  while left <= right:
+    if nums[mid] == target:
+      return mid
+    elif nums[mid] < target:
+      left = mid + 1
+    else: 
+      right = mid - 1
+    mid = left + ((right - left) // 2) 
+  return -1
+    
+  
+
+print(search([-1,0,3,5,9,12], 9))
