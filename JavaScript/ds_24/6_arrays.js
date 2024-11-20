@@ -286,6 +286,7 @@ function contains_duplicate(arr) {
 	return false;
 }
 
+console.log('contains cuplicates');
 console.log(contains_duplicate([1, 2, 3, 1]));
 console.log(contains_duplicate([1, 2, 3, 4]));
 
@@ -708,3 +709,6 @@ const decode = (str) => {
 console.log(encode(['']));
 console.log(decode(['']));
 console.log([''].length);
+
+new_arr = new Array(10).fill(0);
+console.log(new_arr);

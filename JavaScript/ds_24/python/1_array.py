@@ -1,5 +1,27 @@
 from typing import List
 import math
+
+print('Contains Duplicates')
+
+def contains_duplicates(nums):
+  if len(nums) == 0:
+    return False
+
+  unique_keys = {}
+  for i in range(len(nums)):
+    print(unique_keys)
+    print(i, nums[i], nums[i] in unique_keys)
+    if not unique_keys.get(str(nums[i])):
+      unique_keys[str(nums[i])] = i
+    else:
+      print('Yes')
+      print(unique_keys)
+      return True
+  print('--', not unique_keys.get('1'))
+  return False
+
+print(contains_duplicates([1,2,3,1]))
+
 class Solution:
 
   def product_except_self(self, nums: List[int]) -> List[int]:
@@ -30,7 +52,7 @@ class Solution:
     #   results.append(current_sum)
     return results
       
-
+print('Product Except Self')
 test = Solution()
 print(test.product_except_self(nums=[1,2,3,4]))
 
