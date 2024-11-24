@@ -148,3 +148,27 @@ def trapping_rain_water(height):
   return max_area
     
 print(trapping_rain_water([0,1,0,2,1,0,1,3,2,1,2,1]))
+
+
+def trapping_rain_water_2(height):
+  left_max = [0] * len(height)
+  right_max = [0] * len(height)
+  max_water = 0
+  
+  for i in range(len(height)):
+    left_max[i] = max(left_max[i - 1], height[i])
+  
+  right_max[len(height) - 1] = height[len(height) - 1]
+  for i in range(len(height) - 2, -1, -1):
+    right_max[i] = max(right_max[i + 1], height[i])
+  
+  for i in range(len(height)):
+    min_height = min(left_max[i], right_max[i])
+    max_water += min_height - height[i]
+  
+  print(height)
+  print(left_max)
+  print(right_max)
+  return max_water
+
+print(trapping_rain_water_2([0,1,0,2,1,0,1,3,2,1,2,1]))

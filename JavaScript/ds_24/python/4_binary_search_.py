@@ -70,6 +70,48 @@ class BST:
   def traverse(self):
     return self.traverse_helper(self.root)
 
+  def in_order_traversal_helper(self, node):
+    if not node:
+      return None
+    
+    # Swap the children
+    temp = node.left
+    node.left = node.right
+    node.right = temp
+    
+    self.in_order_traversal_helper(node.left)
+    self.in_order_traversal_helper(node.right)
+    return node
+  
+  def invert_tree_use_in_order_dfs(self):
+    return self.in_order_traversal_helper(self.root)
+  
+  def tree_depth_dfs(self):
+    return self.tree_depth_helper(self.root)
+  
+  def tree_depth_helper(self, node):
+    
+    if not node:
+      return 0
+          
+    left = 1 + self.tree_depth_helper(node.left)
+    right = 1 + self.tree_depth_helper(node.right)
+
+    return max(left, right)
+  
+  def diameter_of_bt(self):
+    return self.diameter_of_bst_helper(self.root)
+  
+  def diameter_of_bst_helper(self, node):
+    
+    if not node:
+      return 0
+    
+    left = 1 + self.diameter_of_bst_helper(node.left)
+    right = 1 + self.diameter_of_bst_helper(node.right)
+
+    print('left - ', left)
+    print('right -- ', right)
 
 bst1 = BST()
 bst1.insert(9)
@@ -150,6 +192,7 @@ def min_eating_speed(piles, h):
     total_time = 0
     for pile in piles:
       total_time += math.ceil(float(pile) / k_mid)
+      print(left, pile, k_mid, total_time)
     if total_time <= h:
       result = k_mid
       right = k_mid - 1
@@ -182,7 +225,7 @@ def find_min(nums):
     mid = (right + left) // 2
   return min_value
     
-print(find_min([3,1,2]))
+print(find_min([5,1,2,3,4]))
 
 print('Search in rotated sorted array')
 
@@ -228,29 +271,22 @@ class TimeMap:
 
     def get(self, key: str, timestamp: int) -> str:
       values = self.key_store[key]
-      found_value = self.search_by_timestamp(values, timestamp)
-      if found_value:
-          return found_value[0]
-      else:
-        if values:
-          return values[-1][0]
-        else:
-          return "null"
+      return self.search_by_timestamp(values, timestamp)
+      
     
     def search_by_timestamp(self, values, timestamp):
       left = 0
       right = len(values) - 1
       mid = (left + right) // 2
-
+      result = ""
       while left <= right:
-        if values[mid][1] == timestamp:
-          return values[mid]
-        elif values[mid][1] < timestamp:
+        if values[mid][1] <= timestamp:
+          result = values[mid][0]
           left = mid + 1
         else:
           right = mid - 1
         mid = (left + right) // 2
-      return False
+      return result
 
 key = {}
 
@@ -259,3 +295,29 @@ key["one"] = [['foo', 1]]
 print(key)
 key['one'].append(['bar', 2])
 print(key.get('two'))
+
+print("Trees")
+
+bst2 = BST()
+bst2.insert(4)
+bst2.insert(2)
+bst2.insert(7)
+bst2.insert(1)
+bst2.insert(3)
+bst2.insert(6)
+bst2.insert(9)
+print(bst2.traverse())
+bst2.invert_tree_use_in_order_dfs()
+print(bst2.traverse())
+print('Max Depth')
+print(bst2.tree_depth_dfs())
+
+print('Diameter of the tree')
+bst3 = BST()
+bst3.insert(1)
+bst3.insert(2)
+bst3.insert(3)
+bst3.insert(4)
+bst3.insert(5)
+print(bst3.traverse())
+print(bst2.diameter_of_bt())
