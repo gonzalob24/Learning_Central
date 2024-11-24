@@ -234,3 +234,54 @@ def largest_rectangular_area(heights):
   return max_area
 
 print(largest_rectangular_area([2,1,2]))
+
+print("Valid Sudoku")
+def valid_sudoku(board):
+  print(len(board))
+  # for row_index in range(len(board)):
+  #   check = {}
+  #   cols = {}
+  for row_idx in range(9):
+    nums_set = set()
+    for i in range(9):
+      if board[row_idx][i] in nums_set:
+        return False
+      elif board[row_idx][i] != ".":
+        nums_set.add(board[row_idx][i])
+    print('ROWS - ',nums_set)
+  
+  for cols_idx in range(9):
+    cols_set = set()
+    for i in range(9):
+      if board[i][cols_idx] in cols_set:
+        return False
+      elif board[i][cols_idx] != ".":
+        cols_set.add(board[i][cols_idx])
+    print('Cols - ', cols_set)
+  
+  # Check the first box
+  for square in range(9):
+    box_set = set()
+    for i in range(3):
+      for j in range(3):
+        row = (square//3 * 3) + i
+        col = (square % 3 * 3) + j
+        if board[row][col] in box_set:
+          return False
+        elif board[row][col] != ".":
+          box_set.add(board[row][col])
+    print('square 1 - ', box_set)
+  return True
+  
+
+b = [["5","3",".",".","7",".",".",".","."],
+     ["6",".",".","1","9","5",".",".","."],
+     [".","9","8",".",".",".",".","6","."],
+     ["8",".",".",".","6",".",".",".","3"],
+     ["4",".",".","8",".","3",".",".","1"],
+     ["7",".",".",".","2",".",".",".","6"],
+     [".","6",".",".",".",".","2","8","."],
+     [".",".",".","4","1","9",".",".","5"],
+     [".",".",".",".","8",".",".","7","9"]]
+
+valid_sudoku(b)
