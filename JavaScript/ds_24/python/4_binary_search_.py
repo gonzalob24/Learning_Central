@@ -47,6 +47,18 @@ class BST:
       else:
         current_node = current_node.left
     return None
+
+  def find_recursion(self, target):
+    return self.find_recursion_helper(self.root, target)
+  
+  def find_recursion_helper(self, node, target):
+
+    if not node:
+      return None
+    if node.value == target:
+      return node.value
+    return self.find_recursion_helper(node.left, target) or self.find_recursion_helper(node.right, target)
+    
   
   def remove(self):
     pass
@@ -65,6 +77,7 @@ class BST:
     else: 
       tree['right'] = self.traverse_helper(node.right)
     
+    print('Tree Traverse --- ', tree)
     return tree
   
   def traverse(self):
@@ -93,25 +106,25 @@ class BST:
     
     if not node:
       return 0
-          
     left = 1 + self.tree_depth_helper(node.left)
     right = 1 + self.tree_depth_helper(node.right)
-
     return max(left, right)
   
   def diameter_of_bt(self):
-    return self.diameter_of_bst_helper(self.root)
+    self.res = 0
+    self.diameter_of_bst_helper(self.root)
+    return self.res
   
   def diameter_of_bst_helper(self, node):
     
     if not node:
       return 0
-    
-    left = 1 + self.diameter_of_bst_helper(node.left)
-    right = 1 + self.diameter_of_bst_helper(node.right)
 
-    print('left - ', left)
-    print('right -- ', right)
+    left = self.diameter_of_bst_helper(node.left)
+    right = self.diameter_of_bst_helper(node.right)
+    self.res = max(self.res, left + right)
+    print(self.res)
+    return 1 + max(left, right)
 
 bst1 = BST()
 bst1.insert(9)
@@ -192,7 +205,7 @@ def min_eating_speed(piles, h):
     total_time = 0
     for pile in piles:
       total_time += math.ceil(float(pile) / k_mid)
-      print(left, pile, k_mid, total_time)
+      print(left, right, pile, k_mid, total_time)
     if total_time <= h:
       result = k_mid
       right = k_mid - 1
@@ -307,7 +320,7 @@ bst2.insert(3)
 bst2.insert(6)
 bst2.insert(9)
 print(bst2.traverse())
-bst2.invert_tree_use_in_order_dfs()
+# bst2.invert_tree_use_in_order_dfs()
 print(bst2.traverse())
 print('Max Depth')
 print(bst2.tree_depth_dfs())
@@ -319,5 +332,9 @@ bst3.insert(2)
 bst3.insert(3)
 bst3.insert(4)
 bst3.insert(5)
-print(bst3.traverse())
-print(bst2.diameter_of_bt())
+print('Traverse BST1 -- ', bst1.traverse())
+# print('BST2 -- ', bst2.traverse())
+# print('BST3 depth -- ', bst1.tree_depth_dfs())
+print("Diameter -- ", bst1.diameter_of_bt())
+# print("BST1 - ", bst1.traverse())
+# print('Find Recursion -- ', bst1.find_recursion(10))
