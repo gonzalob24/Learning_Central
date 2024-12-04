@@ -125,6 +125,55 @@ class BST:
     self.res = max(self.res, left + right)
     print(self.res)
     return 1 + max(left, right)
+  
+  def balanced_bt(self):
+    return self.balanced_bt_helper(self.root)
+  
+  def balanced_bt_helper(self, node):
+    
+    if not node:
+      return True
+    
+    left = self.height(node.left)
+    right = self.height(node.right)
+    
+    if abs(left - right) > 1:
+      return False
+    else:
+      return self.balanced_bt_helper(node.left) and self.balanced_bt_helper(node.right)
+  
+  def height(self, node):
+    if not node:
+      return 0
+    
+    left = self.height(node.left)
+    right = self.height(node.right)
+    
+    return 1 + max(left, right)
+  
+  def isBalanced(self, root):
+    
+    balanced = [True]
+    
+    def height(node):
+      if not node:
+        return 0
+      
+      left = height(node.left)
+      
+      if balanced[0] is False:
+        return False
+      
+      right = height(node.right)
+      
+      if abs(left - right) > 1:
+        balanced[0] = False
+        return 0
+      
+      return 1 + max(left, right)
+    height(root)
+    return balanced[0]
+  
 
 bst1 = BST()
 bst1.insert(9)
@@ -338,3 +387,6 @@ print('Traverse BST1 -- ', bst1.traverse())
 print("Diameter -- ", bst1.diameter_of_bt())
 # print("BST1 - ", bst1.traverse())
 # print('Find Recursion -- ', bst1.find_recursion(10))
+print(bst1.balanced_bt())
+print(bst3.balanced_bt())
+print(bst1.isBalanced(bst1.root))
