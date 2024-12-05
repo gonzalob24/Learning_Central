@@ -151,6 +151,24 @@ class BST:
     
     return 1 + max(left, right)
   
+  def max_depth(self, root):
+    if not root:
+      return 0
+    
+    left = 1 + self.max_depth(root.left)
+    right = 1 + self.max_depth(root.right)
+    
+    return max(left, right)
+  
+  def max_depth_2(self, root, count):
+    if not root:
+      return count
+    count+=1
+    left = self.max_depth_2(root.left, count)
+    right = self.max_depth_2(root.right, count)
+    
+    return max(left, right)
+      
   def isBalanced(self, root):
     
     balanced = [True]
@@ -390,3 +408,6 @@ print("Diameter -- ", bst1.diameter_of_bt())
 print(bst1.balanced_bt())
 print(bst3.balanced_bt())
 print(bst1.isBalanced(bst1.root))
+print(bst3.max_depth(bst3.root))
+print(bst1.max_depth(bst1.root))
+print(bst1.max_depth_2(bst1.root, 0))
